@@ -7,7 +7,7 @@ using System.Collections;
  * */
 public class StateMachine{
 
-	//entity 实体
+	//entity
 	private BaseRobot m_pOwner;
 	
 	private State<T> m_pCurrentState;
@@ -42,11 +42,11 @@ public class StateMachine{
 	}
 	public void SMUpdate ()
 	{
-		//全局状态的运行
+        //global state
 		if (m_pGlobalState != null)
 			m_pGlobalState.Execute (m_pOwner);
 		
-		//一般当前状态的运行
+		//normal state
 		if (m_pCurrentState != null)
 			m_pCurrentState.Execute (m_pOwner);
 	}
@@ -58,20 +58,19 @@ public class StateMachine{
 			Debug.LogError ("该状态不存在");
 		}
 		
-		//退出之前状态
+		//quit previous state
 		m_pCurrentState.Exit(m_pOwner);
-		//保存之前状态
+		//save previous state
 		m_pPreviousState = m_pCurrentState;
-		//设置当前状态
+		//set current state
 		m_pCurrentState = pNewState;
 		m_pCurrentState.Target = m_pOwner;
-		//进入当前状态
+		//enter current state
 		m_pCurrentState.Enter (m_pOwner);
 	}
 	
 	public void RevertToPreviousState ()
 	{
-		//qie huan dao qian yi ge zhuang tai 
 		ChangeState (m_pPreviousState);
 		
 	}
@@ -89,17 +88,17 @@ public class StateMachine{
 		return m_pPreviousState;
 	}
 	
-	public bool HandleMessage (Telegram msg)
-	{
-		//the message
-		if (m_pCurrentState!=null && m_pCurrentState.OnMessage (m_pOwner, msg)) {
-			return true;
-		}
-		// message to the global state
-		if (m_pGlobalState!=null && m_pGlobalState.OnMessage (m_pOwner, msg)) {
-			return true;
-		}
-		
-		return false;
-	}
+//	public bool HandleMessage (Telegram msg)
+//	{
+//		//the message
+//		if (m_pCurrentState!=null && m_pCurrentState.OnMessage (m_pOwner, msg)) {
+//			return true;
+//		}
+//		// message to the global state
+//		if (m_pGlobalState!=null && m_pGlobalState.OnMessage (m_pOwner, msg)) {
+//			return true;
+//		}
+//		
+//		return false;
+//	}
 }
