@@ -17,14 +17,14 @@ public class HeroRobot : BaseRobot {
 		SetID((int) RobotType.HERO);
 		
 		//设置状态接口，并指向一个状态
-		m_pStateMachine = new StateMachine(this);
-		m_pStateMachine.SetCurrentState(Hero_GlobalState .Instance());
+        //m_pStateMachine = new StateMachine(this);
+        //m_pStateMachine.SetCurrentState(Hero_GlobalState .Instance());
 	}
 
 	void Update ()
 	{	
 		//调用正在使用的状态		
-		m_pStateMachine.SMUpdate();
+        //m_pStateMachine.SMUpdate();
 	}
 	
 	public StateMachine GetFSM ()
