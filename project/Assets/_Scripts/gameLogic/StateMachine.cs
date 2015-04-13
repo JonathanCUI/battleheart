@@ -5,36 +5,36 @@ using System.Collections;
  * Desmond 
  * state machine controlling robot state switching
  * */
-public class StateMachine{
+public class StateMachine<T>{
 
 	//entity
-	private BaseRobot m_pOwner;
+	private T m_pOwner;
 	
 	private State<T> m_pCurrentState;
 	private State<T> m_pPreviousState;
 	private State<T> m_pGlobalState;
-	
-	public StateMachine (BaseRobot owner)
+
+	public StateMachine(T owner)
 	{
 		m_pOwner = owner;
 		m_pCurrentState = null;
 		m_pPreviousState = null;
 		m_pGlobalState = null;
 	}
-	
+
 	public void GlobalStateEnter()
 	{
 		m_pGlobalState.Enter(m_pOwner);
 	}
-	
-	public void SetGlobalStateState(State<T> GlobalState)
+
+	public void SetGlobalStateState<T>(State<T> GlobalState)
 	{
 		m_pGlobalState = GlobalState;
 		m_pGlobalState.Target = m_pOwner;
 		m_pGlobalState.Enter(m_pOwner);
 	}
-	
-	public void SetCurrentState(State<T> CurrentState)
+
+	public void SetCurrentState<T>(State<T> CurrentState)
 	{
 		m_pCurrentState = CurrentState;
 		m_pCurrentState.Target = m_pOwner;
@@ -51,7 +51,7 @@ public class StateMachine{
 			m_pCurrentState.Execute (m_pOwner);
 	}
 	
-	public void ChangeState (State<T> pNewState)
+	public void ChangeState<T>(State<T> pNewState)
 	{
 		if (pNewState == null) {
 			
@@ -74,7 +74,7 @@ public class StateMachine{
 		ChangeState (m_pPreviousState);
 		
 	}
-	
+
 	public State<T> CurrentState ()
 	{
 		return m_pCurrentState;

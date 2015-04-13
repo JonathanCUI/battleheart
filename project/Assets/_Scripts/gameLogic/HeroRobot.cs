@@ -9,7 +9,7 @@ using System.Collections;
 public class HeroRobot : BaseRobot {
 
 	//指向一个状态实例的指针
-	StateMachine m_pStateMachine;
+	StateMachine<HeroRobot> m_pStateMachine;
 
 	// Use this for initialization
 	void Start () {
@@ -17,8 +17,8 @@ public class HeroRobot : BaseRobot {
 		SetID((int) RobotType.HERO);
 		
 		//设置状态接口，并指向一个状态
-		m_pStateMachine = new StateMachine(this);
-		m_pStateMachine.SetCurrentState(Hero_GlobalState .Instance());
+		m_pStateMachine = new StateMachine<HeroRobot>(this);
+		m_pStateMachine.SetCurrentState(Hero_GlobalState.Instance());
 	}
 
 	void Update ()
@@ -27,7 +27,7 @@ public class HeroRobot : BaseRobot {
 		m_pStateMachine.SMUpdate();
 	}
 	
-	public StateMachine GetFSM ()
+	public StateMachine<HeroRobot> GetFSM ()
 	{
 		//返回状态管理机
 		return m_pStateMachine;
