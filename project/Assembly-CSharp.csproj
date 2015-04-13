@@ -51,6 +51,8 @@
      <Compile Include="Assets\_Scripts\gameLogic\Hero_GlobalState.cs" />
      <Compile Include="Assets\_Scripts\gameLogic\State.cs" />
      <Compile Include="Assets\_Scripts\gameLogic\StateMachine.cs" />
+     <Compile Include="Assets\_Scripts\network\GameNetManagement.cs" />
+     <Compile Include="Assets\_Scripts\network\NetFramework.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.3/UnityEngine.UI.dll</HintPath>
  </Reference>

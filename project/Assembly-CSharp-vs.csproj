@@ -51,6 +51,8 @@
      <Compile Include="Assets\_Scripts\gameLogic\Hero_GlobalState.cs" />
      <Compile Include="Assets\_Scripts\gameLogic\State.cs" />
      <Compile Include="Assets\_Scripts\gameLogic\StateMachine.cs" />
+     <Compile Include="Assets\_Scripts\network\GameNetManagement.cs" />
+     <Compile Include="Assets\_Scripts\network\NetFramework.cs" />
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>/Users/yyjoy-mac3/Documents/battleheart/project/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
