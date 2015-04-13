@@ -6,7 +6,7 @@ using System.Collections;
  * 
  * base robot state
  * */
-public class State<T> {
+public class State<T>{
 
 	public T Target ;
 	//进入状态  
