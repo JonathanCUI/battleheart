@@ -1,17 +1,19 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/network/NetFramework.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/battleLogic/HeroRobot.cs">
     <Files>
-      <File FileName="Assets/_Scripts/gameLogic/HeroRobot.cs" Line="26" Column="16" />
-      <File FileName="Assets/_Scripts/gameLogic/Hero_GlobalState.cs" Line="4" Column="48" />
-      <File FileName="Assets/_Scripts/gameLogic/StateMachine.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/gameLogic/State.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/gameLogic/BaseRobot.cs" Line="9" Column="29" />
-      <File FileName="Assets/_Scripts/network/NetFramework.cs" Line="7" Column="35" />
+      <File FileName="Assets/_Scripts/network/NetFramework.cs" Line="14" Column="2" />
+      <File FileName="Assets/_Scripts/network/GameNetManagement.cs" Line="1" Column="1" />
+      <File FileName="Assets/Standard Assets/Character Controllers/Sources/Scripts/ThirdPersonController.js" Line="1" Column="1" />
+      <File FileName="Assets/NGUI/Examples/Scripts/Other/ChatInput.cs" Line="1" Column="1" />
+      <File FileName="Assets/Standard Assets/Character Controllers/Sources/Scripts/ThirdPersonCamera.js" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/HeroRobot.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/yyjoy-mac3/Documents/battleheart/project/Assets/_Scripts/gameLogic/controller/DirectionControl.cs" line="17" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
