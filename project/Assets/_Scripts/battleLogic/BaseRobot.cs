@@ -135,10 +135,50 @@ public class BaseRobot : MonoBehaviour {
 		(gameObject.GetComponent ("Halo") as Behaviour).enabled = selectedHalo;
 	}
 
-	public void setMoveTowardsPoint(Vector3 point){
-		moveTargetPoint = point;
-		isPointed = true;
+	public void setMoveTowardsPoint(Vector3 target){
+
+        float z = target.z - this.transform.position.z;
+        float x = target.x - this.transform.position.x;
+        float a = Mathf.Atan2(z, x) * (-180) / 3.1415926f + 90;
+        StartCoroutine(setrotation(this.transform.eulerAngles.y, a, this.gameObject, target));
+
+		
 	}
+
+    IEnumerator setrotation(float a, float b, GameObject x, Vector3 target, int times = 10)
+    { 
+        int i = 0;
+        times = (int)Mathf.Abs(b - a) / 20+1;
+        float angle = (b-a) / times;
+        if ((b - a) < -180)
+        {
+            angle = (360-(a-b)) / times;
+            while (i < times)
+            {
+                i++;
+                Quaternion Q = Quaternion.Euler(0f, a + angle * i, 0f);
+                x.transform.rotation = Q;
+                yield return new WaitForSeconds(0.05f);
+                
+            }
+        }
+        else
+        {
+            while (i < times)
+            {
+                i++;
+                Quaternion Q = Quaternion.Euler(0f, a + angle * i, 0f);
+                x.transform.rotation = Q;
+                yield return new WaitForSeconds(0.05f);
+            }
+        }
+        moveTargetPoint = target;
+        isPointed = true;
+
+    }
+
+
+
 //	void OnPostRender(){
 //
 //		GL.Begin(GL.LINES);
