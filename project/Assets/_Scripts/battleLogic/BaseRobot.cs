@@ -8,11 +8,13 @@ using System.Collections;
  **/
 public class BaseRobot : MonoBehaviour {
 
-	protected Vector3 m_targetPos;
 	protected Transform m_transform;
 	protected float m_speed = 500;
 
 	protected bool isPointed=false;
+	protected Vector3 moveTargetPoint;
+	//人物选中光圈
+	protected bool selectedHalo=false;
 
 	//指向一个状态实例的指针
 	protected StateMachine<HeroRobot> m_pStateMachine;
@@ -42,17 +44,12 @@ public class BaseRobot : MonoBehaviour {
 	
 	private static ArrayList m_idArray = new ArrayList();
 
-	public int ID ()
-	{
-		return m_ID;
-	}
-	
-	protected void SetID (int val)
+	public void SetID (int val)
 	{
 		if (m_idArray.Contains(val)) {
 			return;
 		}
-		
+
 		m_idArray.Add(val);
 		m_ID = val;
 	}
@@ -64,40 +61,46 @@ public class BaseRobot : MonoBehaviour {
 
 	// Use this for initialization
 	protected void Start () {
+		(gameObject.GetComponent ("Halo") as Behaviour).enabled = false;
 		m_transform = this.transform;
-		m_targetPos = m_transform.position;
-
+		moveTargetPoint = m_transform.position;
 
 	}
 	
 	// Update is called once per frame
 	protected void Update () {
 		m_pStateMachine.SMUpdate();
+//		updateEffect ();
 		updateMovement ();
+//		isOjbSelected ();
 	}
 
+
+	protected void updateEffect(){
+
+	}
 	/**
 	 * update movement
 	 * */
 	void updateMovement(){
-		if (Input.GetMouseButtonDown (0)) {
-			Vector3 ms = Input.mousePosition;
-			Ray ray = Camera.main.ScreenPointToRay (ms);
-			RaycastHit hitinfo;
-			LayerMask mask = new LayerMask ();
-			mask.value = (int)Mathf.Pow(2.0f,(float)LayerMask.NameToLayer("plane"));
-			bool iscast = Physics.Raycast (ray,out hitinfo,1000,mask);
-			if (iscast) {
-				m_targetPos = hitinfo.point;
-				isPointed=true;
-			}
-
-		}
+//		if (Input.GetMouseButtonDown (0)) {
+//			Vector3 ms = Input.mousePosition;
+//			Ray ray = Camera.main.ScreenPointToRay (ms);
+//			RaycastHit hitinfo;
+//			LayerMask mask = new LayerMask ();
+//			mask.value = (int)Mathf.Pow(2.0f,(float)LayerMask.NameToLayer("plane"));
+//			bool iscast = Physics.Raycast (ray,out hitinfo,Mathf.Infinity,mask.value);
+//			if (iscast) {
+//				m_targetPos = hitinfo.point;
+//				isPointed=true;
+//			}
+//
+//		}
 		if (isPointed){
-			Vector3 pos = Vector3.MoveTowards (this.m_transform.position,m_targetPos,m_speed * Time.deltaTime);
+			Vector3 pos = Vector3.MoveTowards (this.m_transform.position,moveTargetPoint,m_speed * Time.deltaTime);
 			m_transform.Translate(pos, Space.World);
 			m_transform.position = pos;
-			if(m_transform.position==m_targetPos){
+			if(m_transform.position==moveTargetPoint){
 				isPointed=false;
 			}else{
 			}
@@ -106,11 +109,36 @@ public class BaseRobot : MonoBehaviour {
 
 	}
 
+
+    void isOjbSelected(){
+		if (Input.GetMouseButtonDown (0)) {
+			Vector3 ms = Input.mousePosition;
+			Ray ray = Camera.main.ScreenPointToRay (ms);
+			RaycastHit hitinfo;
+			bool iscast = Physics.Raycast (ray,out hitinfo,Mathf.Infinity);
+			if (iscast) {
+				selectedHalo=true;
+				return;
+
+			}
+
+		}
+		selectedHalo = false;
+	}
 	public void playAnimation(string name){
 		
 		animation.Play (name);
 	}
 
+	public void setHalo(bool selected){
+		selectedHalo = selected;
+		(gameObject.GetComponent ("Halo") as Behaviour).enabled = selectedHalo;
+	}
+
+	public void setMoveTowardsPoint(Vector3 point){
+		moveTargetPoint = point;
+		isPointed = true;
+	}
 //	void OnPostRender(){
 //
 //		GL.Begin(GL.LINES);

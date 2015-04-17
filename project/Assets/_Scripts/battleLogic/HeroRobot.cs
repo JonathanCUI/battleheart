@@ -12,7 +12,7 @@ public class HeroRobot : BaseRobot {
 	void Start () {
 		base.Start ();
 		// set ID
-		SetID((int) RobotType.HERO);
+		//SetID((int) RobotType.HERO);
 		
 		//设置状态接口，并指向一个状态
 
