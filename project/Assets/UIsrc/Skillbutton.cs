@@ -29,7 +29,7 @@ public class Skillbutton: MonoBehaviour {
 
     void SkillButtonClick(GameObject x)
     {
-        print("111");
+        print("111"+x.name);
     }
 
 	
