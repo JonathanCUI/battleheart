@@ -17,13 +17,19 @@ public class BattleManager : MonoBehaviour {
 	Dictionary<int,BaseRobot> heroMap =new Dictionary<int, BaseRobot>();
 	
 	void Start () {
-		GameObject obj=(GameObject)Instantiate (heroTemplate,new Vector3(0,0,0),Quaternion.identity);
 		layerMask  = (int)Mathf.Pow(2.0f,(float)LayerMask.NameToLayer("plane"));
+
+		GameObject obj = (GameObject)Instantiate (heroTemplate, new Vector3 (0, 0, 0), Quaternion.identity);
 		BaseRobot robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
-		heroMap.Add (robot.getID(), robot);
-		
+		heroMap.Add (robot.getID (), robot);
+
+		obj = (GameObject)Instantiate (heroTemplate, new Vector3 (0, 0, 100), Quaternion.identity);
+		robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
+		robot.SetID (increasingID++);
+		//robot.gameObject.layer = layerMask;
+		heroMap.Add (robot.getID (), robot);
 	}
 	
 	// Update is called once per frame
@@ -41,6 +47,9 @@ public class BattleManager : MonoBehaviour {
 						robot.setHalo(false);
 						this.controllingID=-1;
 					}else{//选中点击
+						if(heroMap.ContainsKey(controllingID)){
+							heroMap[controllingID].setHalo(false);
+						}
 					    robot.setHalo(true);
 						this.controllingID=robot.getID();
 					}

@@ -7,7 +7,10 @@
       <File FileName="Assets/Standard Assets/Character Controllers/Sources/Scripts/ThirdPersonController.js" Line="1" Column="1" />
       <File FileName="Assets/NGUI/Examples/Scripts/Other/ChatInput.cs" Line="1" Column="1" />
       <File FileName="Assets/Standard Assets/Character Controllers/Sources/Scripts/ThirdPersonCamera.js" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/HeroRobot.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/HeroRobot.cs" Line="23" Column="16" />
+      <File FileName="Assets/_Scripts/battleLogic/controller/BattleManager.cs" Line="27" Column="3" />
+      <File FileName="Assets/_Scripts/battleLogic/Hero_GlobalState.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/BaseRobot.cs" Line="14" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
