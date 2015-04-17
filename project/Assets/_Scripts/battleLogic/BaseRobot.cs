@@ -19,24 +19,66 @@ public class BaseRobot : MonoBehaviour {
 	//指向一个状态实例的指针
 	protected StateMachine<HeroRobot> m_pStateMachine;
 
-	/**
-	 * type of gaming charactor 
-	 **/
-	public enum RobotType{
-		HERO,
-		BOSS,
-		CREATURE
-	}
+	protected int attackDistance;//攻击范围
+	protected BattleConfig.AttackType attackType;//攻击类型
+	protected int allies;//同盟 0;1
+	protected BattleConfig.PriorityStrategy firstPriority;//技能释放第一选择
+	protected BattleConfig.PriorityStrategy secondPriority;//技能释放第二选择
 
-	/**
-	 *  type of robot action
-	 **/
-	public enum ActionType{
-		NORMAL,
-		RUN,
-		ATTACK,
-		DEFEND,
-		DIE,
+	public int AttackDistance 
+	{
+		get 
+		{ 
+			return attackDistance; 
+		}
+		set 
+		{
+			attackDistance = value; 
+		}
+	}
+	public BattleConfig.AttackType AttackType 
+	{
+		get 
+		{ 
+			return attackType; 
+		}
+		set 
+		{
+			attackType = value; 
+		}
+	}
+	public int Allies 
+	{
+		get 
+		{ 
+			return allies; 
+		}
+		set 
+		{
+			allies = value; 
+		}
+	}
+	public BattleConfig.PriorityStrategy FirstPriority 
+	{
+		get 
+		{ 
+			return firstPriority; 
+		}
+		set 
+		{
+			firstPriority = value; 
+		}
+	}
+	public BattleConfig.PriorityStrategy SecondPriority 
+	{
+		get 
+		{ 
+			return secondPriority; 
+		}
+		set 
+		{
+			secondPriority = value; 
+		}
 	}
 
 

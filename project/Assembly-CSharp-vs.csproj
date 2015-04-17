@@ -193,6 +193,7 @@
      <Compile Include="Assets\_Scripts\battleLogic\Hero_WalkState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\State.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\StateMachine.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\controller\BattleConfig.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\controller\BattleManager.cs" />
      <Compile Include="Assets\_Scripts\network\GameNetManagement.cs" />
      <Compile Include="Assets\_Scripts\network\NetFramework.cs" />
