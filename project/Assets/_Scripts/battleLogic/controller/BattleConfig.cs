@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/**
+ * Desmond
+ * 战斗常量设置
+ * */
 public class BattleConfig{
 
 	/**
@@ -27,9 +31,9 @@ public class BattleConfig{
 	 * 攻击类型枚举
 	 **/
 	public enum AttackType{
-		SHORT,
-		LONG,
-		SUPPORT,
+		SHORT,//远程
+		LONG,//近战
+		SUPPORT,//补助
 	}
 	
 	/**

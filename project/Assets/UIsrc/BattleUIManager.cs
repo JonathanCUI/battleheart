@@ -4,7 +4,7 @@ using System.Collections;
 public class BattleUIManager : MonoBehaviour {
 
     GameObject UIRoot;
-
+    
     //战斗场景UI
 
     UILabel TimeLimit;          //剩余时间

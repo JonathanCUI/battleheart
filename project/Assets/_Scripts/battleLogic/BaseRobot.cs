@@ -9,10 +9,13 @@ using System.Collections;
 public class BaseRobot : MonoBehaviour {
 
 	protected Transform m_transform;
-	protected float m_speed = 500;
+	protected float m_speed = 500;//移动速度
+	protected float s_speed = 0.1f;//旋转速度
 
-	protected bool isPointed=false;
+	protected bool isPointed = false;
+	//protected bool isRotate = false;
 	protected Vector3 moveTargetPoint;
+	//protected Quaternion rotateTargetPoint;
 	//人物选中光圈
 	protected bool selectedHalo=false;
 
@@ -105,6 +108,7 @@ public class BaseRobot : MonoBehaviour {
 	protected void Start () {
 		(gameObject.GetComponent ("Halo") as Behaviour).enabled = false;
 		m_transform = this.transform;
+		m_transform.Rotate (0,90,0);
 		moveTargetPoint = m_transform.position;
 
 	}
@@ -112,14 +116,19 @@ public class BaseRobot : MonoBehaviour {
 	// Update is called once per frame
 	protected void Update () {
 		m_pStateMachine.SMUpdate();
-//		updateEffect ();
 		updateMovement ();
 //		isOjbSelected ();
 	}
 
-
-	protected void updateEffect(){
-
+	/**
+	 * 
+	 * */
+	public void initIdentity(int atkdistance,BattleConfig.AttackType atkType,int al,BattleConfig.PriorityStrategy firstPri,BattleConfig.PriorityStrategy secondPri){
+		this.attackDistance = atkdistance;
+		this.attackType = atkType;
+		this.allies = al;
+		this.firstPriority = firstPri;
+		this.secondPriority = secondPri;
 	}
 	/**
 	 * update movement
@@ -177,10 +186,53 @@ public class BaseRobot : MonoBehaviour {
 		(gameObject.GetComponent ("Halo") as Behaviour).enabled = selectedHalo;
 	}
 
-	public void setMoveTowardsPoint(Vector3 point){
-		moveTargetPoint = point;
+	public void setMoveTowardsPoint(Vector3 target){
+
+        float z = target.z - this.transform.position.z;
+		float x = target.x - this.transform.position.x;
+		float a = Mathf.Atan2(z, x) * (-180) / Mathf.PI;
+		this.m_transform.Rotate (new Vector3 (0, a, 0));
+        //StartCoroutine(setrotation(this.transform.eulerAngles.y, a, this.gameObject, target));
+		moveTargetPoint = target;
 		isPointed = true;
+
+		
 	}
+
+    IEnumerator setrotation(float a, float b, GameObject x, Vector3 target, int times = 10)
+    { 
+        int i = 0;
+        times = (int)Mathf.Abs(b - a) / 20+1;
+        float angle = (b-a) / times;
+        if ((b - a) < -180)
+        {
+            angle = (360-(a-b)) / times;
+            while (i < times)
+            {
+                i++;
+                Quaternion Q = Quaternion.Euler(0f, a + angle * i, 0f);
+                x.transform.rotation = Q;
+                yield return new WaitForSeconds(0.05f);
+                
+            }
+        }
+        else
+        {
+            while (i < times)
+            {
+                i++;
+                Quaternion Q = Quaternion.Euler(0f, a + angle * i, 0f);
+                x.transform.rotation = Q;
+                yield return new WaitForSeconds(0.05f);
+            }
+        }
+        moveTargetPoint = target;
+        isPointed = true;
+
+    }
+
+
+
 //	void OnPostRender(){
 //
 //		GL.Begin(GL.LINES);
