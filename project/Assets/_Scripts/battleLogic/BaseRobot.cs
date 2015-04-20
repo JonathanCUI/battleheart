@@ -17,7 +17,7 @@ public class BaseRobot : MonoBehaviour {
 	protected bool selectedHalo=false;
 
 
-    //转动次数
+    //每次旋转的角度
     int timeangle=5;
 
 	//指向一个状态实例的指针

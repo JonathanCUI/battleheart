@@ -185,7 +185,9 @@
      <Compile Include="Assets\UIsrc\BattleUIManager.cs" />
      <Compile Include="Assets\UIsrc\BossBlood.cs" />
      <Compile Include="Assets\UIsrc\HUD_blood.cs" />
+     <Compile Include="Assets\UIsrc\MainStageUIManager.cs" />
      <Compile Include="Assets\UIsrc\Skillbutton.cs" />
+     <Compile Include="Assets\UIsrc\StatusPanel.cs" />
      <Compile Include="Assets\UIsrc\UIEventCenter.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\BaseRobot.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\HeroRobot.cs" />
