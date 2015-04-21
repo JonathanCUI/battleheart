@@ -9,21 +9,37 @@ using System.Collections.Generic;
 public class BattleManager : MonoBehaviour {
 
 	public GameObject heroTemplate;//创建robot prefab模板
+	public GameObject assassinatorTemp;
+	public GameObject manglerTemp;
+	public GameObject masterTemp;
+	public GameObject medicTemp;
 
 	private int layerMask;//点击射线碰撞层id
 	private int increasingID=0;//自增id
 	private int controllingID=-1;//当前选中robot id
+	private bool isInit;
 
-	Dictionary<int,BaseRobot> heroMap =new Dictionary<int, BaseRobot>();
+	private Dictionary<int,BaseRobot> heroMap =new Dictionary<int, BaseRobot>();
 	
 	void Start () {
 		layerMask  = (int)Mathf.Pow(2.0f,(float)LayerMask.NameToLayer("plane"));
 
+		isInit = false;
 		createCharaters ();
+		updateGameTargets ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if(!isInit){
+			foreach(KeyValuePair<int,BaseRobot> kv in heroMap){
+				Vector3 nPos=kv.Value.getPosition();
+				int allies=kv.Value.Allies;
+				kv.Value.setMoveTowardsPoint(new Vector3(nPos.x+(allies==0?1:-1)*450,nPos.y,nPos.z));
+			}
+			isInit=true;
+			return;
+		}
 		if (Input.GetMouseButtonDown (0)) {
 			Vector3 ms = Input.mousePosition;
 			Ray ray = Camera.main.ScreenPointToRay (ms);
@@ -56,19 +72,26 @@ public class BattleManager : MonoBehaviour {
 		}
 	}
 
+	/**
+	 * 初始场景阵型
+	 * */
 	private void createCharaters(){
 		int unit = 10;
-		int offset = 1000;
+		int leftOffset = 1000;
+		int rightOffset = 500;
+		/*
+		 * 己方阵营
+		 * */
 		//生命补助
-		GameObject obj = (GameObject)Instantiate (heroTemplate, new Vector3 (0-offset, 0, 7*unit), Quaternion.identity);
-		BaseRobot robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
+		GameObject obj = (GameObject)Instantiate (medicTemp, new Vector3 (15*unit-leftOffset, 0, 7*unit), Quaternion.identity);
+		BaseRobot robot = (BaseRobot)obj.GetComponent<Medic> ();
 		robot.initIdentity (-1, BattleConfig.AttackType.SUPPORT, 0, BattleConfig.PriorityStrategy.SELF_LIFE, BattleConfig.PriorityStrategy.LEAST_LIFE);
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
 
 		//效果补助
-		obj = (GameObject)Instantiate (heroTemplate, new Vector3 ((10*unit-offset), 0, -7*unit), Quaternion.identity);
+		obj = (GameObject)Instantiate (heroTemplate, new Vector3 ((20*unit-leftOffset), 0, -7*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
 		robot.initIdentity (-1, BattleConfig.AttackType.SUPPORT, 0, BattleConfig.PriorityStrategy.SELF_EFFECT, BattleConfig.PriorityStrategy.NO_EFFECT);
 		robot.SetID (increasingID++);
@@ -76,15 +99,15 @@ public class BattleManager : MonoBehaviour {
 		heroMap.Add (robot.getID (), robot);
 
 		//远程法师
-		obj = (GameObject)Instantiate (heroTemplate, new Vector3 (20*unit-offset, 0, 12*unit), Quaternion.identity);
-		robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
+		obj = (GameObject)Instantiate (masterTemp, new Vector3 (25*unit-leftOffset, 0, 12*unit), Quaternion.identity);
+		robot = (BaseRobot)obj.GetComponent<Master> ();
 		robot.initIdentity (1000, BattleConfig.AttackType.LONG, 0, BattleConfig.PriorityStrategy.SHORT, BattleConfig.PriorityStrategy.CLOSTEST);
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
 
 		//远程物攻
-		obj = (GameObject)Instantiate (heroTemplate, new Vector3 (30*unit-offset, 0, -5*unit), Quaternion.identity);
+		obj = (GameObject)Instantiate (heroTemplate, new Vector3 (30*unit-leftOffset, 0, -5*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
 		robot.initIdentity (1000, BattleConfig.AttackType.LONG, 0, BattleConfig.PriorityStrategy.LONG, BattleConfig.PriorityStrategy.CLOSTEST);
 		robot.SetID (increasingID++);
@@ -92,23 +115,97 @@ public class BattleManager : MonoBehaviour {
 		heroMap.Add (robot.getID (), robot);
 
 		//刺客
-		obj = (GameObject)Instantiate (heroTemplate, new Vector3 (40*unit-offset, 0, 12*unit), Quaternion.identity);
-		robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
+		obj = (GameObject)Instantiate (assassinatorTemp, new Vector3 (35*unit-leftOffset, 0, 12*unit), Quaternion.identity);
+		robot = (BaseRobot)obj.GetComponent<Assassinator> ();
 		robot.initIdentity (100, BattleConfig.AttackType.SHORT, 0, BattleConfig.PriorityStrategy.LONG, BattleConfig.PriorityStrategy.CLOSTEST);
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
 
 		//肉盾
-		obj = (GameObject)Instantiate (heroTemplate, new Vector3 (50*unit-offset, 0, 5*unit), Quaternion.identity);
-		robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
+		obj = (GameObject)Instantiate (manglerTemp, new Vector3 (40*unit-leftOffset, 0, 5*unit), Quaternion.identity);
+		robot = (BaseRobot)obj.GetComponent<Mangler> ();
 		robot.initIdentity (100, BattleConfig.AttackType.SHORT, 0, BattleConfig.PriorityStrategy.SHORT, BattleConfig.PriorityStrategy.CLOSTEST);
+		robot.SetID (increasingID++);
+		//robot.gameObject.layer = layerMask;
+		heroMap.Add (robot.getID (), robot);
+
+		/*
+		 * 敌方阵营
+		 * */
+
+		//生命补助
+		obj = (GameObject)Instantiate (medicTemp, new Vector3 (40*unit+rightOffset, 0, 7*unit), Quaternion.identity);
+		robot = (BaseRobot)obj.GetComponent<Medic> ();
+		robot.initIdentity (-1, BattleConfig.AttackType.SUPPORT, 1, BattleConfig.PriorityStrategy.SELF_LIFE, BattleConfig.PriorityStrategy.LEAST_LIFE);
+		robot.SetID (increasingID++);
+		//robot.gameObject.layer = layerMask;
+		heroMap.Add (robot.getID (), robot);
+		
+		//效果补助
+		obj = (GameObject)Instantiate (heroTemplate, new Vector3 ((35*unit+rightOffset), 0, -7*unit), Quaternion.identity);
+		robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
+		robot.initIdentity (-1, BattleConfig.AttackType.SUPPORT, 1, BattleConfig.PriorityStrategy.SELF_EFFECT, BattleConfig.PriorityStrategy.NO_EFFECT);
+		robot.SetID (increasingID++);
+		//robot.gameObject.layer = layerMask;
+		heroMap.Add (robot.getID (), robot);
+		
+		//远程法师
+		obj = (GameObject)Instantiate (masterTemp, new Vector3 (30*unit+rightOffset, 0, 12*unit), Quaternion.identity);
+		robot = (BaseRobot)obj.GetComponent<Master> ();
+		robot.initIdentity (1000, BattleConfig.AttackType.LONG, 1, BattleConfig.PriorityStrategy.SHORT, BattleConfig.PriorityStrategy.CLOSTEST);
+		robot.SetID (increasingID++);
+		//robot.gameObject.layer = layerMask;
+		heroMap.Add (robot.getID (), robot);
+		
+		//远程物攻
+		obj = (GameObject)Instantiate (heroTemplate, new Vector3 (25*unit+rightOffset, 0, -5*unit), Quaternion.identity);
+		robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
+		robot.initIdentity (1000, BattleConfig.AttackType.LONG, 1, BattleConfig.PriorityStrategy.LONG, BattleConfig.PriorityStrategy.CLOSTEST);
+		robot.SetID (increasingID++);
+		//robot.gameObject.layer = layerMask;
+		heroMap.Add (robot.getID (), robot);
+		
+		//刺客
+		obj = (GameObject)Instantiate (assassinatorTemp, new Vector3 (20*unit+rightOffset, 0, 12*unit), Quaternion.identity);
+		robot = (BaseRobot)obj.GetComponent<Assassinator> ();
+		robot.initIdentity (100, BattleConfig.AttackType.SHORT, 1, BattleConfig.PriorityStrategy.LONG, BattleConfig.PriorityStrategy.CLOSTEST);
+		robot.SetID (increasingID++);
+		//robot.gameObject.layer = layerMask;
+		heroMap.Add (robot.getID (), robot);
+		
+		//肉盾
+		obj = (GameObject)Instantiate (manglerTemp, new Vector3 (15*unit+rightOffset, 0, 5*unit), Quaternion.identity);
+		robot = (BaseRobot)obj.GetComponent<Mangler> ();
+		robot.initIdentity (100, BattleConfig.AttackType.SHORT, 1, BattleConfig.PriorityStrategy.SHORT, BattleConfig.PriorityStrategy.CLOSTEST);
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
 	}
 
   
+	/**
+	 * 为每个玩家设置对手
+	 * */
+	private void updateGameTargets(){
+		foreach(KeyValuePair<int,BaseRobot> kv in heroMap){
+			BaseRobot robot = kv.Value;
+			Dictionary<int,BaseRobot> opp=new Dictionary<int, BaseRobot>();
+			foreach(KeyValuePair<int,BaseRobot> s_kv in heroMap){
+				if(s_kv.Key==kv.Key){
+					continue;
+				}
+				if(robot.AttackType==BattleConfig.AttackType.SUPPORT&&s_kv.Value.Allies==robot.Allies
+					   ||
+				   robot.AttackType!=BattleConfig.AttackType.SUPPORT&&s_kv.Value.Allies!=robot.Allies){
+
+					opp.Add(s_kv.Key,s_kv.Value);
+				}
+				
+			}
+			robot.setTargets(opp);
+		}
+	}
 
 
 }

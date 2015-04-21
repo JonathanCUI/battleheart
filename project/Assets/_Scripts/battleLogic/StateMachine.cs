@@ -6,7 +6,7 @@ using System.Collections;
  * state machine controlling robot state switching
  * */
 
-public class StateMachine<T>{
+public class StateMachine<T> : IStateMachine{
 
 	//entity
 	private T m_pOwner;
@@ -41,6 +41,7 @@ public class StateMachine<T>{
 		m_pCurrentState.Target = m_pOwner;
 		m_pCurrentState.Enter(m_pOwner);
 	}
+
 	public void SMUpdate ()
 	{
         //global state

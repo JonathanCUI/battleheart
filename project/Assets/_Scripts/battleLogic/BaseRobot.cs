@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 /**
  * Desmond
  * 
  * AI implementation with state design pattern
  **/
+
 public class BaseRobot : MonoBehaviour {
 
 	protected Transform m_transform;
-	protected float m_speed = 500;//移动速度
+	protected float m_speed = 200;//移动速度
 	protected float s_speed = 0.1f;//旋转速度
 
 	protected bool isPointed = false;
@@ -20,13 +22,16 @@ public class BaseRobot : MonoBehaviour {
 	protected bool selectedHalo=false;
 
 	//指向一个状态实例的指针
-	protected StateMachine<HeroRobot> m_pStateMachine;
+	protected IStateMachine m_pStateMachine;
 
 	protected int attackDistance;//攻击范围
 	protected BattleConfig.AttackType attackType;//攻击类型
 	protected int allies;//同盟 0;1
 	protected BattleConfig.PriorityStrategy firstPriority;//技能释放第一选择
 	protected BattleConfig.PriorityStrategy secondPriority;//技能释放第二选择
+
+	protected Dictionary<int,BaseRobot> gameTargets;//技能释放的对象
+	
 
 	public int AttackDistance 
 	{
@@ -108,9 +113,8 @@ public class BaseRobot : MonoBehaviour {
 	protected void Start () {
 		(gameObject.GetComponent ("Halo") as Behaviour).enabled = false;
 		m_transform = this.transform;
-		m_transform.Rotate (0,90,0);
+		m_transform.Rotate (0,allies==0?90:-90,0);
 		moveTargetPoint = m_transform.position;
-
 	}
 	
 	// Update is called once per frame
@@ -120,8 +124,17 @@ public class BaseRobot : MonoBehaviour {
 //		isOjbSelected ();
 	}
 
+	public IStateMachine GetFSM ()
+	{
+		//返回状态管理机
+		return m_pStateMachine;
+	}
+
+	protected void FixedUpdate(){
+
+	}
 	/**
-	 * 
+	 * 初始化robot
 	 * */
 	public void initIdentity(int atkdistance,BattleConfig.AttackType atkType,int al,BattleConfig.PriorityStrategy firstPri,BattleConfig.PriorityStrategy secondPri){
 		this.attackDistance = atkdistance;
@@ -130,6 +143,11 @@ public class BaseRobot : MonoBehaviour {
 		this.firstPriority = firstPri;
 		this.secondPriority = secondPri;
 	}
+
+	public void setTargets(Dictionary<int,BaseRobot> targets){
+		gameTargets = targets;
+	}
+
 	/**
 	 * update movement
 	 * */
@@ -153,6 +171,7 @@ public class BaseRobot : MonoBehaviour {
 			m_transform.position = pos;
 			if(m_transform.position==moveTargetPoint){
 				isPointed=false;
+				m_transform.rotation=Quaternion.RotateTowards(m_transform.rotation,Quaternion.Euler(new Vector3(0,allies==0?90:-90,0)),360);//转向正前方
 			}else{
 			}
 
@@ -176,9 +195,14 @@ public class BaseRobot : MonoBehaviour {
 		}
 		selectedHalo = false;
 	}
+
 	public void playAnimation(string name){
 		
 		animation.Play (name);
+	}
+
+	public Vector3 getPosition(){
+		return this.m_transform.position;
 	}
 
 	public void setHalo(bool selected){
@@ -187,17 +211,18 @@ public class BaseRobot : MonoBehaviour {
 	}
 
 	public void setMoveTowardsPoint(Vector3 target){
-
-        float z = target.z - this.transform.position.z;
-		float x = target.x - this.transform.position.x;
-		float a = Mathf.Atan2(z, x) * (-180) / Mathf.PI;
-		this.m_transform.Rotate (new Vector3 (0, a, 0));
+//      float z = target.z - this.transform.position.z;
+//		float x = target.x - this.transform.position.x;
+//		float a = Mathf.Atan2(z, x) * (-180) / Mathf.PI;
+//		this.m_transform.Rotate (new Vector3 (0, a, 0));
         //StartCoroutine(setrotation(this.transform.eulerAngles.y, a, this.gameObject, target));
+		this.m_transform.LookAt (target);
 		moveTargetPoint = target;
 		isPointed = true;
 
 		
 	}
+	
 
     IEnumerator setrotation(float a, float b, GameObject x, Vector3 target, int times = 10)
     { 

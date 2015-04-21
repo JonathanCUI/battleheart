@@ -1,18 +1,29 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/battleLogic/BaseRobot.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/battleLogic/character/HeroRobot.cs">
     <Files>
-      <File FileName="Assets/_Scripts/battleLogic/BaseRobot.cs" Line="75" Column="5" />
+      <File FileName="Assets/_Scripts/battleLogic/character/Assassinator.cs" Line="24" Column="20" />
+      <File FileName="Assets/_Scripts/battleLogic/BaseRobot.cs" Line="122" Column="1" />
       <File FileName="Assets/_Scripts/network/NetFramework.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/network/GameNetManagement.cs" Line="1" Column="1" />
       <File FileName="Assets/Standard Assets/Character Controllers/Sources/Scripts/ThirdPersonController.js" Line="1" Column="1" />
       <File FileName="Assets/NGUI/Examples/Scripts/Other/ChatInput.cs" Line="1" Column="1" />
       <File FileName="Assets/Standard Assets/Character Controllers/Sources/Scripts/ThirdPersonCamera.js" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/HeroRobot.cs" Line="9" Column="35" />
-      <File FileName="Assets/_Scripts/battleLogic/controller/BattleManager.cs" Line="27" Column="3" />
-      <File FileName="Assets/_Scripts/battleLogic/Hero_GlobalState.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/Hero_WalkState.cs" Line="23" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/controller/BattleConfig.cs" Line="47" Column="2" />
+      <File FileName="Assets/_Scripts/battleLogic/controller/BattleManager.cs" Line="88" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/controller/BattleConfig.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/StateMachine.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/State.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/character/Mangler.cs" Line="24" Column="20" />
+      <File FileName="Assets/_Scripts/battleLogic/character/HeroRobot.cs" Line="30" Column="53" />
+      <File FileName="Assets/_Scripts/battleLogic/character/Master.cs" Line="24" Column="20" />
+      <File FileName="Assets/_Scripts/battleLogic/character/Medic.cs" Line="13" Column="3" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Hero_GlobalState.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Hero_WalkState.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Assassinator_WalkState.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Mangler_WalkState.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Master_WalkState.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Medic_WalkState.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/IStateMachine.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
