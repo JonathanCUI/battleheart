@@ -36,8 +36,6 @@ public class BattleUIManager : MonoBehaviour {
 
 
         UIEventListener.Get(StopButton).onClick = StopButtonClick;
-
-
         TimeLimitShowStart();
 
 

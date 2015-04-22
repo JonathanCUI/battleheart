@@ -21,6 +21,10 @@ public class BaseRobot : MonoBehaviour {
 	//人物选中光圈
 	protected bool selectedHalo=false;
 
+
+    //每次旋转的角度
+    int timeangle=5;
+
 	//指向一个状态实例的指针
 	protected IStateMachine m_pStateMachine;
 
@@ -224,10 +228,10 @@ public class BaseRobot : MonoBehaviour {
 	}
 	
 
-    IEnumerator setrotation(float a, float b, GameObject x, Vector3 target, int times = 10)
+    IEnumerator setrotation(float a, float b, GameObject x, Vector3 target)
     { 
         int i = 0;
-        times = (int)Mathf.Abs(b - a) / 20+1;
+        int times = (int)Mathf.Abs(b - a) / timeangle + 1;
         float angle = (b-a) / times;
         if ((b - a) < -180)
         {
@@ -237,7 +241,7 @@ public class BaseRobot : MonoBehaviour {
                 i++;
                 Quaternion Q = Quaternion.Euler(0f, a + angle * i, 0f);
                 x.transform.rotation = Q;
-                yield return new WaitForSeconds(0.05f);
+                yield return new WaitForSeconds(Time.deltaTime);
                 
             }
         }
@@ -248,7 +252,7 @@ public class BaseRobot : MonoBehaviour {
                 i++;
                 Quaternion Q = Quaternion.Euler(0f, a + angle * i, 0f);
                 x.transform.rotation = Q;
-                yield return new WaitForSeconds(0.05f);
+                yield return new WaitForSeconds(Time.deltaTime);
             }
         }
         moveTargetPoint = target;
