@@ -1,20 +1,21 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/battleLogic/state/Mangler_WalkState.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/battleLogic/state/Mangler_IdleState.cs">
     <Files>
+      <File FileName="../../_Scripts/battleLogic/controller/BattleManager.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/character/Assassinator.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/BaseRobot.cs" Line="226" Column="12" />
+      <File FileName="Assets/_Scripts/battleLogic/BaseRobot.cs" Line="25" Column="1" />
       <File FileName="Assets/_Scripts/network/NetFramework.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/network/GameNetManagement.cs" Line="1" Column="1" />
       <File FileName="Assets/Standard Assets/Character Controllers/Sources/Scripts/ThirdPersonController.js" Line="1" Column="1" />
       <File FileName="Assets/NGUI/Examples/Scripts/Other/ChatInput.cs" Line="1" Column="1" />
       <File FileName="Assets/Standard Assets/Character Controllers/Sources/Scripts/ThirdPersonCamera.js" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/controller/BattleManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/controller/BattleConfig.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/StateMachine.cs" Line="29" Column="3" />
+      <File FileName="Assets/_Scripts/battleLogic/controller/BattleManager.cs" Line="29" Column="20" />
+      <File FileName="Assets/_Scripts/battleLogic/controller/BattleConfig.cs" Line="46" Column="14" />
+      <File FileName="Assets/_Scripts/battleLogic/StateMachine.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/State.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/character/Mangler.cs" Line="29" Column="56" />
-      <File FileName="Assets/_Scripts/battleLogic/character/HeroRobot.cs" Line="9" Column="35" />
+      <File FileName="Assets/_Scripts/battleLogic/character/Mangler.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/character/HeroRobot.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/character/Master.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/character/Medic.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/state/Hero_GlobalState.cs" Line="1" Column="1" />
@@ -24,7 +25,7 @@
       <File FileName="Assets/_Scripts/battleLogic/state/Master_WalkState.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/state/Medic_WalkState.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/IStateMachine.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/state/Mangler_HuntingState.cs" Line="9" Column="34" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Mangler_HuntingState.cs" Line="30" Column="28" />
       <File FileName="Assets/_Scripts/battleLogic/state/Mangler_IdleState.cs" Line="20" Column="52" />
     </Files>
   </MonoDevelop.Ide.Workbench>
