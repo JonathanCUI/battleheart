@@ -28,6 +28,10 @@ public class HeroRobot : BaseRobot {
 		//设置状态接口，并指向一个状态
 		
 		m_pStateMachine = new StateMachine<HeroRobot>(this);
-		m_pStateMachine.SetCurrentState(new Hero_WalkState());
+		m_pStateMachine.SetCurrentState (new Hero_WalkState ());
+	}
+
+	public override void changeState<T>(State<T> state){
+		m_pStateMachine.ChangeState (state);
 	}
 }

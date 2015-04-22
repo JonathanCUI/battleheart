@@ -203,7 +203,7 @@ public class BattleManager : MonoBehaviour {
 				}
 				
 			}
-			robot.setTargets(opp);
+			robot.GameTargets=opp;
 		}
 	}
 

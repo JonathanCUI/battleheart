@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/**
+ * Desmond
+ * 肉盾单纯步行
+ * */
 public class Mangler_WalkState : State<Mangler> {
 	
 	public override void Enter (Mangler Entity)
@@ -12,7 +16,12 @@ public class Mangler_WalkState : State<Mangler> {
 	public override void Execute (Mangler Entity)
 	{
 		base.Execute (Entity);	
-		Entity.playAnimation("walk");
+		if (Entity.pointFound ()) {
+			Entity.changeState(new Mangler_IdleState());
+		} else {
+			Entity.playAnimation ("walk");
+		}
+
 	}
 	
 	public override void Exit (Mangler Entity)

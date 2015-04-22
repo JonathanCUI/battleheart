@@ -21,10 +21,6 @@ public class BaseRobot : MonoBehaviour {
 	//人物选中光圈
 	protected bool selectedHalo=false;
 
-
-    //每次旋转的角度
-    int timeangle=5;
-
 	//指向一个状态实例的指针
 	protected IStateMachine m_pStateMachine;
 
@@ -93,6 +89,19 @@ public class BaseRobot : MonoBehaviour {
 		}
 	}
 
+	public Dictionary<int,BaseRobot> GameTargets 
+	{
+		get 
+		{ 
+			return gameTargets; 
+		}
+		set 
+		{
+			gameTargets = value; 
+		}
+	}
+
+	
 
 	private int m_ID;//unique serial number for each object
 	
@@ -148,27 +157,15 @@ public class BaseRobot : MonoBehaviour {
 		this.secondPriority = secondPri;
 	}
 
-	public void setTargets(Dictionary<int,BaseRobot> targets){
-		gameTargets = targets;
+	public virtual void changeState<T>(State<T> state){
+
 	}
 
 	/**
 	 * update movement
 	 * */
 	void updateMovement(){
-//		if (Input.GetMouseButtonDown (0)) {
-//			Vector3 ms = Input.mousePosition;
-//			Ray ray = Camera.main.ScreenPointToRay (ms);
-//			RaycastHit hitinfo;
-//			LayerMask mask = new LayerMask ();
-//			mask.value = (int)Mathf.Pow(2.0f,(float)LayerMask.NameToLayer("plane"));
-//			bool iscast = Physics.Raycast (ray,out hitinfo,Mathf.Infinity,mask.value);
-//			if (iscast) {
-//				m_targetPos = hitinfo.point;
-//				isPointed=true;
-//			}
-//
-//		}
+
 		if (isPointed){
 			Vector3 pos = Vector3.MoveTowards (this.m_transform.position,moveTargetPoint,m_speed * Time.deltaTime);
 			m_transform.Translate(pos, Space.World);
@@ -200,6 +197,10 @@ public class BaseRobot : MonoBehaviour {
 		selectedHalo = false;
 	}
 
+	public bool pointFound(){
+		return !isPointed;
+	}
+
 	public void playAnimation(string name){
 		
 		animation.Play (name);
@@ -228,37 +229,37 @@ public class BaseRobot : MonoBehaviour {
 	}
 	
 
-    IEnumerator setrotation(float a, float b, GameObject x, Vector3 target)
-    { 
-        int i = 0;
-        int times = (int)Mathf.Abs(b - a) / timeangle + 1;
-        float angle = (b-a) / times;
-        if ((b - a) < -180)
-        {
-            angle = (360-(a-b)) / times;
-            while (i < times)
-            {
-                i++;
-                Quaternion Q = Quaternion.Euler(0f, a + angle * i, 0f);
-                x.transform.rotation = Q;
-                yield return new WaitForSeconds(Time.deltaTime);
-                
-            }
-        }
-        else
-        {
-            while (i < times)
-            {
-                i++;
-                Quaternion Q = Quaternion.Euler(0f, a + angle * i, 0f);
-                x.transform.rotation = Q;
-                yield return new WaitForSeconds(Time.deltaTime);
-            }
-        }
-        moveTargetPoint = target;
-        isPointed = true;
-
-    }
+//    IEnumerator setrotation(float a, float b, GameObject x, Vector3 target)
+//    { 
+//        int i = 0;
+//        int times = (int)Mathf.Abs(b - a) / timeangle + 1;
+//        float angle = (b-a) / times;
+//        if ((b - a) < -180)
+//        {
+//            angle = (360-(a-b)) / times;
+//            while (i < times)
+//            {
+//                i++;
+//                Quaternion Q = Quaternion.Euler(0f, a + angle * i, 0f);
+//                x.transform.rotation = Q;
+//                yield return new WaitForSeconds(Time.deltaTime);
+//                
+//            }
+//        }
+//        else
+//        {
+//            while (i < times)
+//            {
+//                i++;
+//                Quaternion Q = Quaternion.Euler(0f, a + angle * i, 0f);
+//                x.transform.rotation = Q;
+//                yield return new WaitForSeconds(Time.deltaTime);
+//            }
+//        }
+//        moveTargetPoint = target;
+//        isPointed = true;
+//
+//    }
 
 
 

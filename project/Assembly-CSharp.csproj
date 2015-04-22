@@ -201,6 +201,8 @@
      <Compile Include="Assets\_Scripts\battleLogic\state\Assassinator_WalkState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Hero_GlobalState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Hero_WalkState.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\state\Mangler_HuntingState.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\state\Mangler_IdleState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Mangler_WalkState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Master_WalkState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Medic_WalkState.cs" />

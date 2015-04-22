@@ -26,6 +26,6 @@ public class Medic : HeroRobot {
 		//设置状态接口，并指向一个状态
 		
 		m_pStateMachine = new StateMachine<Medic>(this);
-		m_pStateMachine.SetCurrentState(new Medic_WalkState());
+		m_pStateMachine.SetCurrentState (new Medic_WalkState ());
 	}
 }
