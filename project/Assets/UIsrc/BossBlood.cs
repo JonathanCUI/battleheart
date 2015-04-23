@@ -58,7 +58,6 @@ public class BossBlood : MonoBehaviour {
     {
 
         int nowlayer = (int)((float)NowHP / (float)maxHP * layernumber);
-        print(nowlayer);
         if (NowHP >= 0)
         {
             blood.value = ((float)NowHP - (float)nowlayer * (float)maxHP / (float)layernumber) / ((float)maxHP / (float)layernumber);
