@@ -6,17 +6,18 @@ using System.Collections.Generic;
  * Desmond
  * 肉盾搜寻目标状态
  **/
-public class Mangler_HuntingState : State<Mangler> {
-	
-	public override void Enter (Mangler Entity)
+public class Mangler_HuntingState : HuntingState {
+
+
+	//状态变换为walk
+	public override void changeToWalkState<T> (T Entity)
 	{
-		base.Enter (Entity);
-		//Entity.playAnimation("walk");
+		Entity.changeState(new Mangler_WalkState());
 	}
 	
-	public override void Execute (Mangler Entity)
+	//寻找对手AI策略
+	public override void huntingStrategy<T> (T Entity)
 	{
-		base.Execute (Entity);	
 		Dictionary<int,BaseRobot> opps = Entity.GameTargets;
 		if (opps != null && opps.Count!=0) {
 			Entity.playAnimation ("walk");
@@ -30,21 +31,16 @@ public class Mangler_HuntingState : State<Mangler> {
 						relativeDistance=dis;
 					}
 				}
-			    
+				
 				if (dis < minDistance) {//选取距离最近的目标
 					second_id = kv.Key;
 					minDistance = dis;
 				}
 			}
-			Entity.setMoveTowardsPoint(opps[first_id!=-1?first_id:second_id].getPosition());
+			Entity.setAITowardsPoint(opps[first_id!=-1?first_id:second_id].getPosition());
 		} else {
 			Entity.playAnimation("idle");
 		}
-		
 	}
-	
-	public override void Exit (Mangler Entity)
-	{
-		base.Exit (Entity);
-	}
+
 }

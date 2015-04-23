@@ -6,14 +6,14 @@ using System.Collections;
  * state machine controlling robot state switching
  * */
 
-public class StateMachine<T> : IStateMachine{
+public class StateMachine<T> :IStateMachine where T : BaseRobot{
 
 	//entity
 	private T m_pOwner;
 	
-	private State<T> m_pCurrentState;
-	private State<T> m_pPreviousState;
-	private State<T> m_pGlobalState;
+	private IState m_pCurrentState;
+	private IState m_pPreviousState;
+	private IState m_pGlobalState;
 
 	public StateMachine(T owner)
 	{
@@ -28,17 +28,15 @@ public class StateMachine<T> : IStateMachine{
 		m_pGlobalState.Enter(m_pOwner);
 	}
 
-	public void SetGlobalStateState<T>(State<T> GlobalState)
+	public void SetGlobalStateState(IState GlobalState)
 	{
 		m_pGlobalState = GlobalState;
-		m_pGlobalState.Target = m_pOwner;
 		m_pGlobalState.Enter(m_pOwner);
 	}
 
-	public void SetCurrentState<T>(State<T> CurrentState)
+	public void SetCurrentState(IState CurrentState)
 	{
 		m_pCurrentState = CurrentState;
-		m_pCurrentState.Target = m_pOwner;
 		m_pCurrentState.Enter(m_pOwner);
 	}
 
@@ -53,7 +51,7 @@ public class StateMachine<T> : IStateMachine{
 			m_pCurrentState.Execute (m_pOwner);
 	}
 	
-	public void ChangeState<T>(State<T> pNewState)
+	public void ChangeState(IState pNewState)
 	{
 		if (pNewState == null) {
 			
@@ -66,7 +64,6 @@ public class StateMachine<T> : IStateMachine{
 		m_pPreviousState = m_pCurrentState;
 		//set current state
 		m_pCurrentState = pNewState;
-		m_pCurrentState.Target = m_pOwner;
 		//enter current state
 		m_pCurrentState.Enter (m_pOwner);
 	}
@@ -77,15 +74,15 @@ public class StateMachine<T> : IStateMachine{
 		
 	}
 
-	public State<T> CurrentState ()
+	public IState CurrentState ()
 	{
 		return m_pCurrentState;
 	}
-	public State<T> GlobalState ()
+	public IState GlobalState ()
 	{
 		return m_pGlobalState;
 	}
-	public State<T> PreviousState ()
+	public IState PreviousState ()
 	{
 		return m_pPreviousState;
 	}

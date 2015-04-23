@@ -4,6 +4,6 @@ using System.Collections;
 public interface IStateMachine {
 	
 	void SMUpdate ();
-	void SetCurrentState<T>(State<T> CurrentState);
-	void ChangeState<T>(State<T> pNewState);
+	void SetCurrentState(IState CurrentState);
+	void ChangeState(IState pNewState);
 }

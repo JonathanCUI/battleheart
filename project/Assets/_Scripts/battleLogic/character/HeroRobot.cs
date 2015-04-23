@@ -31,7 +31,7 @@ public class HeroRobot : BaseRobot {
 		m_pStateMachine.SetCurrentState (new Hero_WalkState ());
 	}
 
-	public override void changeState<T>(State<T> state){
+	public override void changeState(IState state){
 		m_pStateMachine.ChangeState (state);
 	}
 }

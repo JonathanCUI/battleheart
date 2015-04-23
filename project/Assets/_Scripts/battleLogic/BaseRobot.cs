@@ -11,10 +11,11 @@ using System.Collections.Generic;
 public class BaseRobot : MonoBehaviour {
 
 	protected Transform m_transform;
-	protected float m_speed = 200;//移动速度
+	protected float m_speed = 100;//移动速度
 	protected float s_speed = 0.1f;//旋转速度
 
-	protected bool isPointed = false;
+	protected bool isPointed = false;//玩家控制移动指向
+	protected bool aiPointed = false;//ai控制移动指向
 	//protected bool isRotate = false;
 	protected Vector3 moveTargetPoint;
 	//protected Quaternion rotateTargetPoint;
@@ -157,7 +158,7 @@ public class BaseRobot : MonoBehaviour {
 		this.secondPriority = secondPri;
 	}
 
-	public virtual void changeState<T>(State<T> state){
+	public virtual void changeState(IState state){
 
 	}
 
@@ -166,12 +167,13 @@ public class BaseRobot : MonoBehaviour {
 	 * */
 	void updateMovement(){
 
-		if (isPointed){
+		if (isPointed||aiPointed){
 			Vector3 pos = Vector3.MoveTowards (this.m_transform.position,moveTargetPoint,m_speed * Time.deltaTime);
 			m_transform.Translate(pos, Space.World);
 			m_transform.position = pos;
 			if(m_transform.position==moveTargetPoint){
 				isPointed=false;
+				aiPointed=false;
 				m_transform.rotation=Quaternion.RotateTowards(m_transform.rotation,Quaternion.Euler(new Vector3(0,allies==0?90:-90,0)),360);//转向正前方
 			}else{
 			}
@@ -197,8 +199,11 @@ public class BaseRobot : MonoBehaviour {
 		selectedHalo = false;
 	}
 
-	public bool pointFound(){
-		return !isPointed;
+	/**
+	 * 位置是否由玩家指定
+	 * */
+	public bool userPointed(){
+		return isPointed;
 	}
 
 	public void playAnimation(string name){
@@ -223,11 +228,18 @@ public class BaseRobot : MonoBehaviour {
         //StartCoroutine(setrotation(this.transform.eulerAngles.y, a, this.gameObject, target));
 		this.m_transform.LookAt (target);
 		moveTargetPoint = target;
+		aiPointed = false;
 		isPointed = true;
 
 		
 	}
-	
+	public void setAITowardsPoint(Vector3 target){
+		this.m_transform.LookAt (target);
+		moveTargetPoint = target;
+		isPointed = false;
+		aiPointed = true;
+
+	}
 
 //    IEnumerator setrotation(float a, float b, GameObject x, Vector3 target)
 //    { 
