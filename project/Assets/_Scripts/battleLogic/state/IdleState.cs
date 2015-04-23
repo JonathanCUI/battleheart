@@ -4,7 +4,7 @@ using System.Collections;
 
 /**
  * Desmond
- * 肉盾搜寻目标状态
+ * 闲置状态 base
  **/
 public class IdleState:IState {
 
