@@ -42,20 +42,13 @@ public class Master_HuntingState : HuntingState
 
             if (disx > Entity.AttackDistance)
             {
-                Entity.setMoveTowardsPoint(targetEnmy.getPosition());
-
+                Entity.setAITowardsPoint(targetEnmy.getPosition());
                 Entity.playAnimation("walk");
             }
             else
             {
+                Entity.setAITowardsPoint(Entity.getPosition());
                 Entity.changeState(new Master_AttackState());
-                //if (!Entity.pointFound())
-                //{
-                //    Entity.setMoveTowardsPoint(Entity.getPosition());
-                //}
-                //Entity.transform.LookAt(targetEnmy.getPosition());
-
-                //Entity.playAnimation("punch");
             }
 		} else {
 			Entity.playAnimation("idle");
