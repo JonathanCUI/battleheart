@@ -185,7 +185,10 @@
      <Compile Include="Assets\UIsrc\BattleUIManager.cs" />
      <Compile Include="Assets\UIsrc\BossBlood.cs" />
      <Compile Include="Assets\UIsrc\HUD_blood.cs" />
+     <Compile Include="Assets\UIsrc\MainStageUIManager.cs" />
+     <Compile Include="Assets\UIsrc\Readtxt.cs" />
      <Compile Include="Assets\UIsrc\Skillbutton.cs" />
+     <Compile Include="Assets\UIsrc\StatusPanel.cs" />
      <Compile Include="Assets\UIsrc\UIEventCenter.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\BaseRobot.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\IState.cs" />
@@ -198,7 +201,11 @@
      <Compile Include="Assets\_Scripts\battleLogic\character\Medic.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\controller\BattleConfig.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\controller\BattleManager.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\state\Assassinator_AttackState.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\state\Assassinator_HuntingState.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\state\Assassinator_IdleState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Assassinator_WalkState.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\state\AttackState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Hero_GlobalState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Hero_WalkState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\HuntingState.cs" />
@@ -206,7 +213,13 @@
      <Compile Include="Assets\_Scripts\battleLogic\state\Mangler_HuntingState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Mangler_IdleState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Mangler_WalkState.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\state\Master_AttackState.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\state\Master_HuntingState.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\state\Master_IdleState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Master_WalkState.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\state\Medic_HuntingState.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\state\Medic_IdleState.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\state\Medic_TreatingState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Medic_WalkState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\WalkState.cs" />
      <Compile Include="Assets\_Scripts\network\GameNetManagement.cs" />
