@@ -17,7 +17,6 @@ public class HuntingState :IState {
 	public virtual void Execute<T> (T Entity) where T:BaseRobot
 	{
 		if (Entity.userPointed ()) {//玩家指定位置
-            Debug.Log(123);
 			changeToWalkState(Entity);
 			return ;
 		}

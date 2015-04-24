@@ -6,10 +6,16 @@ public class Readtxt : MonoBehaviour {
     public TextAsset T;
 
 
+
+    //text需要UTF-8格式 
+    //最后不能有空行 第一行可以写注释 第一列也不能空着
+    //转成assbundle之前需在text最后加上*号
+
+
 	// Use this for initialization
 	void Start () {
         ArrayList text = loadtxt(T);
-        string[] heroname = loaddata(text, "ID");
+        string[] heroname = loaddata(text, "名称");
         for(int i=0;i<heroname.Length;i++)
         {
             print(heroname[i]);
