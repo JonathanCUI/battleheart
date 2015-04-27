@@ -30,6 +30,15 @@ public class BaseRobot : MonoBehaviour {
 	protected int allies;//同盟 0;1
 	protected BattleConfig.PriorityStrategy firstPriority;//技能释放第一选择
 	protected BattleConfig.PriorityStrategy secondPriority;//技能释放第二选择
+	protected string name; //名称 
+	protected int lifePoint;//生命 
+	protected int defence; //防御 
+	protected int attack;  //攻击 
+	protected int hitOdds; //命中
+	protected int escape;  //闪躲 
+	protected int attribute;//属性 
+	protected int attrEffect;//属性攻击 
+	protected int power;     //战斗力
 
 	protected Dictionary<int,BaseRobot> gameTargets;//技能释放的对象
 	
@@ -158,6 +167,14 @@ public class BaseRobot : MonoBehaviour {
 		this.secondPriority = secondPri;
 	}
 
+	public void initIdentity(Ttxt_battle_character_info info){
+		this.attackDistance = info.AttackDistance;
+		//this.attackType = atkType;
+		this.allies = info.Allies;
+		//this.firstPriority = firstPri;
+		//this.secondPriority = secondPri;
+	}
+
 	public virtual void changeState(IState state){
 
 	}
@@ -240,50 +257,5 @@ public class BaseRobot : MonoBehaviour {
 		aiPointed = true;
 
 	}
-
-//    IEnumerator setrotation(float a, float b, GameObject x, Vector3 target)
-//    { 
-//        int i = 0;
-//        int times = (int)Mathf.Abs(b - a) / timeangle + 1;
-//        float angle = (b-a) / times;
-//        if ((b - a) < -180)
-//        {
-//            angle = (360-(a-b)) / times;
-//            while (i < times)
-//            {
-//                i++;
-//                Quaternion Q = Quaternion.Euler(0f, a + angle * i, 0f);
-//                x.transform.rotation = Q;
-//                yield return new WaitForSeconds(Time.deltaTime);
-//                
-//            }
-//        }
-//        else
-//        {
-//            while (i < times)
-//            {
-//                i++;
-//                Quaternion Q = Quaternion.Euler(0f, a + angle * i, 0f);
-//                x.transform.rotation = Q;
-//                yield return new WaitForSeconds(Time.deltaTime);
-//            }
-//        }
-//        moveTargetPoint = target;
-//        isPointed = true;
-//
-//    }
-
-
-
-//	void OnPostRender(){
-//
-//		GL.Begin(GL.LINES);
-//		GL.Color(Color.red);
-//		
-//		GL.Vertex(new Vector3(0,0,0));
-//		
-//		GL.Vertex(new Vector3(100,100,100));
-//		
-//		GL.End();
-//	}
+	
 }

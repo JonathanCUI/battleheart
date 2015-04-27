@@ -2,18 +2,19 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/TextReader/Readtxt.cs">
     <Files>
+      <File FileName="Assets/_Scripts/battleLogic/ui/HUD_blood.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/ui/BattleUIManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/TextReader/Readtxt.cs" Line="26" Column="17" />
+      <File FileName="Assets/_Scripts/TextReader/Readtxt.cs" Line="109" Column="3" />
       <File FileName="Assets/_Scripts/battleLogic/state/Mangler_IdleState.cs" Line="1" Column="1" />
       <File FileName="../../_Scripts/battleLogic/controller/BattleManager.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/character/Assassinator.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/BaseRobot.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/BaseRobot.cs" Line="28" Column="1" />
       <File FileName="Assets/_Scripts/network/NetFramework.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/network/GameNetManagement.cs" Line="1" Column="1" />
       <File FileName="Assets/Standard Assets/Character Controllers/Sources/Scripts/ThirdPersonController.js" Line="1" Column="1" />
       <File FileName="Assets/NGUI/Examples/Scripts/Other/ChatInput.cs" Line="1" Column="1" />
       <File FileName="Assets/Standard Assets/Character Controllers/Sources/Scripts/ThirdPersonCamera.js" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/controller/BattleManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/controller/BattleManager.cs" Line="25" Column="9" />
       <File FileName="Assets/_Scripts/battleLogic/controller/BattleConfig.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/StateMachine.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/IState.cs" Line="1" Column="1" />
@@ -27,7 +28,7 @@
       <File FileName="Assets/_Scripts/battleLogic/state/Mangler_WalkState.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/state/Master_WalkState.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/state/Medic_WalkState.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/IStateMachine.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/IStateMachine.cs" Line="6" Column="9" />
       <File FileName="Assets/_Scripts/battleLogic/state/Mangler_HuntingState.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/state/WalkState.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/state/HuntingState.cs" Line="1" Column="1" />
@@ -39,9 +40,10 @@
       <File FileName="Assets/_Scripts/battleLogic/state/Assassinator_HuntingState.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/state/Assassinator_AttackState.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/state/Medic_TreatingState.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/TextReader/TxtClassFactory.cs" Line="13" Column="3" />
-      <File FileName="Assets/_Scripts/TextReader/TxtData.cs" Line="7" Column="3" />
-      <File FileName="Assets/_Scripts/textReader/GameClassFactory.cs" Line="13" Column="37" />
+      <File FileName="Assets/_Scripts/TextReader/TxtClassFactory.cs" Line="13" Column="2" />
+      <File FileName="Assets/_Scripts/TextReader/TxtData.cs" Line="18" Column="1" />
+      <File FileName="Assets/_Scripts/textReader/GameClassFactory.cs" Line="10" Column="41" />
+      <File FileName="Assets/_Scripts/textReader/Ttxt_battle_character_info.cs" Line="9" Column="40" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

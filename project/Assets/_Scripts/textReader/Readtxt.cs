@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Readtxt : MonoBehaviour {
+public class Readtxt {
 
     public TextAsset T;
-
-
-
+	
     //text需要UTF-8格式 
     //最后不能有空行 第一行可以写注释 第一列也不能空着
     //转成assbundle之前需在text最后加上*号
@@ -18,7 +16,7 @@ public class Readtxt : MonoBehaviour {
         string[] heroname = loaddata(text, "名称");
         for(int i=0;i<heroname.Length;i++)
         {
-            print(heroname[i]);
+            //print(heroname[i]);
         }
 	}
 	
@@ -75,12 +73,12 @@ public class Readtxt : MonoBehaviour {
         }
         if (a.Length < y.Length)
         {
-            print("没有关键字");
+            //print("没有关键字");
             return null;
         }
         if (a.Length == y.Length && a != y)
         {
-            print("没有关键字");
+            //print("没有关键字");
             return null;
         }
         //读出关键字所在列的值存进string数组返回
@@ -118,7 +116,16 @@ public class Readtxt : MonoBehaviour {
 
     }
 
+	public static void load(TxtClassFactory txtClass,string classKey,string filePath){
+		TxtData deleteClass = txtClass.getInstance(classKey);
+		deleteClass.clearAll ();
 
+		/**
+		 * 读取文本
+		 * */
+		TxtData txtdata = txtClass.getInstance (classKey);
+		txtdata.dataFinish ();
+	}
 
 
  

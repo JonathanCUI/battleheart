@@ -1,13 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/**
+ * 本地数据表抽象类
+ * 
+ * */
 public class TxtData {
 
-	protected virtual void dataFinish(){
+	public virtual void dataFinish(){
 
 	}
 
-	protected virtual void clearAll(){
+	public virtual void clearAll(){
 
 	}
 }

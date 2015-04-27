@@ -224,6 +224,7 @@
      <Compile Include="Assets\_Scripts\network\NetFramework.cs" />
      <Compile Include="Assets\_Scripts\textReader\GameClassFactory.cs" />
      <Compile Include="Assets\_Scripts\textReader\Readtxt.cs" />
+     <Compile Include="Assets\_Scripts\textReader\Ttxt_battle_character_info.cs" />
      <Compile Include="Assets\_Scripts\textReader\TxtClassFactory.cs" />
      <Compile Include="Assets\_Scripts\textReader\TxtData.cs" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
