@@ -42,23 +42,15 @@ public class Assassinator_HuntingState : HuntingState
             BaseRobot targetEnmy = opps[first_id != -1 ? first_id : second_id];
 
             float disx = Vector3.Distance(Entity.getPosition(), targetEnmy.getPosition());
-
             if (disx > Entity.AttackDistance)
             {
-                Entity.setMoveTowardsPoint(targetEnmy.getPosition());
+                Entity.setAITowardsPoint(targetEnmy.getPosition());
                 Entity.playAnimation("walk");
             }
             else
             {
-                Debug.Log(1);
-                Entity.setMoveTowardsPoint(Entity.getPosition());
+                Entity.setAITowardsPoint(Entity.getPosition());
                 Entity.changeState(new Assassinator_AttackState());
-                //if (!Entity.pointFound())
-                //{
-                //    Entity.setMoveTowardsPoint(Entity.getPosition());
-                //}
-                //    Entity.transform.LookAt(targetEnmy.getPosition());
-                //    Entity.playAnimation("punch");
             }
 		} else {
 			Entity.playAnimation("idle");
