@@ -42,6 +42,20 @@ public class BattleManager : MonoBehaviour {
 		}
 		if (Input.GetMouseButtonDown (0)) {
 			Vector3 ms = Input.mousePosition;
+            RaycastHit uiHit;
+            if (UICamera.currentCamera)
+            {
+                Ray rayui = UICamera.currentCamera.ScreenPointToRay(ms);
+                if (Physics.Raycast(rayui, out uiHit))
+                {
+                    if (uiHit.collider.gameObject.tag == "UI")
+                    {
+                        return;
+                    }
+                }
+            }
+
+
 			Ray ray = Camera.main.ScreenPointToRay (ms);
 			RaycastHit hitinfo;
 			bool iscast = Physics.Raycast (ray,out hitinfo,Mathf.Infinity,layerMask);
@@ -61,11 +75,11 @@ public class BattleManager : MonoBehaviour {
 					}
 				}
 				else{
-					if(heroMap.ContainsKey(controllingID)){
-						robot=heroMap[controllingID];
-					    robot.setMoveTowardsPoint(hitinfo.point);
-					}
-
+                        if (heroMap.ContainsKey(controllingID))
+                        {
+                            robot = heroMap[controllingID];
+                            robot.setMoveTowardsPoint(hitinfo.point);
+                        }
 				}
 			}
 			
@@ -76,14 +90,14 @@ public class BattleManager : MonoBehaviour {
 	 * 初始场景阵型
 	 * */
 	private void createCharaters(){
-		int unit = 10;
-		int leftOffset = 1000;
+		int unit = 5;
+		int leftOffset = 500;
 		int rightOffset = 500;
 		/*
 		 * 己方阵营
 		 * */
 		//生命补助
-		GameObject obj = (GameObject)Instantiate (medicTemp, new Vector3 (15*unit-leftOffset, 0, 7*unit), Quaternion.identity);
+        GameObject obj = (GameObject)Instantiate(medicTemp, new Vector3(-40 * unit - leftOffset, 0, 7 * unit), Quaternion.identity);
 		BaseRobot robot = (BaseRobot)obj.GetComponent<Medic> ();
 		robot.initIdentity (-1, BattleConfig.AttackType.SUPPORT, 0, BattleConfig.PriorityStrategy.SELF_LIFE, BattleConfig.PriorityStrategy.LEAST_LIFE);
 		robot.SetID (increasingID++);
@@ -91,7 +105,7 @@ public class BattleManager : MonoBehaviour {
 		heroMap.Add (robot.getID (), robot);
 
 		//效果补助
-		obj = (GameObject)Instantiate (heroTemplate, new Vector3 ((20*unit-leftOffset), 0, -7*unit), Quaternion.identity);
+		obj = (GameObject)Instantiate (heroTemplate, new Vector3 ((-35*unit-leftOffset), 0, -7*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
 		robot.initIdentity (-1, BattleConfig.AttackType.SUPPORT, 0, BattleConfig.PriorityStrategy.SELF_EFFECT, BattleConfig.PriorityStrategy.NO_EFFECT);
 		robot.SetID (increasingID++);
@@ -99,7 +113,7 @@ public class BattleManager : MonoBehaviour {
 		heroMap.Add (robot.getID (), robot);
 
 		//远程法师
-		obj = (GameObject)Instantiate (masterTemp, new Vector3 (25*unit-leftOffset, 0, 12*unit), Quaternion.identity);
+		obj = (GameObject)Instantiate (masterTemp, new Vector3 (-30*unit-leftOffset, 0, 12*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<Master> ();
 		robot.initIdentity (1000, BattleConfig.AttackType.LONG, 0, BattleConfig.PriorityStrategy.SHORT, BattleConfig.PriorityStrategy.CLOSTEST);
 		robot.SetID (increasingID++);
@@ -107,7 +121,7 @@ public class BattleManager : MonoBehaviour {
 		heroMap.Add (robot.getID (), robot);
 
 		//远程物攻
-		obj = (GameObject)Instantiate (heroTemplate, new Vector3 (30*unit-leftOffset, 0, -5*unit), Quaternion.identity);
+		obj = (GameObject)Instantiate (heroTemplate, new Vector3 (-25*unit-leftOffset, 0, -5*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
 		robot.initIdentity (1000, BattleConfig.AttackType.LONG, 0, BattleConfig.PriorityStrategy.LONG, BattleConfig.PriorityStrategy.CLOSTEST);
 		robot.SetID (increasingID++);
@@ -115,7 +129,7 @@ public class BattleManager : MonoBehaviour {
 		heroMap.Add (robot.getID (), robot);
 
 		//刺客
-		obj = (GameObject)Instantiate (assassinatorTemp, new Vector3 (35*unit-leftOffset, 0, 12*unit), Quaternion.identity);
+		obj = (GameObject)Instantiate (assassinatorTemp, new Vector3 (-20*unit-leftOffset, 0, 12*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<Assassinator> ();
 		robot.initIdentity (100, BattleConfig.AttackType.SHORT, 0, BattleConfig.PriorityStrategy.LONG, BattleConfig.PriorityStrategy.CLOSTEST);
 		robot.SetID (increasingID++);
@@ -123,7 +137,7 @@ public class BattleManager : MonoBehaviour {
 		heroMap.Add (robot.getID (), robot);
 
 		//肉盾
-		obj = (GameObject)Instantiate (manglerTemp, new Vector3 (40*unit-leftOffset, 0, 5*unit), Quaternion.identity);
+		obj = (GameObject)Instantiate (manglerTemp, new Vector3 (-15*unit-leftOffset, 0, 5*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<Mangler> ();
 		robot.initIdentity (100, BattleConfig.AttackType.SHORT, 0, BattleConfig.PriorityStrategy.SHORT, BattleConfig.PriorityStrategy.CLOSTEST);
 		robot.SetID (increasingID++);

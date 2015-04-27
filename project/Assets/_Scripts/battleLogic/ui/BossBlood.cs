@@ -5,7 +5,7 @@ public class BossBlood : MonoBehaviour {
 
     UISlider blood;
     UISprite Icon;
-    UILabel name;
+    UILabel Monstername;
     UILabel layer;
     UISprite background;
     UISprite Foreground;
@@ -20,16 +20,16 @@ public class BossBlood : MonoBehaviour {
     {
         blood = this.GetComponent<UISlider>();
         Icon = this.transform.FindChild("Icon").GetComponent<UISprite>();
-        name = this.transform.FindChild("NameLabel").GetComponent<UILabel>();
+        Monstername = this.transform.FindChild("NameLabel").GetComponent<UILabel>();
         layer = this.transform.FindChild("Layer").GetComponent<UILabel>();
         background = this.GetComponent<UISprite>();
         Foreground = this.transform.FindChild("Foreground").GetComponent<UISprite>();
     }
 
-    public void changeall(int maxhp,int layern=1,string iconid="Monster1",string name="老喷")
+    public void changeall(int maxhp, int layern = 1, string iconid = "Monster1", string Monstername = "老喷")
     {
         Icon.spriteName = iconid;
-        this.name.text = name;
+        this.Monstername.text = Monstername;
         if (layern > 1)
         {
             this.layer.text = "x" + layern;

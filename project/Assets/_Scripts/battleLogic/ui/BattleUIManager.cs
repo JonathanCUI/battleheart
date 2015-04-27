@@ -33,8 +33,8 @@ public class BattleUIManager : MonoBehaviour {
         BstageNum = UIRoot.transform.FindChild("BstageNum").GetComponentInChildren<UILabel>();
         Process = UIRoot.transform.FindChild("Process").GetComponentInChildren<UISlider>();
         SkillPanel = UIRoot.transform.FindChild("SkillPanel").GetComponentInChildren<UIGrid>();
-
-
+        //print(UIRoot.transform.FindChild("SkillPanel").GetComponentInChildren<UIPanel>().clipping);
+        
         UIEventListener.Get(StopButton).onClick = StopButtonClick;
         TimeLimitShowStart();
 
@@ -106,12 +106,17 @@ public class BattleUIManager : MonoBehaviour {
     {
         Process.value = x;
     }
-       
 
 
-    void BigStageShow()
+
+    void BigStageShow(string x = "S1-1")
     {
-        BstageNum.text = "S1-1";
+        BstageNum.text = x;
+    }
+
+    void SmallStageShow(string x = "2/3")
+    {
+        SstageNum.text = x;
     }
 
     //金币、宝物及当前关卡进度显示

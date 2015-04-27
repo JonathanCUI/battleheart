@@ -12,7 +12,7 @@ public class GameClassFactory : TxtClassFactory {
 	public override TxtData getInstance(string classKey){
 		if(classKey == "houses_detail_info" )
 		{
-			return new Ttxt_houses_detail_info();
+			//return new Ttxt_houses_detail_info();
 		}
 
 		return null;
