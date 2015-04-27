@@ -1,8 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/TextReader/Readtxt.cs">
     <Files>
-      <File FileName="Assets/_Scripts/TextReader/Readtxt.cs" Line="24" Column="2" />
+      <File FileName="Assets/_Scripts/battleLogic/ui/BattleUIManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/TextReader/Readtxt.cs" Line="26" Column="17" />
       <File FileName="Assets/_Scripts/battleLogic/state/Mangler_IdleState.cs" Line="1" Column="1" />
       <File FileName="../../_Scripts/battleLogic/controller/BattleManager.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/character/Assassinator.cs" Line="1" Column="1" />
@@ -38,9 +39,9 @@
       <File FileName="Assets/_Scripts/battleLogic/state/Assassinator_HuntingState.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/state/Assassinator_AttackState.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/state/Medic_TreatingState.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/TextReader/TxtClassFactory.cs" Line="9" Column="2" />
-      <File FileName="Assets/_Scripts/TextReader/TxtData.cs" Line="11" Column="3" />
-      <File FileName="Assets/_Scripts/textReader/GameClassFactory.cs" Line="4" Column="11" />
+      <File FileName="Assets/_Scripts/TextReader/TxtClassFactory.cs" Line="13" Column="3" />
+      <File FileName="Assets/_Scripts/TextReader/TxtData.cs" Line="7" Column="3" />
+      <File FileName="Assets/_Scripts/textReader/GameClassFactory.cs" Line="13" Column="37" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
