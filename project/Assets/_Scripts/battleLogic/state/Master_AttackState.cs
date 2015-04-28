@@ -43,12 +43,10 @@ public class Master_AttackState : AttackState
 
             if (disx > Entity.AttackDistance)
             {
-                Debug.Log(2);
-                //Entity.changeState(new Assassinator_HuntingState());
+                Entity.changeState(new Master_HuntingState());
             }
             else
             {
-                Entity.setMoveTowardsPoint(Entity.getPosition());
                 Entity.transform.LookAt(targetEnmy.getPosition());
                 Entity.playAnimation("punch");
             }

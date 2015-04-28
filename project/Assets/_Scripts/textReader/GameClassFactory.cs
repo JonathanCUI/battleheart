@@ -11,7 +11,7 @@ public class GameClassFactory : TxtClassFactory {
 	}
 
 	public override void loadAll(){
-		GameClassFactory.loadTxt (this, "battle_character_info", "");
+        GameClassFactory.loadTxt(this, "battle_character_info", "datahero.txt");
 	}
 	
 	public override TxtData getInstance(string classKey){

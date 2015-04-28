@@ -8,12 +8,31 @@ using System.Collections.Generic;
  * */
 public class Ttxt_battle_character_info : TxtData {
 	
-	public override void dataFinish(){
-		
+	public override void dataFinish(string[] data){
+
+		Ttxt_battle_character_info info = new Ttxt_battle_character_info ();
+		info._Id = System.Convert.ToInt32( data [0]);
+		info.Name = data [1];
+		info.Type = System.Convert.ToInt32(data [2]);
+		info.LifePoint = System.Convert.ToInt32(data[3]);
+		info.Defence = System.Convert.ToInt32(data[4]);
+		info.Attack = System.Convert.ToInt32(data[5]);
+		info.HitOdds = System.Convert.ToInt32(data[6]);
+		info.Escape = System.Convert.ToInt32(data[7]);
+		info.Attribute = System.Convert.ToInt32(data[8]);
+		info.AttrEffect = System.Convert.ToInt32(data[9]);
+		info.Power = System.Convert.ToInt32(data[10]);
+		info.AttackDistance = System.Convert.ToInt32(data[11]);
+		info.FirstPriority = System.Convert.ToInt32(data[12]);
+		info.SecondPriority = System.Convert.ToInt32(data[13]);
+		if(Ttxt_battle_character_info.DATA==null)
+			Ttxt_battle_character_info.DATA = new Dictionary<int, Ttxt_battle_character_info>();
+		Ttxt_battle_character_info.DATA.Add (info._Id, info);
 	}
 	
 	public override void clearAll(){
-		
+		if (Ttxt_battle_character_info.DATA != null)
+			Ttxt_battle_character_info.DATA.Clear ();
 	}
 	
 	static public Dictionary<int,Ttxt_battle_character_info> DATA;

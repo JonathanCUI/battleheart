@@ -192,6 +192,7 @@
      <Compile Include="Assets\_Scripts\battleLogic\character\Medic.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\controller\BattleConfig.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\controller\BattleManager.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\controller\ForceField.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Assassinator_AttackState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Assassinator_HuntingState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Assassinator_IdleState.cs" />
@@ -218,6 +219,7 @@
      <Compile Include="Assets\_Scripts\battleLogic\ui\BossBlood.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\ui\HUD_blood.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\ui\MainStageUIManager.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\ui\Skillbutton.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\ui\StatusPanel.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\ui\UIEventCenter.cs" />
      <Compile Include="Assets\_Scripts\network\GameNetManagement.cs" />
@@ -260,6 +262,7 @@
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth.shader" />
      <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Normal.txt" />
      <None Include="Assets\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
+     <None Include="Assets\StreamingAssets\datahero.txt" />
      <None Include="Assets\NGUI\Examples\Resources\Localization.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.3/UnityEngine.UI.dll</HintPath>

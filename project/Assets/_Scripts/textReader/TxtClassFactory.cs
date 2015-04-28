@@ -12,7 +12,6 @@ public class TxtClassFactory {
 	}
 
 	public virtual TxtData getInstance(string classKey){
-
 		return null;
 	}
 }

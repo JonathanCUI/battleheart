@@ -7,7 +7,7 @@ using System.Collections;
  * */
 public class TxtData {
 
-	public virtual void dataFinish(){
+	public virtual void dataFinish(string[] data){
 
 	}
 

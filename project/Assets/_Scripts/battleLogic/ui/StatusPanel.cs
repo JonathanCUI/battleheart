@@ -43,13 +43,14 @@ public class StatusPanel : MonoBehaviour {
         UIEventListener.Get(Gold.transform.FindChild("PlusButton").gameObject).onClick = GoldButtonClick;
         UIEventListener.Get(VIT.transform.FindChild("PlusButton").gameObject).onClick = VITButtonClick;
 
-        changeAbility();
+        //changeAbility();
 
     }
 
     void changeAbility()
-    { 
-    
+    {
+        PlayerIcon.spriteName = "";
+        
     }
 
 
