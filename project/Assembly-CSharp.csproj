@@ -226,6 +226,7 @@
      <Compile Include="Assets\_Scripts\network\NetFramework.cs" />
      <Compile Include="Assets\_Scripts\textReader\GameClassFactory.cs" />
      <Compile Include="Assets\_Scripts\textReader\Readtxt.cs" />
+     <Compile Include="Assets\_Scripts\textReader\Ttxt_battle_character_info.cs" />
      <Compile Include="Assets\_Scripts\textReader\TxtClassFactory.cs" />
      <Compile Include="Assets\_Scripts\textReader\TxtData.cs" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
@@ -261,6 +262,7 @@
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth.shader" />
      <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Normal.txt" />
      <None Include="Assets\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
+     <None Include="Assets\StreamingAssets\datahero.txt" />
      <None Include="Assets\NGUI\Examples\Resources\Localization.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity4.6/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>

@@ -21,7 +21,8 @@ public class BattleUIManager : MonoBehaviour {
     float TimeRemaining;        
     bool isstart=false;
 
-
+    public TextAsset dataherox;
+    public static TextAsset dataheroxstatic;
     void Awake()
     {
         UIRoot = this.gameObject.transform.parent.gameObject;
@@ -38,9 +39,7 @@ public class BattleUIManager : MonoBehaviour {
         UIEventListener.Get(StopButton).onClick = StopButtonClick;
         TimeLimitShowStart();
 
-
-
-
+        dataheroxstatic = dataherox;
     }
 
 

@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-
-public class Readtxt : MonoBehaviour {
-
-    public TextAsset T;
-
+using System.Collections.Generic;
+using System.IO;
+using System;
+public class Readtxt {
 
 
     //text需要UTF-8格式 
@@ -13,19 +12,26 @@ public class Readtxt : MonoBehaviour {
 
 
 	// Use this for initialization
+
+    
 	void Start () {
-        ArrayList text = loadtxt(T);
-        string[] heroname = loaddata(text, "名称");
-        for(int i=0;i<heroname.Length;i++)
-        {
-            print(heroname[i]);
-        }
+        //ArrayList text = loadtxt(T);
+        //string[] heroname = loaddata(text, "名称");
+        //for(int i=0;i<heroname.Length;i++)
+        //{
+        //    //print(heroname[i]);
+        //}
+
+
+
+
 	}
 	
 
     //从text里读取内容
-    ArrayList loadtxt(TextAsset x)
+    public static ArrayList loadtxt(TextAsset x)
     {
+        Debug.Log(x);
         string y = x.text;
         string line;
         ArrayList arrlist = new ArrayList();
@@ -41,7 +47,8 @@ public class Readtxt : MonoBehaviour {
         return arrlist;
     }
 
-    ArrayList loadtxt(string y)                 //配合从assbundle读数据
+
+    public static ArrayList loadtxt(string y)                 //配合从assbundle读数据
     {
         string line;
         ArrayList arrlist = new ArrayList();
@@ -59,8 +66,39 @@ public class Readtxt : MonoBehaviour {
     }
 
 
+
+    public static ArrayList LoadFile(string path, string name)
+    {
+        //使用流的形式读取
+        StreamReader sr = null;
+        try
+        {
+            sr = File.OpenText(path + "//" + name);
+        }
+        catch (Exception e)
+        {
+            Debug.Log(111);
+            //路径与名称未找到文件则直接返回空
+            return null;
+        }
+        string line;
+        ArrayList arrlist = new ArrayList();
+        while ((line = sr.ReadLine()) != null)
+        {
+            //一行一行的读取
+            //将每一行的内容存入数组链表容器中
+            arrlist.Add(line);
+        }
+        //关闭流
+        sr.Close();
+        //销毁流
+        sr.Dispose();
+        //将数组链表容器返回
+        return arrlist;
+    }
+
     //根据关键字得到string数组
-    static string[]  loaddata(ArrayList x,string y)
+    public static string[]  loaddata(ArrayList x,string y)
     {
 
         //记录关键字出现在第几个"	"符号后面
@@ -75,12 +113,12 @@ public class Readtxt : MonoBehaviour {
         }
         if (a.Length < y.Length)
         {
-            print("没有关键字");
+            //print("没有关键字");
             return null;
         }
         if (a.Length == y.Length && a != y)
         {
-            print("没有关键字");
+            //print("没有关键字");
             return null;
         }
         //读出关键字所在列的值存进string数组返回
@@ -118,7 +156,16 @@ public class Readtxt : MonoBehaviour {
 
     }
 
+	public static void load(TxtClassFactory txtClass,string classKey,string filePath){
+		TxtData deleteClass = txtClass.getInstance(classKey);
+		deleteClass.clearAll ();
 
+		/**
+		 * 读取文本
+		 * */
+		TxtData txtdata = txtClass.getInstance (classKey);
+        txtdata.dataFinish(filePath);
+	}
 
 
  

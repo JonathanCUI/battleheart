@@ -22,6 +22,9 @@ public class BattleManager : MonoBehaviour {
 	private Dictionary<int,BaseRobot> heroMap =new Dictionary<int, BaseRobot>();
 	
 	void Start () {
+		TxtClassFactory table = new GameClassFactory ();
+		table.loadAll ();
+
 		layerMask  = (int)Mathf.Pow(2.0f,(float)LayerMask.NameToLayer("plane"));
 
 		isInit = false;
