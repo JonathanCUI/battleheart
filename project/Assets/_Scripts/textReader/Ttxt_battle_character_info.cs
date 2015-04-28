@@ -20,12 +20,12 @@ public class Ttxt_battle_character_info : TxtData {
 
     ArrayList herodata;
 
-	public override void dataFinish(string x){
+	public override void dataFinish(string filename){
         //Debug.Log(Application.streamingAssetsPath);
         //WWW www = new WWW(Application.streamingAssetsPath + "/datahero");
         //while (!www.isDone) { }
         //herodata = Readtxt.loadtxt(www.text);
-        herodata = Readtxt.LoadFile(filepath, x);
+        herodata = Readtxt.LoadFile(filepath, filename);
 
         Debug.Log(herodata.Count);
         
@@ -60,18 +60,10 @@ public class Ttxt_battle_character_info : TxtData {
             hero.AttackDistance = System.Convert.ToInt32(heroattackDistance[i]);
             hero.FirstPriority = System.Convert.ToInt32(herofirstPriority[i]);
             hero.SecondPriority = System.Convert.ToInt32(herosecondPriority[i]);
-
             Ttxt_battle_character_info.DATA = new Dictionary<int, Ttxt_battle_character_info>();
             Ttxt_battle_character_info.DATA.Add(hero._Id, hero);
         }
 	}
-
-    void readherodata()
-    { 
-    
-    }
-
-
 
 
 
