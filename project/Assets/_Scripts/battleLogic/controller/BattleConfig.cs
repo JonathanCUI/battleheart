@@ -31,8 +31,8 @@ public class BattleConfig{
 	 * 攻击类型枚举
 	 **/
 	public enum AttackType{
-		SHORT,//远程
-		LONG,//近战
+		SHORT,//近战
+		LONG,//远程
 		SUPPORT,//补助
 	}
 	

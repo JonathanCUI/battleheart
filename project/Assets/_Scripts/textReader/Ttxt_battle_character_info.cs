@@ -7,70 +7,33 @@ using System.Collections.Generic;
  * 战斗任务属性表
  * */
 public class Ttxt_battle_character_info : TxtData {
+	
+	public override void dataFinish(string[] data){
 
-#if UNITY_EDITOR
-    string filepath = Application.dataPath + "/StreamingAssets";
+		Ttxt_battle_character_info info = new Ttxt_battle_character_info ();
+		info._Id = System.Convert.ToInt32( data [0]);
+		info.Name = data [1];
+		info.Type = System.Convert.ToInt32(data [2]);
+		info.LifePoint = System.Convert.ToInt32(data[3]);
+		info.Defence = System.Convert.ToInt32(data[4]);
+		info.Attack = System.Convert.ToInt32(data[5]);
+		info.HitOdds = System.Convert.ToInt32(data[6]);
+		info.Escape = System.Convert.ToInt32(data[7]);
+		info.Attribute = System.Convert.ToInt32(data[8]);
+		info.AttrEffect = System.Convert.ToInt32(data[9]);
+		info.Power = System.Convert.ToInt32(data[10]);
+		info.AttackDistance = System.Convert.ToInt32(data[11]);
+		info.FirstPriority = System.Convert.ToInt32(data[12]);
+		info.SecondPriority = System.Convert.ToInt32(data[13]);
 
-#elif UNITY_IPHONE
-	  string filepath = Application.dataPath +"/Raw";
- 
-#elif UNITY_ANDROID
-	  string filepath = "jar:file://" + Application.dataPath + "!/assets/";
-#endif
-
-    ArrayList herodata;
-
-	public override void dataFinish(string filename){
-        //Debug.Log(Application.streamingAssetsPath);
-        //WWW www = new WWW(Application.streamingAssetsPath + "/datahero");
-        //while (!www.isDone) { }
-        //herodata = Readtxt.loadtxt(www.text);
-        herodata = Readtxt.LoadFile(filepath, filename);
-
-        Debug.Log(herodata.Count);
-        
-        string[] heroID = Readtxt.loaddata(herodata, "ID");
-        string[] heroname = Readtxt.loaddata(herodata, "name");
-        string[] herotype = Readtxt.loaddata(herodata, "type");
-        string[] herolifePoint = Readtxt.loaddata(herodata, "lifePoint");
-        string[] herodefence = Readtxt.loaddata(herodata, "defence");
-        string[] heroattack = Readtxt.loaddata(herodata, "attack");
-        string[] herohitOdds = Readtxt.loaddata(herodata, "hitOdds");
-        string[] heroescape = Readtxt.loaddata(herodata, "escape");
-        string[] heroattribute = Readtxt.loaddata(herodata, "attribute");
-        string[] heroattrEffect = Readtxt.loaddata(herodata, "attrEffect");
-        string[] heropower = Readtxt.loaddata(herodata, "power");
-        string[] heroattackDistance = Readtxt.loaddata(herodata, "attackDistance");
-        string[] herofirstPriority = Readtxt.loaddata(herodata, "firstPriority");
-        string[] herosecondPriority = Readtxt.loaddata(herodata, "secondPriority");
-        for (int i = 0; i <herodata.Count-2; i++)
-        {
-            Ttxt_battle_character_info hero = new Ttxt_battle_character_info();
-            hero._Id = System.Convert.ToInt32 (heroID[i]);
-            hero.Name = heroname[i];
-            hero.Type = System.Convert.ToInt32(herotype[i]);
-            hero.LifePoint = System.Convert.ToInt32(herolifePoint[i]);
-            hero.Defence = System.Convert.ToInt32(herodefence[i]);
-            hero.Attack = System.Convert.ToInt32(heroattack[i]);
-            hero.HitOdds = System.Convert.ToInt32(herohitOdds[i]);
-            hero.Escape = System.Convert.ToInt32(heroescape[i]);
-            hero.Attribute = System.Convert.ToInt32(heroattribute[i]);
-            hero.AttrEffect = System.Convert.ToInt32(heroattrEffect[i]);
-            hero.Power = System.Convert.ToInt32(heropower[i]);
-            hero.AttackDistance = System.Convert.ToInt32(heroattackDistance[i]);
-            hero.FirstPriority = System.Convert.ToInt32(herofirstPriority[i]);
-            hero.SecondPriority = System.Convert.ToInt32(herosecondPriority[i]);
-            Ttxt_battle_character_info.DATA = new Dictionary<int, Ttxt_battle_character_info>();
-            Ttxt_battle_character_info.DATA.Add(hero._Id, hero);
-        }
+		if(Ttxt_battle_character_info.DATA==null)
+			Ttxt_battle_character_info.DATA = new Dictionary<int, Ttxt_battle_character_info>();
+		Ttxt_battle_character_info.DATA.Add (info._Id, info);
 	}
-
-
-
-
-
+	
 	public override void clearAll(){
-		
+		if (Ttxt_battle_character_info.DATA != null)
+			Ttxt_battle_character_info.DATA.Clear ();
 	}
 	
 	static public Dictionary<int,Ttxt_battle_character_info> DATA;

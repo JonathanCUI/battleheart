@@ -169,10 +169,20 @@ public class BaseRobot : MonoBehaviour {
 
 	public void initIdentity(Ttxt_battle_character_info info){
 		this.attackDistance = info.AttackDistance;
-		//this.attackType = atkType;
-		this.allies = info.Allies;
-		//this.firstPriority = firstPri;
-		//this.secondPriority = secondPri;
+		this.attackType = (BattleConfig.AttackType)info.Type;
+        this.name=info.Name;
+	    this.lifePoint=info.LifePoint;
+	    this.defence=info.Defence;
+	    this.attack=info.Attack; 
+	    this.hitOdds=info.HitOdds;
+        this.escape = info.Escape;
+        this.attribute = info.Attribute;
+        this.attrEffect = info.AttrEffect;
+        this.power = info.Power;
+        this.firstPriority = (BattleConfig.PriorityStrategy)info.FirstPriority;
+        this.secondPriority = (BattleConfig.PriorityStrategy)info.SecondPriority;
+
+        print(this.name + this.attackType + this.firstPriority + this.secondPriority);
 	}
 
 	public virtual void changeState(IState state){

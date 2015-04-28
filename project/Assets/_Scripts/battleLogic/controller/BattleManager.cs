@@ -96,21 +96,37 @@ public class BattleManager : MonoBehaviour {
 		int unit = 5;
 		int leftOffset = 500;
 		int rightOffset = 500;
+
+
+
+
 		/*
 		 * 己方阵营
 		 * */
 		//生命补助
         GameObject obj = (GameObject)Instantiate(medicTemp, new Vector3(-40 * unit - leftOffset, 0, 7 * unit), Quaternion.identity);
 		BaseRobot robot = (BaseRobot)obj.GetComponent<Medic> ();
-		robot.initIdentity (-1, BattleConfig.AttackType.SUPPORT, 0, BattleConfig.PriorityStrategy.SELF_LIFE, BattleConfig.PriorityStrategy.LEAST_LIFE);
+		//robot.initIdentity (-1, BattleConfig.AttackType.SUPPORT, 0, BattleConfig.PriorityStrategy.SELF_LIFE, BattleConfig.PriorityStrategy.LEAST_LIFE);
+
+        robot.Allies = 0;
+        Ttxt_battle_character_info character_info;
+        Ttxt_battle_character_info.DATA.TryGetValue(5001, out character_info);
+        robot.initIdentity(character_info);
+
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
 
+
 		//效果补助
 		obj = (GameObject)Instantiate (heroTemplate, new Vector3 ((-35*unit-leftOffset), 0, -7*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
-		robot.initIdentity (-1, BattleConfig.AttackType.SUPPORT, 0, BattleConfig.PriorityStrategy.SELF_EFFECT, BattleConfig.PriorityStrategy.NO_EFFECT);
+		//robot.initIdentity (-1, BattleConfig.AttackType.SUPPORT, 0, BattleConfig.PriorityStrategy.SELF_EFFECT, BattleConfig.PriorityStrategy.NO_EFFECT);
+
+        robot.Allies = 0;
+        Ttxt_battle_character_info.DATA.TryGetValue(6001, out character_info);
+        robot.initIdentity(character_info);
+
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
@@ -118,7 +134,12 @@ public class BattleManager : MonoBehaviour {
 		//远程法师
 		obj = (GameObject)Instantiate (masterTemp, new Vector3 (-30*unit-leftOffset, 0, 12*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<Master> ();
-		robot.initIdentity (1000, BattleConfig.AttackType.LONG, 0, BattleConfig.PriorityStrategy.SHORT, BattleConfig.PriorityStrategy.CLOSTEST);
+		//robot.initIdentity (1000, BattleConfig.AttackType.LONG, 0, BattleConfig.PriorityStrategy.SHORT, BattleConfig.PriorityStrategy.CLOSTEST);
+
+        robot.Allies = 0;
+        Ttxt_battle_character_info.DATA.TryGetValue(4001, out character_info);
+        robot.initIdentity(character_info);
+
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
@@ -126,7 +147,12 @@ public class BattleManager : MonoBehaviour {
 		//远程物攻
 		obj = (GameObject)Instantiate (heroTemplate, new Vector3 (-25*unit-leftOffset, 0, -5*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
-		robot.initIdentity (1000, BattleConfig.AttackType.LONG, 0, BattleConfig.PriorityStrategy.LONG, BattleConfig.PriorityStrategy.CLOSTEST);
+		//robot.initIdentity (1000, BattleConfig.AttackType.LONG, 0, BattleConfig.PriorityStrategy.LONG, BattleConfig.PriorityStrategy.CLOSTEST);
+
+        robot.Allies = 0;
+        Ttxt_battle_character_info.DATA.TryGetValue(3001, out character_info);
+        robot.initIdentity(character_info);
+
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
@@ -134,7 +160,12 @@ public class BattleManager : MonoBehaviour {
 		//刺客
 		obj = (GameObject)Instantiate (assassinatorTemp, new Vector3 (-20*unit-leftOffset, 0, 12*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<Assassinator> ();
-		robot.initIdentity (100, BattleConfig.AttackType.SHORT, 0, BattleConfig.PriorityStrategy.LONG, BattleConfig.PriorityStrategy.CLOSTEST);
+		//robot.initIdentity (100, BattleConfig.AttackType.SHORT, 0, BattleConfig.PriorityStrategy.LONG, BattleConfig.PriorityStrategy.CLOSTEST);
+
+        robot.Allies = 0;
+        Ttxt_battle_character_info.DATA.TryGetValue(2001, out character_info);
+        robot.initIdentity(character_info);
+
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
@@ -142,7 +173,12 @@ public class BattleManager : MonoBehaviour {
 		//肉盾
 		obj = (GameObject)Instantiate (manglerTemp, new Vector3 (-15*unit-leftOffset, 0, 5*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<Mangler> ();
-		robot.initIdentity (100, BattleConfig.AttackType.SHORT, 0, BattleConfig.PriorityStrategy.SHORT, BattleConfig.PriorityStrategy.CLOSTEST);
+		//robot.initIdentity (100, BattleConfig.AttackType.SHORT, 0, BattleConfig.PriorityStrategy.SHORT, BattleConfig.PriorityStrategy.CLOSTEST);
+
+        robot.Allies = 0;
+        Ttxt_battle_character_info.DATA.TryGetValue(1001, out character_info);
+        robot.initIdentity(character_info);
+
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
@@ -154,7 +190,12 @@ public class BattleManager : MonoBehaviour {
 		//生命补助
 		obj = (GameObject)Instantiate (medicTemp, new Vector3 (40*unit+rightOffset, 0, 7*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<Medic> ();
-		robot.initIdentity (-1, BattleConfig.AttackType.SUPPORT, 1, BattleConfig.PriorityStrategy.SELF_LIFE, BattleConfig.PriorityStrategy.LEAST_LIFE);
+		//robot.initIdentity (-1, BattleConfig.AttackType.SUPPORT, 1, BattleConfig.PriorityStrategy.SELF_LIFE, BattleConfig.PriorityStrategy.LEAST_LIFE);
+
+        robot.Allies = 1;
+        Ttxt_battle_character_info.DATA.TryGetValue(5001, out character_info);
+        robot.initIdentity(character_info);
+
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
@@ -162,7 +203,12 @@ public class BattleManager : MonoBehaviour {
 		//效果补助
 		obj = (GameObject)Instantiate (heroTemplate, new Vector3 ((35*unit+rightOffset), 0, -7*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
-		robot.initIdentity (-1, BattleConfig.AttackType.SUPPORT, 1, BattleConfig.PriorityStrategy.SELF_EFFECT, BattleConfig.PriorityStrategy.NO_EFFECT);
+		//robot.initIdentity (-1, BattleConfig.AttackType.SUPPORT, 1, BattleConfig.PriorityStrategy.SELF_EFFECT, BattleConfig.PriorityStrategy.NO_EFFECT);
+
+        robot.Allies = 1;
+        Ttxt_battle_character_info.DATA.TryGetValue(6001, out character_info);
+        robot.initIdentity(character_info);
+
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
@@ -170,7 +216,12 @@ public class BattleManager : MonoBehaviour {
 		//远程法师
 		obj = (GameObject)Instantiate (masterTemp, new Vector3 (30*unit+rightOffset, 0, 12*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<Master> ();
-		robot.initIdentity (1000, BattleConfig.AttackType.LONG, 1, BattleConfig.PriorityStrategy.SHORT, BattleConfig.PriorityStrategy.CLOSTEST);
+		//robot.initIdentity (1000, BattleConfig.AttackType.LONG, 1, BattleConfig.PriorityStrategy.SHORT, BattleConfig.PriorityStrategy.CLOSTEST);
+
+        robot.Allies = 1;
+        Ttxt_battle_character_info.DATA.TryGetValue(4001, out character_info);
+        robot.initIdentity(character_info);
+
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
@@ -178,7 +229,12 @@ public class BattleManager : MonoBehaviour {
 		//远程物攻
 		obj = (GameObject)Instantiate (heroTemplate, new Vector3 (25*unit+rightOffset, 0, -5*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
-		robot.initIdentity (1000, BattleConfig.AttackType.LONG, 1, BattleConfig.PriorityStrategy.LONG, BattleConfig.PriorityStrategy.CLOSTEST);
+		//robot.initIdentity (1000, BattleConfig.AttackType.LONG, 1, BattleConfig.PriorityStrategy.LONG, BattleConfig.PriorityStrategy.CLOSTEST);
+
+        robot.Allies = 1;
+        Ttxt_battle_character_info.DATA.TryGetValue(3001, out character_info);
+        robot.initIdentity(character_info);
+
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
@@ -186,7 +242,12 @@ public class BattleManager : MonoBehaviour {
 		//刺客
 		obj = (GameObject)Instantiate (assassinatorTemp, new Vector3 (20*unit+rightOffset, 0, 12*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<Assassinator> ();
-		robot.initIdentity (100, BattleConfig.AttackType.SHORT, 1, BattleConfig.PriorityStrategy.LONG, BattleConfig.PriorityStrategy.CLOSTEST);
+		//robot.initIdentity (100, BattleConfig.AttackType.SHORT, 1, BattleConfig.PriorityStrategy.LONG, BattleConfig.PriorityStrategy.CLOSTEST);
+
+        robot.Allies = 1;
+        Ttxt_battle_character_info.DATA.TryGetValue(2001, out character_info);
+        robot.initIdentity(character_info);
+
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
@@ -194,7 +255,12 @@ public class BattleManager : MonoBehaviour {
 		//肉盾
 		obj = (GameObject)Instantiate (manglerTemp, new Vector3 (15*unit+rightOffset, 0, 5*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<Mangler> ();
-		robot.initIdentity (100, BattleConfig.AttackType.SHORT, 1, BattleConfig.PriorityStrategy.SHORT, BattleConfig.PriorityStrategy.CLOSTEST);
+		//robot.initIdentity (100, BattleConfig.AttackType.SHORT, 1, BattleConfig.PriorityStrategy.SHORT, BattleConfig.PriorityStrategy.CLOSTEST);
+
+        robot.Allies = 1;
+        Ttxt_battle_character_info.DATA.TryGetValue(1001, out character_info);
+        robot.initIdentity(character_info);
+
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
