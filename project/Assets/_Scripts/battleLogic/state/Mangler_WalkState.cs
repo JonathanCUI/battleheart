@@ -7,7 +7,7 @@ using System.Collections;
  * */
 public class Mangler_WalkState : WalkState {
 	
-	public override void ChangeState<T> (T Entity)
+	public override void ChangeToIdleState<T> (T Entity)
 	{
 		Entity.changeState (new Mangler_IdleState ());
 	}

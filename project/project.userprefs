@@ -1,8 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/battleLogic/controller/BattleManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/battleLogic/controller/ForceField.cs">
     <Files>
-      <File FileName="Assets/_Scripts/battleLogic/BaseRobot.cs" Line="181" Column="32" />
+      <File FileName="Assets/_Scripts/battleLogic/controller/BattleManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/BaseRobot.cs" Line="38" Column="30" />
       <File FileName="Assets/_Scripts/battleLogic/ui/HUD_blood.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/ui/BattleUIManager.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/TextReader/Readtxt.cs" Line="1" Column="1" />
@@ -14,7 +15,6 @@
       <File FileName="Assets/Standard Assets/Character Controllers/Sources/Scripts/ThirdPersonController.js" Line="1" Column="1" />
       <File FileName="Assets/NGUI/Examples/Scripts/Other/ChatInput.cs" Line="1" Column="1" />
       <File FileName="Assets/Standard Assets/Character Controllers/Sources/Scripts/ThirdPersonCamera.js" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/controller/BattleManager.cs" Line="82" Column="66" />
       <File FileName="Assets/_Scripts/battleLogic/controller/BattleConfig.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/StateMachine.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/IState.cs" Line="1" Column="1" />
@@ -24,18 +24,18 @@
       <File FileName="Assets/_Scripts/battleLogic/character/Medic.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/state/Hero_GlobalState.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/state/Hero_WalkState.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/state/Assassinator_WalkState.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/state/Mangler_WalkState.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/state/Master_WalkState.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/state/Medic_WalkState.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Assassinator_WalkState.cs" Line="5" Column="40" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Mangler_WalkState.cs" Line="10" Column="40" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Master_WalkState.cs" Line="9" Column="2" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Medic_WalkState.cs" Line="5" Column="40" />
       <File FileName="Assets/_Scripts/battleLogic/IStateMachine.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/state/Mangler_HuntingState.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/state/WalkState.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/state/WalkState.cs" Line="29" Column="2" />
       <File FileName="Assets/_Scripts/battleLogic/state/HuntingState.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/state/IdleState.cs" Line="1" Column="1" />
       <File FileName="../../../Downloads/Readtxt.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/state/AttackState.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/state/Master_AttackState.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Master_AttackState.cs" Line="45" Column="14" />
       <File FileName="Assets/_Scripts/battleLogic/state/Assassinator_IdleState.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/state/Assassinator_HuntingState.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/state/Assassinator_AttackState.cs" Line="1" Column="1" />
@@ -45,7 +45,8 @@
       <File FileName="Assets/_Scripts/textReader/GameClassFactory.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/textReader/Ttxt_battle_character_info.cs" Line="1" Column="1" />
       <File FileName="Assets/StreamingAssets/data.txt" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/controller/ForceField.cs" Line="30" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/controller/ForceField.cs" Line="19" Column="10" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Medic_IdleState.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -54,7 +55,7 @@
             <Node name="_Scripts" expanded="True">
               <Node name="battleLogic" expanded="True">
                 <Node name="controller" expanded="True">
-                  <Node name="BattleManager.cs" selected="True" />
+                  <Node name="ForceField.cs" selected="True" />
                 </Node>
                 <Node name="state" expanded="True" />
               </Node>

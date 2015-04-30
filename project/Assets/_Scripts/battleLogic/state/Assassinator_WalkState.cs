@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Assassinator_WalkState : WalkState {
-    public override void ChangeState<T>(T Entity)
+	public override void ChangeToIdleState<T>(T Entity)
     {
         Entity.changeState(new Assassinator_IdleState());
     }
