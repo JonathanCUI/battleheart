@@ -48,7 +48,7 @@ public class Master_AttackState : AttackState
             else
             {
                 Entity.transform.LookAt(targetEnmy.getPosition());
-                Entity.playAnimation("punch");
+                Entity.playAnimation("skeleton_attack");
             }
 
         }

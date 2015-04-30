@@ -43,7 +43,7 @@ public class Master_HuntingState : HuntingState
             if (disx > Entity.AttackDistance)
             {
                 Entity.setAITowardsPoint(targetEnmy.getPosition());
-                Entity.playAnimation("walk");
+                Entity.playAnimation("skeleton_walk");
             }
             else
             {
@@ -51,7 +51,7 @@ public class Master_HuntingState : HuntingState
                 Entity.changeState(new Master_AttackState());
             }
 		} else {
-			Entity.playAnimation("idle");
+            Entity.playAnimation("skeleton_idle2");
 		}
 		
 	}

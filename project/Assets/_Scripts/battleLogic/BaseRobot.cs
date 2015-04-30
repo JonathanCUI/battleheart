@@ -32,7 +32,7 @@ public class BaseRobot : MonoBehaviour {
 	protected int allies;//同盟 0;1
 	protected BattleConfig.PriorityStrategy firstPriority;//技能释放第一选择
 	protected BattleConfig.PriorityStrategy secondPriority;//技能释放第二选择
-	protected string name; //名称 
+	protected string nickname; //名称 
 	protected int lifePoint;//生命 
 	protected int defence; //防御 
 	protected int attack;  //攻击 
@@ -202,6 +202,9 @@ public class BaseRobot : MonoBehaviour {
 		}
 	}
 
+	void OnCollisionEnter(Collision collision) {
+
+	}
 	/**
 	 * 初始化robot
 	 * */
@@ -216,7 +219,7 @@ public class BaseRobot : MonoBehaviour {
 	public void initIdentity(Ttxt_battle_character_info info){
 		this.attackDistance = info.AttackDistance;
 		this.attackType = (BattleConfig.AttackType)info.Type;
-        this.name=info.Name;
+        this.nickname=info.Name;
 	    this.lifePoint=info.LifePoint;
 	    this.defence=info.Defence;
 	    this.attack=info.Attack; 
@@ -230,7 +233,6 @@ public class BaseRobot : MonoBehaviour {
 
 		this.allies = info.Allies;
 
-        print(this.name + this.attackType + this.firstPriority + this.secondPriority);
 	}
 
 	public virtual void changeState(IState state){

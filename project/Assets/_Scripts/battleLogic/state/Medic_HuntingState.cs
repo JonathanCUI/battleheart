@@ -19,7 +19,7 @@ public class Medic_HuntingState : HuntingState
 		Dictionary<int,BaseRobot> opps = Entity.GameTargets;
 		if (opps != null && opps.Count!=0) {
 
-            Entity.changeState(new AttackState());
+            Entity.changeState(new Medic_TreatingState());
 			//Entity.playAnimation ("punch");
             //float relativeDistance=100000f,minDistance = 100000f;
             //int first_id=-1,second_id=-1;
@@ -39,7 +39,7 @@ public class Medic_HuntingState : HuntingState
             //}
 			//Entity.setMoveTowardsPoint(Entity.getPosition());
 		} else {
-			Entity.playAnimation("idle");
+            Entity.playAnimation("zombie_idle2");
 		}
 		
 	}

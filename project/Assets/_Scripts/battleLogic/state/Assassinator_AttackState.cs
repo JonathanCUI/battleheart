@@ -48,7 +48,7 @@ public class Assassinator_AttackState : AttackState
             else
             {
                 Entity.transform.LookAt(targetEnmy.getPosition());
-                Entity.playAnimation("punch");
+                Entity.playAnimation("ghost_attack_with_ball");
             }
 
         }

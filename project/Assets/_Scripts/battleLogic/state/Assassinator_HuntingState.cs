@@ -45,7 +45,7 @@ public class Assassinator_HuntingState : HuntingState
             if (disx > Entity.AttackDistance)
             {
                 Entity.setAITowardsPoint(targetEnmy.getPosition());
-                Entity.playAnimation("walk");
+                Entity.playAnimation("ghost_idle_side_to_side");
             }
             else
             {
@@ -53,7 +53,7 @@ public class Assassinator_HuntingState : HuntingState
                 Entity.changeState(new Assassinator_AttackState());
             }
 		} else {
-			Entity.playAnimation("idle");
+            Entity.playAnimation("ghost_toss_ball");
 		}
 		
 	}

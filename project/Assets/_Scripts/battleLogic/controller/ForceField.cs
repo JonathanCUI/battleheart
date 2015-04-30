@@ -7,23 +7,23 @@ public class ForceField : MonoBehaviour {
     {
         if (Co.tag == "character")
         {
-            Co.GetComponent<BaseRobot>().setMoveTowardsPoint(Co.transform.position);
+            Co.GetComponent<BaseRobot>().setMoveTowardsPoint(new Vector3(Co.transform.position.x, 0, Co.transform.position.z /Mathf.Abs(Co.transform.position.z)*120));
         }
     }
 
-    void OnTriggerStay(Collider Co)
-    {
-        if (Co.tag == "character")
-        {
-            Co.GetComponent<BaseRobot>().setMoveTowardsPoint(new Vector3(Co.transform.position.x, 0, 0));
-        }
-    }
+    //void OnTriggerStay(Collider Co)
+    //{
+    //    if (Co.tag == "character")
+    //    {
+    //        Co.GetComponent<BaseRobot>().setMoveTowardsPoint(new Vector3(Co.transform.position.x, 0, Co.transform.position.z / Mathf.Abs(Co.transform.position.z) * 110));
+    //    }
+    //}
 
-    void OnTriggerExit(Collider Co)
-    {
-        if (Co.tag == "character")
-        {
-            Co.GetComponent<BaseRobot>().setMoveTowardsPoint(Co.transform.position);
-        }
-    }
+    //void OnTriggerExit(Collider Co)
+    //{
+    //    if (Co.tag == "character")
+    //    {
+    //        Co.GetComponent<BaseRobot>().setMoveTowardsPoint(Co.transform.position);
+    //    }
+    //}
 }
