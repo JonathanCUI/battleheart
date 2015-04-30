@@ -5,7 +5,7 @@ public class Master_WalkState : WalkState {
 	
 	public Master_WalkState(){
 
-		walk="zombie_walk";
+		walk="skeleton_walk";
 	}
 
 	public override void ChangeToIdleState<T>(T Entity)

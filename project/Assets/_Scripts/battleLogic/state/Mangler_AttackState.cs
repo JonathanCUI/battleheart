@@ -48,7 +48,7 @@ public class Mangler_AttackState : AttackState
             else
             {
                 Entity.transform.LookAt(targetEnmy.getPosition());
-                Entity.playAnimation("attack");
+                Entity.playAnimation("punch");
             }
 
         }

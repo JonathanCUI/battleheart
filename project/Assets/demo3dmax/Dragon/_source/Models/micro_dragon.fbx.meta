@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: e5b3c514437d42b49af17b91a81a8b92
 ModelImporter:
-  serializedVersion: 15
+  serializedVersion: 16
   fileIDToRecycleName:
     100000: micro_dragon
     100002: //RootNode
@@ -40,7 +40,7 @@ ModelImporter:
     4300000: micro_dragon
     4300002: micro_dragon_clean:tongue
     4300004: micro_dragon_clean:eyes
-    7400000: Take 001
+    7400000: dragon_fly
     7400002: idle
     7400004: bind
     7400006: bite
@@ -88,6 +88,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
+    motionNodeName: 
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
@@ -537,6 +538,66 @@ ModelImporter:
       transformMask: []
       maskType: 0
       maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: dragon_fly
+      takeName: Take 001
+      firstFrame: 222
+      lastFrame: 238.5
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: micro_dragon
+        weight: 1
+      - path: micro_dragon_clean:eyes
+        weight: 1
+      - path: micro_dragon_clean:root_drag
+        weight: 1
+      - path: micro_dragon_clean:root_drag/micro_dragon_clean:body_drag
+        weight: 1
+      - path: micro_dragon_clean:root_drag/micro_dragon_clean:body_drag/micro_dragon_clean:head_drag
+        weight: 1
+      - path: micro_dragon_clean:root_drag/micro_dragon_clean:body_drag/micro_dragon_clean:head_drag/micro_dragon_clean:brows_drag
+        weight: 1
+      - path: micro_dragon_clean:root_drag/micro_dragon_clean:body_drag/micro_dragon_clean:head_drag/micro_dragon_clean:eyes_drag
+        weight: 1
+      - path: micro_dragon_clean:root_drag/micro_dragon_clean:body_drag/micro_dragon_clean:head_drag/micro_dragon_clean:left_wing_drag
+        weight: 1
+      - path: micro_dragon_clean:root_drag/micro_dragon_clean:body_drag/micro_dragon_clean:head_drag/micro_dragon_clean:right_wing_drag
+        weight: 1
+      - path: micro_dragon_clean:root_drag/micro_dragon_clean:body_drag/micro_dragon_clean:head_drag/micro_dragon_clean:snout_drag
+        weight: 1
+      - path: micro_dragon_clean:root_drag/micro_dragon_clean:body_drag/micro_dragon_clean:left_shoulder_drag
+        weight: 1
+      - path: micro_dragon_clean:root_drag/micro_dragon_clean:body_drag/micro_dragon_clean:left_shoulder_drag/micro_dragon_clean:left_arm_drag
+        weight: 1
+      - path: micro_dragon_clean:root_drag/micro_dragon_clean:body_drag/micro_dragon_clean:right_shoulder_drag
+        weight: 1
+      - path: micro_dragon_clean:root_drag/micro_dragon_clean:body_drag/micro_dragon_clean:right_shoulder_drag/micro_dragon_clean:right_arm_drag
+        weight: 1
+      - path: micro_dragon_clean:root_drag/micro_dragon_clean:body_drag/micro_dragon_clean:tail_drag
+        weight: 1
+      - path: micro_dragon_clean:tongue
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -573,4 +634,5 @@ ModelImporter:
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 1
+  additionalBone: 0
   userData: 
