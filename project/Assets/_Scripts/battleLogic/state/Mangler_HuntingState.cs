@@ -37,9 +37,20 @@ public class Mangler_HuntingState : HuntingState {
 					minDistance = dis;
 				}
 			}
-			Entity.setAITowardsPoint(opps[first_id!=-1?first_id:second_id].getPosition());
+            BaseRobot targetEnmy = opps[first_id != -1 ? first_id : second_id];
+            float disx = Vector3.Distance(Entity.getPosition(), targetEnmy.getPosition());
+            if (disx > Entity.AttackDistance)
+            {
+                Entity.setAITowardsPoint(targetEnmy.getPosition());
+                Entity.playAnimation("walk");
+            }
+            else
+            {
+                Entity.setAITowardsPoint(Entity.getPosition());
+                Entity.changeState(new Mangler_AttackState());
+            }
 		} else {
-			Entity.playAnimation("idle");
+            Entity.playAnimation("idle1");
 		}
 	}
 

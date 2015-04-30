@@ -6,4 +6,16 @@ public class Master_WalkState : WalkState {
     {
         Entity.changeState(new Master_IdleState());
     }
+
+    public override void Execute<T>(T Entity)
+    {
+        if (!Entity.userPointed())
+        {
+            ChangeState(Entity);
+        }
+        else
+        {
+            Entity.playAnimation("skeleton_walk");
+        }
+    }
 }

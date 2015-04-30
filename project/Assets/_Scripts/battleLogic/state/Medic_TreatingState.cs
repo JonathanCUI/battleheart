@@ -10,7 +10,7 @@ public class Medic_TreatingState : AttackState
 
     public override void AttackingTarget<T>(T Entity)
     {
-        Entity.playAnimation("punch");
+        Entity.playAnimation("zombie_bite");
     }
 
 }

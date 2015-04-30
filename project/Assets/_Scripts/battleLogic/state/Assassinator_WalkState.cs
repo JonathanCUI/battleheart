@@ -6,4 +6,16 @@ public class Assassinator_WalkState : WalkState {
     {
         Entity.changeState(new Assassinator_IdleState());
     }
+
+    public override void Execute<T>(T Entity)
+    {
+        if (!Entity.userPointed())
+        {
+            ChangeState(Entity);
+        }
+        else
+        {
+            Entity.playAnimation("ghost_idle_side_to_side");
+        }
+    }
 }

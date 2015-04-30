@@ -6,4 +6,15 @@ public class Medic_WalkState : WalkState {
     {
         Entity.changeState(new Medic_IdleState());
     }
+    public override void Execute<T>(T Entity)
+    {
+        if (!Entity.userPointed())
+        {
+            ChangeState(Entity);
+        }
+        else
+        {
+            Entity.playAnimation("zombie_walk");
+        }
+    }
 }
