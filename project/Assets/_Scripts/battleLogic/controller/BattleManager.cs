@@ -18,6 +18,7 @@ public class BattleManager : MonoBehaviour {
 	private int increasingID=0;//自增id
 	private int controllingID=-1;//当前选中robot id
 	private bool isInit;
+	private bool isDraging = false;
 
 	private Dictionary<int,BaseRobot> heroMap =new Dictionary<int, BaseRobot>();
 	
@@ -43,51 +44,60 @@ public class BattleManager : MonoBehaviour {
 			isInit=true;
 			return;
 		}
-		if (Input.GetMouseButtonDown (0)) {
-			Vector3 ms = Input.mousePosition;
-            RaycastHit uiHit;
-            if (UICamera.currentCamera)
-            {
-                Ray rayui = UICamera.currentCamera.ScreenPointToRay(ms);
-                if (Physics.Raycast(rayui, out uiHit))
-                {
-                    if (uiHit.collider.gameObject.tag == "UI")
-                    {
-                        return;
-                    }
-                }
-            }
-
-
-			Ray ray = Camera.main.ScreenPointToRay (ms);
-			RaycastHit hitinfo;
-			bool iscast = Physics.Raycast (ray,out hitinfo,Mathf.Infinity,layerMask);
-			if (iscast) {
-				Debug.Log(hitinfo.collider.gameObject.name);
-				BaseRobot robot = (BaseRobot)hitinfo.collider.gameObject.GetComponent<HeroRobot> ();
-				if(robot!=null){
-					if(this.controllingID==robot.getID()){//取消选中点击
-						robot.setHalo(false);
-						this.controllingID=-1;
-					}else{//选中点击
-						if(heroMap.ContainsKey(controllingID)){
-							heroMap[controllingID].setHalo(false);
-						}
-					    robot.setHalo(true);
-						this.controllingID=robot.getID();
-					}
-				}
-				else{
-                        if (heroMap.ContainsKey(controllingID))
-                        {
-                            robot = heroMap[controllingID];
-                            robot.setMoveTowardsPoint(hitinfo.point);
-                        }
-				}
-			}
-			
-		}
+//		if (Input.GetMouseButtonDown (0)) {
+//			Vector3 ms = Input.mousePosition;
+//            RaycastHit uiHit;
+//            if (UICamera.currentCamera)
+//            {
+//                Ray rayui = UICamera.currentCamera.ScreenPointToRay(ms);
+//                if (Physics.Raycast(rayui, out uiHit))
+//                {
+//                    if (uiHit.collider.gameObject.tag == "UI")
+//                    {
+//                        return;
+//                    }
+//                }
+//            }
+//
+//
+//			Ray ray = Camera.main.ScreenPointToRay (ms);
+//			RaycastHit hitinfo;
+//			bool iscast = Physics.Raycast (ray,out hitinfo,Mathf.Infinity,layerMask);
+//			if (iscast) {
+//				Debug.Log(hitinfo.collider.gameObject.name);
+//				BaseRobot robot = (BaseRobot)hitinfo.collider.gameObject.GetComponent<HeroRobot> ();
+//				if(robot!=null){
+//					if(this.controllingID==robot.getID()){//取消选中点击
+//						robot.setHalo(false);
+//						this.controllingID=-1;
+//					}else{//选中点击
+//						if(heroMap.ContainsKey(controllingID)){
+//							heroMap[controllingID].setHalo(false);
+//						}
+//					    robot.setHalo(true);
+//						this.controllingID=robot.getID();
+//					}
+//				}
+//				else{
+//                        if (heroMap.ContainsKey(controllingID))
+//                        {
+//                            robot = heroMap[controllingID];
+//                            robot.setMoveTowardsPoint(hitinfo.point);
+//                        }
+//				}
+//			}
+//			
+//		}
 	}
+
+//	void OnMouseDrag(){
+//		print ("5555555555555");
+//		isDraging = true;
+//	}
+//
+//	void OnMouseUp(){
+//		isDraging = false;
+//	}
 
 	/**
 	 * 初始场景阵型
@@ -97,9 +107,6 @@ public class BattleManager : MonoBehaviour {
 		int leftOffset = 500;
 		int rightOffset = 500;
 
-
-
-
 		/*
 		 * 己方阵营
 		 * */
@@ -108,9 +115,9 @@ public class BattleManager : MonoBehaviour {
 		BaseRobot robot = (BaseRobot)obj.GetComponent<Medic> ();
 		//robot.initIdentity (-1, BattleConfig.AttackType.SUPPORT, 0, BattleConfig.PriorityStrategy.SELF_LIFE, BattleConfig.PriorityStrategy.LEAST_LIFE);
 
-        robot.Allies = 0;
         Ttxt_battle_character_info character_info;
         Ttxt_battle_character_info.DATA.TryGetValue(5001, out character_info);
+		character_info.Allies = 0;
         robot.initIdentity(character_info);
 
 		robot.SetID (increasingID++);
@@ -123,8 +130,8 @@ public class BattleManager : MonoBehaviour {
 		robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
 		//robot.initIdentity (-1, BattleConfig.AttackType.SUPPORT, 0, BattleConfig.PriorityStrategy.SELF_EFFECT, BattleConfig.PriorityStrategy.NO_EFFECT);
 
-        robot.Allies = 0;
         Ttxt_battle_character_info.DATA.TryGetValue(6001, out character_info);
+		character_info.Allies = 0;
         robot.initIdentity(character_info);
 
 		robot.SetID (increasingID++);
@@ -136,8 +143,8 @@ public class BattleManager : MonoBehaviour {
 		robot = (BaseRobot)obj.GetComponent<Master> ();
 		//robot.initIdentity (1000, BattleConfig.AttackType.LONG, 0, BattleConfig.PriorityStrategy.SHORT, BattleConfig.PriorityStrategy.CLOSTEST);
 
-        robot.Allies = 0;
         Ttxt_battle_character_info.DATA.TryGetValue(4001, out character_info);
+		character_info.Allies = 0;
         robot.initIdentity(character_info);
 
 		robot.SetID (increasingID++);
@@ -149,8 +156,8 @@ public class BattleManager : MonoBehaviour {
 		robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
 		//robot.initIdentity (1000, BattleConfig.AttackType.LONG, 0, BattleConfig.PriorityStrategy.LONG, BattleConfig.PriorityStrategy.CLOSTEST);
 
-        robot.Allies = 0;
         Ttxt_battle_character_info.DATA.TryGetValue(3001, out character_info);
+		character_info.Allies = 0;
         robot.initIdentity(character_info);
 
 		robot.SetID (increasingID++);
@@ -162,8 +169,8 @@ public class BattleManager : MonoBehaviour {
 		robot = (BaseRobot)obj.GetComponent<Assassinator> ();
 		//robot.initIdentity (100, BattleConfig.AttackType.SHORT, 0, BattleConfig.PriorityStrategy.LONG, BattleConfig.PriorityStrategy.CLOSTEST);
 
-        robot.Allies = 0;
         Ttxt_battle_character_info.DATA.TryGetValue(2001, out character_info);
+		character_info.Allies = 0;
         robot.initIdentity(character_info);
 
 		robot.SetID (increasingID++);
@@ -175,8 +182,8 @@ public class BattleManager : MonoBehaviour {
 		robot = (BaseRobot)obj.GetComponent<Mangler> ();
 		//robot.initIdentity (100, BattleConfig.AttackType.SHORT, 0, BattleConfig.PriorityStrategy.SHORT, BattleConfig.PriorityStrategy.CLOSTEST);
 
-        robot.Allies = 0;
         Ttxt_battle_character_info.DATA.TryGetValue(1001, out character_info);
+		character_info.Allies = 0;
         robot.initIdentity(character_info);
 
 		robot.SetID (increasingID++);
@@ -192,8 +199,8 @@ public class BattleManager : MonoBehaviour {
 		robot = (BaseRobot)obj.GetComponent<Medic> ();
 		//robot.initIdentity (-1, BattleConfig.AttackType.SUPPORT, 1, BattleConfig.PriorityStrategy.SELF_LIFE, BattleConfig.PriorityStrategy.LEAST_LIFE);
 
-        robot.Allies = 1;
         Ttxt_battle_character_info.DATA.TryGetValue(5001, out character_info);
+		character_info.Allies = 1;
         robot.initIdentity(character_info);
 
 		robot.SetID (increasingID++);
@@ -205,8 +212,8 @@ public class BattleManager : MonoBehaviour {
 		robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
 		//robot.initIdentity (-1, BattleConfig.AttackType.SUPPORT, 1, BattleConfig.PriorityStrategy.SELF_EFFECT, BattleConfig.PriorityStrategy.NO_EFFECT);
 
-        robot.Allies = 1;
         Ttxt_battle_character_info.DATA.TryGetValue(6001, out character_info);
+		character_info.Allies = 1;
         robot.initIdentity(character_info);
 
 		robot.SetID (increasingID++);
@@ -218,8 +225,8 @@ public class BattleManager : MonoBehaviour {
 		robot = (BaseRobot)obj.GetComponent<Master> ();
 		//robot.initIdentity (1000, BattleConfig.AttackType.LONG, 1, BattleConfig.PriorityStrategy.SHORT, BattleConfig.PriorityStrategy.CLOSTEST);
 
-        robot.Allies = 1;
         Ttxt_battle_character_info.DATA.TryGetValue(4001, out character_info);
+		character_info.Allies = 1;
         robot.initIdentity(character_info);
 
 		robot.SetID (increasingID++);
@@ -231,8 +238,8 @@ public class BattleManager : MonoBehaviour {
 		robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
 		//robot.initIdentity (1000, BattleConfig.AttackType.LONG, 1, BattleConfig.PriorityStrategy.LONG, BattleConfig.PriorityStrategy.CLOSTEST);
 
-        robot.Allies = 1;
         Ttxt_battle_character_info.DATA.TryGetValue(3001, out character_info);
+		character_info.Allies = 1;
         robot.initIdentity(character_info);
 
 		robot.SetID (increasingID++);
@@ -244,8 +251,8 @@ public class BattleManager : MonoBehaviour {
 		robot = (BaseRobot)obj.GetComponent<Assassinator> ();
 		//robot.initIdentity (100, BattleConfig.AttackType.SHORT, 1, BattleConfig.PriorityStrategy.LONG, BattleConfig.PriorityStrategy.CLOSTEST);
 
-        robot.Allies = 1;
         Ttxt_battle_character_info.DATA.TryGetValue(2001, out character_info);
+		character_info.Allies = 1;
         robot.initIdentity(character_info);
 
 		robot.SetID (increasingID++);
@@ -257,8 +264,8 @@ public class BattleManager : MonoBehaviour {
 		robot = (BaseRobot)obj.GetComponent<Mangler> ();
 		//robot.initIdentity (100, BattleConfig.AttackType.SHORT, 1, BattleConfig.PriorityStrategy.SHORT, BattleConfig.PriorityStrategy.CLOSTEST);
 
-        robot.Allies = 1;
         Ttxt_battle_character_info.DATA.TryGetValue(1001, out character_info);
+		character_info.Allies = 1;
         robot.initIdentity(character_info);
 
 		robot.SetID (increasingID++);

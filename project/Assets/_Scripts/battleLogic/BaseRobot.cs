@@ -21,6 +21,8 @@ public class BaseRobot : MonoBehaviour {
 	//protected Quaternion rotateTargetPoint;
 	//人物选中光圈
 	protected bool selectedHalo=false;
+	private LineRenderer walkPath;//
+	private Vector3 touchDown;
 
 	//指向一个状态实例的指针
 	protected IStateMachine m_pStateMachine;
@@ -135,6 +137,13 @@ public class BaseRobot : MonoBehaviour {
 	// Use this for initialization
 	protected void Start () {
 		(gameObject.GetComponent ("Halo") as Behaviour).enabled = false;
+		gameObject.AddComponent ("LineRenderer");
+		walkPath = (LineRenderer)gameObject.GetComponent ("LineRenderer"); 
+		walkPath.SetWidth(5, 5);
+		walkPath.SetVertexCount(2);
+		walkPath.SetColors (Color.yellow,Color.yellow);
+		walkPath.renderer.enabled = true;
+
 		m_transform = this.transform;
 		m_transform.Rotate (0,allies==0?90:-90,0);
 		moveTargetPoint = m_transform.position;
@@ -143,8 +152,9 @@ public class BaseRobot : MonoBehaviour {
 	// Update is called once per frame
 	protected void Update () {
 		m_pStateMachine.SMUpdate();
+
 		updateMovement ();
-//		isOjbSelected ();
+
 	}
 
 	public IStateMachine GetFSM ()
@@ -156,6 +166,42 @@ public class BaseRobot : MonoBehaviour {
 	protected void FixedUpdate(){
 
 	}
+
+	void OnMouseDown(){
+		touchDown = Input.mousePosition;
+	}
+
+	void OnMouseDrag(){
+		if (Vector3.Distance (touchDown, Input.mousePosition) > 10) {
+			Vector3 v = Input.mousePosition;
+			Ray ray = Camera.main.ScreenPointToRay (v);
+			RaycastHit hitinfo;
+			bool iscast = Physics.Raycast (ray, out hitinfo, Mathf.Infinity, (int)Mathf.Pow (2.0f, (float)LayerMask.NameToLayer ("plane")));
+			if (iscast && (int)(hitinfo.point.y) == 0) {
+				walkPath.SetVertexCount(2);
+				walkPath.SetPosition (0, m_transform.position);
+				walkPath.SetPosition (1, hitinfo.point);
+				return;
+			
+			}
+		}
+	}
+	
+	void OnMouseUp(){
+		if (Vector3.Distance(touchDown,Input.mousePosition)>10) {
+			Vector3 v = Input.mousePosition;
+			Ray ray = Camera.main.ScreenPointToRay (v);
+			RaycastHit hitinfo;
+			bool iscast = Physics.Raycast (ray,out hitinfo,Mathf.Infinity,(int)Mathf.Pow(2.0f,(float)LayerMask.NameToLayer("plane")));
+			if (iscast&& (int)(hitinfo.point.y)==0) {
+				walkPath.SetVertexCount(0);
+				this.setMoveTowardsPoint(hitinfo.point);
+				return;
+				
+			}
+		}
+	}
+
 	/**
 	 * 初始化robot
 	 * */
@@ -181,6 +227,8 @@ public class BaseRobot : MonoBehaviour {
         this.power = info.Power;
         this.firstPriority = (BattleConfig.PriorityStrategy)info.FirstPriority;
         this.secondPriority = (BattleConfig.PriorityStrategy)info.SecondPriority;
+
+		this.allies = info.Allies;
 
         print(this.name + this.attackType + this.firstPriority + this.secondPriority);
 	}
