@@ -13,6 +13,8 @@ public class BattleManager : MonoBehaviour {
 	public GameObject manglerTemp;
 	public GameObject masterTemp;
 	public GameObject medicTemp;
+    public GameObject rangerTemp;
+    public GameObject PriestTemp;
 
 	private int layerMask;//点击射线碰撞层id
 	private int increasingID=0;//自增id
@@ -103,7 +105,7 @@ public class BattleManager : MonoBehaviour {
 	 * 初始场景阵型
 	 * */
 	private void createCharaters(){
-		int unit = 5;
+		int unit = 7;
 		int leftOffset = 500;
 		int rightOffset = 500;
 
@@ -118,7 +120,7 @@ public class BattleManager : MonoBehaviour {
         Ttxt_battle_character_info character_info;
         Ttxt_battle_character_info.DATA.TryGetValue(5001, out character_info);
 		character_info.Allies = 0;
-        robot.initIdentity(character_info);
+        robot.initIdentity(Ttxt_battle_character_info.DATA[5001]);
 
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
@@ -126,7 +128,7 @@ public class BattleManager : MonoBehaviour {
 
 
 		//效果补助
-		obj = (GameObject)Instantiate (heroTemplate, new Vector3 ((-35*unit-leftOffset), 0, -7*unit), Quaternion.identity);
+		obj = (GameObject)Instantiate (PriestTemp, new Vector3 ((-35*unit-leftOffset), 0, -7*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
 		//robot.initIdentity (-1, BattleConfig.AttackType.SUPPORT, 0, BattleConfig.PriorityStrategy.SELF_EFFECT, BattleConfig.PriorityStrategy.NO_EFFECT);
 
@@ -152,7 +154,7 @@ public class BattleManager : MonoBehaviour {
 		heroMap.Add (robot.getID (), robot);
 
 		//远程物攻
-		obj = (GameObject)Instantiate (heroTemplate, new Vector3 (-25*unit-leftOffset, 0, -5*unit), Quaternion.identity);
+		obj = (GameObject)Instantiate (rangerTemp, new Vector3 (-25*unit-leftOffset, 0, -5*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
 		//robot.initIdentity (1000, BattleConfig.AttackType.LONG, 0, BattleConfig.PriorityStrategy.LONG, BattleConfig.PriorityStrategy.CLOSTEST);
 
@@ -208,7 +210,7 @@ public class BattleManager : MonoBehaviour {
 		heroMap.Add (robot.getID (), robot);
 		
 		//效果补助
-		obj = (GameObject)Instantiate (heroTemplate, new Vector3 ((35*unit+rightOffset), 0, -7*unit), Quaternion.identity);
+		obj = (GameObject)Instantiate (PriestTemp, new Vector3 ((35*unit+rightOffset), 0, -7*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
 		//robot.initIdentity (-1, BattleConfig.AttackType.SUPPORT, 1, BattleConfig.PriorityStrategy.SELF_EFFECT, BattleConfig.PriorityStrategy.NO_EFFECT);
 
@@ -234,7 +236,7 @@ public class BattleManager : MonoBehaviour {
 		heroMap.Add (robot.getID (), robot);
 		
 		//远程物攻
-		obj = (GameObject)Instantiate (heroTemplate, new Vector3 (25*unit+rightOffset, 0, -5*unit), Quaternion.identity);
+		obj = (GameObject)Instantiate (rangerTemp, new Vector3 (25*unit+rightOffset, 0, -5*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
 		//robot.initIdentity (1000, BattleConfig.AttackType.LONG, 1, BattleConfig.PriorityStrategy.LONG, BattleConfig.PriorityStrategy.CLOSTEST);
 

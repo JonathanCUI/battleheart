@@ -190,6 +190,8 @@
      <Compile Include="Assets\_Scripts\battleLogic\character\Mangler.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\character\Master.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\character\Medic.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\character\Priest.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\character\Ranger.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\controller\BattleConfig.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\controller\BattleManager.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\controller\ForceField.cs" />
@@ -214,6 +216,14 @@
      <Compile Include="Assets\_Scripts\battleLogic\state\Medic_IdleState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Medic_TreatingState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Medic_WalkState.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\state\Priest_AttackState.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\state\Priest_HuntingState.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\state\Priest_IdleState.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\state\Priest_WalkState.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\state\Ranger_AttackState.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\state\Ranger_HuntingState.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\state\Ranger_IdleState.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\state\Ranger_WalkState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\WalkState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\ui\AudioManager.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\ui\BattleUIManager.cs" />
