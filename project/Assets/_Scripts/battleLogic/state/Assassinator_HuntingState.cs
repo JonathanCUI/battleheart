@@ -14,48 +14,24 @@ public class Assassinator_HuntingState : HuntingState
     {
         Entity.changeState(new Assassinator_WalkState());
     }
-    //寻找对手AI策略
-    public override void huntingStrategy<T>(T Entity)
-    {
-		Dictionary<int,BaseRobot> opps = Entity.GameTargets;
-		if (opps != null && opps.Count!=0) {
-			//Entity.playAnimation ("walk");
-			float relativeDistance=100000f,minDistance = 100000f;
-			int first_id=-1,second_id=-1;
-			foreach (KeyValuePair<int,BaseRobot> kv in opps) {
-                
-				float dis = Vector3.Distance (Entity.getPosition (), kv.Value.getPosition ());
-                if (kv.Value.AttackType == BattleConfig.AttackType.LONG || kv.Value.AttackType == BattleConfig.AttackType.SUPPORT)
-                {//判断远程或辅助 选取距离最近的目标
-                    
-					if(dis<relativeDistance){
-						first_id=kv.Key;
-						relativeDistance=dis;
-					}
-				}
-			    
-				if (dis < minDistance) {//选取距离最近的目标
-					second_id = kv.Key;
-					minDistance = dis;
-				}
-			}
-            BaseRobot targetEnmy = opps[first_id != -1 ? first_id : second_id];
 
-            float disx = Vector3.Distance(Entity.getPosition(), targetEnmy.getPosition());
-            if (disx > Entity.AttackDistance)
-            {
-                Entity.setAITowardsPoint(targetEnmy.getPosition());
-                Entity.playAnimation("ghost_idle_side_to_side");
-            }
-            else
-            {
-                Entity.setAITowardsPoint(Entity.getPosition());
-                Entity.changeState(new Assassinator_AttackState());
-            }
-		} else {
-            Entity.playAnimation("ghost_toss_ball");
-		}
-		
+
+	//状态变换为idle
+	public virtual void changeToIdleState<T> (T Entity) where T:BaseRobot
+	{
+		Entity.changeState(new Assassinator_IdleState());
+	}
+	
+	//状态变换为attack
+	public virtual void changeToATKState<T> (T Entity) where T:BaseRobot
+	{
+		Entity.changeState(new Assassinator_AttackState());
+	}
+	
+	//寻找对手AI策略
+	public virtual void huntingStrategy<T> (T Entity) where T:BaseRobot
+	{
+		baseHuntingStrategy (Entity, BattleConfig.AttackType.LONG);
 	}
 
 }

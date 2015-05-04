@@ -7,7 +7,7 @@ using System.Collections;
 public class Medic_IdleState : IdleState
 {
 
-    public override void ChangeState<T>(T Entity)
+	public override void ChangeToHuntingState<T>(T Entity)
     {
         Entity.changeState(new Medic_TreatingState());
     }

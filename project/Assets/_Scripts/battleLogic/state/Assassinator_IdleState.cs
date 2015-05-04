@@ -7,7 +7,7 @@ using System.Collections;
 public class Assassinator_IdleState : IdleState
 {
 
-    public override void ChangeState<T>(T Entity)
+	public override void ChangeToHuntingState<T>(T Entity)
     {
         Entity.changeState(new Assassinator_HuntingState());
     }

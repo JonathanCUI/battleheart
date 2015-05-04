@@ -7,7 +7,7 @@ using System.Collections;
 public class Ranger_IdleState : IdleState
 {
 
-    public override void ChangeState<T>(T Entity)
+	public override void ChangeToHuntingState<T>(T Entity)
     {
         Entity.changeState(new Ranger_HuntingState());
     }

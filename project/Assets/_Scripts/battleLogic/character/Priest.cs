@@ -3,7 +3,7 @@ using System.Collections;
 
 /**
  * Desmond
- * 刺客
+ * 效果辅助
  * */
 public class Priest : HeroRobot
 {
