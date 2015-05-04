@@ -11,7 +11,7 @@ public class Mangler_HuntingState : HuntingState {
 
 	//状态变换为walk
 	public override void changeToWalkState<T> (T Entity)
-	{
+    {
 		Entity.changeState(new Mangler_WalkState());
 	}
 

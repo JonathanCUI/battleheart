@@ -38,7 +38,6 @@ public class BattleUIManager : MonoBehaviour {
         
         UIEventListener.Get(StopButton).onClick = StopButtonClick;
         TimeLimitShowStart();
-
         dataheroxstatic = dataherox;
     }
 
@@ -50,6 +49,7 @@ public class BattleUIManager : MonoBehaviour {
 
     }
 
+    
 
     void test()
     {

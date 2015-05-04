@@ -17,19 +17,19 @@ public class Assassinator_HuntingState : HuntingState
 
 
 	//状态变换为idle
-	public virtual void changeToIdleState<T> (T Entity) where T:BaseRobot
+    public override void changeToIdleState<T>(T Entity)
 	{
 		Entity.changeState(new Assassinator_IdleState());
 	}
 	
 	//状态变换为attack
-	public virtual void changeToATKState<T> (T Entity) where T:BaseRobot
+    public override void changeToATKState<T>(T Entity,T enemy)
 	{
-		Entity.changeState(new Assassinator_AttackState());
+		Entity.changeState(new Assassinator_AttackState(enemy));
 	}
 	
 	//寻找对手AI策略
-	public virtual void huntingStrategy<T> (T Entity) where T:BaseRobot
+    public override void huntingStrategy<T>(T Entity)
 	{
 		baseHuntingStrategy (Entity, BattleConfig.AttackType.LONG);
 	}

@@ -30,7 +30,16 @@ public class Priest_HuntingState : HuntingState
 	//寻找对手AI策略
 	public override void huntingStrategy<T> (T Entity)
 	{
-		Entity.changeState(new Priest_AttackState());
+        Dictionary<int, BaseRobot> opps = Entity.GameTargets;
+        if (opps != null && opps.Count != 0)
+        {
+
+            changeToATKState(Entity);
+        }
+        else
+        {
+            changeToIdleState(Entity);
+        }
 	}
 
 }

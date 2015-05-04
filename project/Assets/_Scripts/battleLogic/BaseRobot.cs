@@ -42,9 +42,38 @@ public class BaseRobot : MonoBehaviour {
 	protected int attribute;//属性 
 	protected int attrEffect;//属性攻击 
 	protected int power;     //战斗力
+
+    protected int currentlifepoint;     //当前血量
 	
 	protected Dictionary<int,BaseRobot> gameTargets;//技能释放的对象
-	
+
+
+    public int LifePoint
+    {
+        get
+        {
+            return lifePoint;
+        }
+        set
+        {
+            lifePoint = value;
+        }
+    }
+
+
+    public int CurrentLifePoint
+    {
+        get
+        {
+            return currentlifepoint;
+        }
+        set
+        {
+            currentlifepoint = value;
+        }
+    }
+
+
 	
 	public int AttackDistance 
 	{
@@ -300,6 +329,11 @@ public class BaseRobot : MonoBehaviour {
 	public bool userPointed(){
 		return isPointed;
 	}
+
+    public bool AiPointed()
+    {
+        return aiPointed;
+    }
 
 	public bool isMeetingEnemy(){
 		if (isTouched) {

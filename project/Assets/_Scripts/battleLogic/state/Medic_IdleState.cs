@@ -9,6 +9,6 @@ public class Medic_IdleState : IdleState
 
 	public override void ChangeToHuntingState<T>(T Entity)
     {
-        Entity.changeState(new Medic_TreatingState());
+        Entity.changeState(new Medic_HuntingState());
     }
 }

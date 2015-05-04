@@ -15,7 +15,7 @@ public class IdleState:IState {
 	
 	public virtual void Execute<T> (T Entity) where T:BaseRobot
 	{
-		//进入搜寻对手转态
+        //进入搜寻对手转态
 		ChangeToHuntingState (Entity);
 	}
 	

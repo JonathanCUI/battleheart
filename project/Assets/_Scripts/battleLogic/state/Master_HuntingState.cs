@@ -14,19 +14,19 @@ public class Master_HuntingState : HuntingState
         Entity.changeState(new Master_WalkState());
     }
 	//状态变换为idle
-	public virtual void changeToIdleState<T> (T Entity) where T:BaseRobot
+	public override void changeToIdleState<T> (T Entity)
 	{
 		Entity.changeState(new Master_IdleState());
 	}
 	
 	//状态变换为attack
-	public virtual void changeToATKState<T> (T Entity) where T:BaseRobot
+	public override void changeToATKState<T> (T Entity)
 	{
 		Entity.changeState(new Master_AttackState());
 	}
 	
 	//寻找对手AI策略
-	public virtual void huntingStrategy<T> (T Entity) where T:BaseRobot
+	public override void huntingStrategy<T> (T Entity)
 	{
 		baseHuntingStrategy (Entity, BattleConfig.AttackType.SHORT);
 	}
