@@ -21,7 +21,7 @@ public class HuntingState :IState {
 			return ;
 		}
 		if (Entity.isMeetingEnemy ()) {
-			changeToATKState();
+            changeToATKState(Entity);
 			return;
 		}
 		huntingStrategy (Entity);
