@@ -12,10 +12,13 @@ public class Mangler_AttackState : AttackState
         Entity.changeState(new Mangler_WalkState());
     }
 
+    public override void changeToHuntingState<T>(T Entity)
+    {
+        Entity.changeState(new Mangler_HuntingState());
+    }
 
     public override void AttackingTarget<T>(T Entity)
     {
-        Debug.Log("AttackingTarget");
         Entity.playAnimation("punch");
         baseAttackingTarget(Entity, BattleConfig.AttackType.SHORT);
     }

@@ -18,6 +18,10 @@ public class Ranger_AttackState : AttackState
         Entity.changeState(new Ranger_IdleState());
     }
 
+    public override void changeToHuntingState<T>(T Entity)
+    {
+        Entity.changeState(new Ranger_HuntingState());
+    }
     public override void AttackingTarget<T>(T Entity)
     {
        

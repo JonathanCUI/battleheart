@@ -15,8 +15,6 @@ public class WalkState :IState {
 	
 	public virtual void Execute<T> (T Entity) where T:BaseRobot
     {
-        
-       
         if (!Entity.userPointed())
         {
 			ChangeToIdleState(Entity);

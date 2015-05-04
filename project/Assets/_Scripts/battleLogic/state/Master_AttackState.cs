@@ -15,6 +15,11 @@ public class Master_AttackState : AttackState
         Entity.changeState(new Master_IdleState());
     }
 
+    public override void changeToHuntingState<T>(T Entity)
+    {
+        Entity.changeState(new Master_HuntingState());
+    }
+
     public override void AttackingTarget<T>(T Entity)
     {
         Entity.playAnimation("skeleton_attack");

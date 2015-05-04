@@ -17,6 +17,10 @@ public class Assassinator_AttackState : AttackState
     {
         Entity.changeState(new Assassinator_WalkState());
     }
+    public override void changeToHuntingState<T>(T Entity)
+    {
+        Entity.changeState(new Assassinator_HuntingState());
+    }
 
     public override void AttackingTarget<T>(T Entity)
     {

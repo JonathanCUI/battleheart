@@ -30,7 +30,6 @@ public class Mangler_HuntingState : HuntingState {
 	//寻找对手AI策略
 	public override void huntingStrategy<T> (T Entity)
 	{
-        Debug.Log("huntingStrategy");
 		baseHuntingStrategy (Entity, BattleConfig.AttackType.SHORT);
 	}
 

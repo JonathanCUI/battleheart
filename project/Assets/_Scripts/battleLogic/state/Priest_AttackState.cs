@@ -23,6 +23,10 @@ public class Priest_AttackState : AttackState
         baseAttackingTarget(Entity, BattleConfig.PriorityStrategy.SELF_LIFE);
     }
 
+    public override void changeToHuntingState<T>(T Entity)
+    {
+        Entity.changeState(new Priest_HuntingState());
+    }
     public virtual void baseAttackingTarget<T>(T Entity, BattleConfig.PriorityStrategy priorityStrategy) where T : BaseRobot
     {
         Dictionary<int, BaseRobot> opps = Entity.GameTargets;
