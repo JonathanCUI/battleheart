@@ -7,6 +7,7 @@ public class Ranger_WalkState : WalkState
 	public Ranger_WalkState(){
 		walk = "dragon_fly";
 	}
+
 	public override void ChangeToIdleState<T>(T Entity)
     {
         Entity.changeState(new Ranger_IdleState());

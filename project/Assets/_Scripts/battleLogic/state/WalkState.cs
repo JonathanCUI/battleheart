@@ -14,12 +14,14 @@ public class WalkState :IState {
 	}
 	
 	public virtual void Execute<T> (T Entity) where T:BaseRobot
-	{
-		if (!Entity.userPointed ()) {
+    {
+        
+       
+        if (!Entity.userPointed())
+        {
 			ChangeToIdleState(Entity);
-		} else {
-			Entity.playAnimation (walk);
 		}
+			Entity.playAnimation (walk);
 	}
 	
 	public virtual void Exit<T> (T Entity) where T:BaseRobot

@@ -15,8 +15,8 @@ public class IdleState:IState {
 	
 	public virtual void Execute<T> (T Entity) where T:BaseRobot
 	{
-		//进入搜寻对手转态
-		ChangeState (Entity);
+        //进入搜寻对手转态
+		ChangeToHuntingState (Entity);
 	}
 	
 	public virtual void Exit<T> (T Entity) where T:BaseRobot
@@ -24,7 +24,7 @@ public class IdleState:IState {
 		
 	}
 
-	public virtual void ChangeState<T>(T Entity) where T:BaseRobot
+	public virtual void ChangeToHuntingState<T>(T Entity) where T:BaseRobot
 	{
 		Entity.changeState (new HuntingState ());
 	}

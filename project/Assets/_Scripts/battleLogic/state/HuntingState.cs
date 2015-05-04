@@ -21,7 +21,7 @@ public class HuntingState :IState {
 			return ;
 		}
 		if (Entity.isMeetingEnemy ()) {
-            changeToATKState(Entity);
+			changeToATKState(Entity);
 			return;
 		}
 		huntingStrategy (Entity);
@@ -59,12 +59,11 @@ public class HuntingState :IState {
 	{
 		Dictionary<int,BaseRobot> opps = Entity.GameTargets;
 		if (opps != null && opps.Count!=0) {
-			Entity.playAnimation ("walk");
 			float relativeDistance=100000f,minDistance = 100000f;
 			int first_id=-1,second_id=-1;
 			foreach (KeyValuePair<int,BaseRobot> kv in opps) {
 				float dis = Vector3.Distance (Entity.getPosition (), kv.Value.getPosition ());
-				if (kv.Value.AttackType == atkType) {//判断近战 选取距离最近的目标
+				if (kv.Value.AttackType == atkType) {//判断首选攻击类型 选取距离最近的目标
 					if(dis<relativeDistance){
 						first_id=kv.Key;
 						relativeDistance=dis;

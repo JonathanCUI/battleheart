@@ -11,7 +11,7 @@ public class Mangler_HuntingState : HuntingState {
 
 	//状态变换为walk
 	public override void changeToWalkState<T> (T Entity)
-	{
+    {
 		Entity.changeState(new Mangler_WalkState());
 	}
 
@@ -30,6 +30,7 @@ public class Mangler_HuntingState : HuntingState {
 	//寻找对手AI策略
 	public override void huntingStrategy<T> (T Entity)
 	{
+        Debug.Log("huntingStrategy");
 		baseHuntingStrategy (Entity, BattleConfig.AttackType.SHORT);
 	}
 

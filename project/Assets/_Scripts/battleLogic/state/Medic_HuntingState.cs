@@ -13,35 +13,27 @@ public class Medic_HuntingState : HuntingState
     {
         Entity.changeState(new Medic_WalkState());
     }
+
+    public override void changeToIdleState<T>(T Entity)
+    {
+        Entity.changeState(new Medic_IdleState());
+    }
+
+    public override void changeToATKState<T>(T Entity)
+    {
+        Entity.changeState(new Medic_AttackState());
+    }
+
     //寻找对手AI策略
     public override void huntingStrategy<T>(T Entity)
     {	
 		Dictionary<int,BaseRobot> opps = Entity.GameTargets;
 		if (opps != null && opps.Count!=0) {
 
-            Entity.changeState(new Medic_TreatingState());
-			//Entity.playAnimation ("punch");
-            //float relativeDistance=100000f,minDistance = 100000f;
-            //int first_id=-1,second_id=-1;
-            //foreach (KeyValuePair<int,BaseRobot> kv in opps) {
-            //    float dis = Vector3.Distance (Entity.getPosition (), kv.Value.getPosition ());
-            //    if (kv.Value.AttackType == BattleConfig.AttackType.SHORT) {//判断近战 选取距离最近的目标
-            //        if(dis<relativeDistance){
-            //            first_id=kv.Key;
-            //            relativeDistance=dis;
-            //        }
-            //    }
-			    
-            //    if (dis < minDistance) {//选取距离最近的目标
-            //        second_id = kv.Key;
-            //        minDistance = dis;
-            //    }
-            //}
-			//Entity.setMoveTowardsPoint(Entity.getPosition());
+            changeToATKState(Entity);
 		} else {
-            Entity.playAnimation("zombie_idle2");
+            changeToIdleState(Entity);
 		}
-		
 	}
 
 }

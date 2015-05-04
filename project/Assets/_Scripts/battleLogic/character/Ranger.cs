@@ -3,7 +3,7 @@ using System.Collections;
 
 /**
  * Desmond
- * 刺客
+ * 远程物攻
  * */
 public class Ranger : HeroRobot {
 

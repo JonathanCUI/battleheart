@@ -1,16 +1,16 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/battleLogic/controller/BattleManager.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/battleLogic/state/Assassinator_AttackState.cs">
     <Files>
       <File FileName="Assets/_Scripts/textReader/Ttxt_battle_character_info.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/controller/BattleManager.cs" Line="38" Column="36" />
-      <File FileName="Assets/_Scripts/battleLogic/BaseRobot.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/controller/BattleManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/BaseRobot.cs" Line="309" Column="16" />
       <File FileName="Assets/_Scripts/battleLogic/ui/HUD_blood.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/ui/BattleUIManager.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/TextReader/Readtxt.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/state/Mangler_IdleState.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Mangler_IdleState.cs" Line="10" Column="43" />
       <File FileName="../../_Scripts/battleLogic/controller/BattleManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/character/Assassinator.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/character/Assassinator.cs" Line="31" Column="2" />
       <File FileName="Assets/_Scripts/network/NetFramework.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/network/GameNetManagement.cs" Line="1" Column="1" />
       <File FileName="Assets/Standard Assets/Character Controllers/Sources/Scripts/ThirdPersonController.js" Line="1" Column="1" />
@@ -30,32 +30,36 @@
       <File FileName="Assets/_Scripts/battleLogic/state/Master_WalkState.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/state/Medic_WalkState.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/IStateMachine.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/state/Mangler_HuntingState.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Mangler_HuntingState.cs" Line="18" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/state/WalkState.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/state/HuntingState.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/state/IdleState.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/state/HuntingState.cs" Line="56" Column="3" />
+      <File FileName="Assets/_Scripts/battleLogic/state/IdleState.cs" Line="27" Column="42" />
       <File FileName="../../../Downloads/Readtxt.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/state/AttackState.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/battleLogic/state/Master_AttackState.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/state/Assassinator_IdleState.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/state/Assassinator_HuntingState.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/state/Assassinator_AttackState.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Assassinator_IdleState.cs" Line="10" Column="43" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Assassinator_HuntingState.cs" Line="19" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Assassinator_AttackState.cs" Line="30" Column="48" />
       <File FileName="Assets/_Scripts/battleLogic/state/Medic_TreatingState.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/TextReader/TxtClassFactory.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/TextReader/TxtData.cs" Line="1" Column="1" />
       <File FileName="Assets/_Scripts/textReader/GameClassFactory.cs" Line="1" Column="1" />
       <File FileName="Assets/StreamingAssets/data.txt" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/controller/ForceField.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/state/Medic_IdleState.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/state/Mangler_AttackState.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/controller/ForceField.cs" Line="25" Column="12" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Medic_IdleState.cs" Line="15" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Mangler_AttackState.cs" Line="36" Column="40" />
       <File FileName="Assets/_Scripts/battleLogic/state/Priest_WalkState.cs" Line="24" Column="12" />
       <File FileName="Assets/_Scripts/battleLogic/state/Priest_AttackState.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/state/Priest_IdleState.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/state/Ranger_WalkState.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/character/Ranger.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/character/Priest.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/battleLogic/state/Ranger_HuntingState.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Priest_IdleState.cs" Line="10" Column="43" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Ranger_WalkState.cs" Line="10" Column="2" />
+      <File FileName="Assets/_Scripts/battleLogic/character/Ranger.cs" Line="6" Column="8" />
+      <File FileName="Assets/_Scripts/battleLogic/character/Priest.cs" Line="5" Column="11" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Ranger_HuntingState.cs" Line="34" Column="3" />
       <File FileName="Assets/_Scripts/battleLogic/state/Ranger_AttackState.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Master_HuntingState.cs" Line="28" Column="12" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Medic_HuntingState.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Priest_HuntingState.cs" Line="28" Column="3" />
+      <File FileName="Assets/_Scripts/battleLogic/state/Ranger_IdleState.cs" Line="15" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -64,17 +68,14 @@
             <Node name="_Scripts" expanded="True">
               <Node name="battleLogic" expanded="True">
                 <Node name="character" expanded="True" />
-                <Node name="controller" expanded="True">
-                  <Node name="BattleManager.cs" selected="True" />
+                <Node name="controller" expanded="True" />
+                <Node name="state" expanded="True">
+                  <Node name="Assassinator_IdleState.cs" selected="True" />
                 </Node>
-                <Node name="state" expanded="True" />
               </Node>
+              <Node name="network" expanded="True" />
               <Node name="textReader" expanded="True" />
             </Node>
-            <Node name="StreamingAssets" expanded="True" />
-          </Node>
-          <Node name="Assembly-CSharp-firstpass" expanded="True">
-            <Node name="StreamingAssets" expanded="True" />
           </Node>
         </State>
       </Pad>

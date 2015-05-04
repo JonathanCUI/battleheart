@@ -212,9 +212,9 @@
      <Compile Include="Assets\_Scripts\battleLogic\state\Master_HuntingState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Master_IdleState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Master_WalkState.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\state\Medic_AttackState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Medic_HuntingState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Medic_IdleState.cs" />
-     <Compile Include="Assets\_Scripts\battleLogic\state\Medic_TreatingState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Medic_WalkState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Priest_AttackState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Priest_HuntingState.cs" />
