@@ -5,7 +5,9 @@ using System.Collections;
  * 单纯步行 base
  * */
 public class WalkState :IState {
-	
+
+	protected string walk="walk";
+
 	public virtual void Enter<T> (T Entity) where T:BaseRobot
 	{
 		//Entity.playAnimation("walk");
@@ -14,9 +16,9 @@ public class WalkState :IState {
 	public virtual void Execute<T> (T Entity) where T:BaseRobot
 	{
 		if (!Entity.userPointed ()) {
-			ChangeState(Entity);
+			ChangeToIdleState(Entity);
 		} else {
-			Entity.playAnimation ("walk");
+			Entity.playAnimation (walk);
 		}
 	}
 	
@@ -25,7 +27,7 @@ public class WalkState :IState {
 		
 	}
 
-	public virtual void ChangeState<T>(T Entity) where T:BaseRobot
+	public virtual void ChangeToIdleState<T>(T Entity) where T:BaseRobot
 	{
 		Entity.changeState (new IdleState ());
 	}
