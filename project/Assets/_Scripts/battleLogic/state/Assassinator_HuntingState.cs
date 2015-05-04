@@ -23,9 +23,9 @@ public class Assassinator_HuntingState : HuntingState
 	}
 	
 	//状态变换为attack
-    public override void changeToATKState<T>(T Entity)
+    public override void changeToATKState<T>(T Entity,T enemy)
 	{
-		Entity.changeState(new Assassinator_AttackState());
+		Entity.changeState(new Assassinator_AttackState(enemy));
 	}
 	
 	//寻找对手AI策略

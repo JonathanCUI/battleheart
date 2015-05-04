@@ -8,6 +8,10 @@ using System.Collections.Generic;
  **/
 public class Assassinator_AttackState : AttackState
 {
+	public Assassinator_AttackState(BaseRobot t):base(t)
+    {
+		//enemy = t;
+	}
     public override void changeToWalkState<T>(T Entity)
     {
         Entity.changeState(new Assassinator_WalkState());
@@ -25,7 +29,7 @@ public class Assassinator_AttackState : AttackState
     public override void AttackingTarget<T>(T Entity)
     {
         Entity.playAnimation("ghost_attack_with_ball");
-        baseAttackingTarget(Entity, BattleConfig.AttackType.LONG);
+        baseAttackingTarget(Entity);
 
     }
 }

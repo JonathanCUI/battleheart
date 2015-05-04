@@ -22,9 +22,9 @@ public class Ranger_HuntingState : HuntingState
 	}
 	
 	//状态变换为attack
-	public override void changeToATKState<T> (T Entity)
+    public override void changeToATKState<T>(T Entity, T enemy)
 	{
-		Entity.changeState(new Ranger_AttackState());
+		Entity.changeState(new Ranger_AttackState(enemy));
 	}
 	
 	//寻找对手AI策略

@@ -22,9 +22,9 @@ public class Priest_HuntingState : HuntingState
 	}
 	
 	//状态变换为attack
-	public override void changeToATKState<T> (T Entity)
+    public override void changeToATKState<T>(T Entity, T enemy)
 	{
-		Entity.changeState(new Priest_AttackState());
+		Entity.changeState(new Priest_AttackState(enemy));
 	}
 	
 	//寻找对手AI策略
@@ -33,8 +33,41 @@ public class Priest_HuntingState : HuntingState
         Dictionary<int, BaseRobot> opps = Entity.GameTargets;
         if (opps != null && opps.Count != 0)
         {
+            int leastlifepoint = 100000000;
+            int first_id = -1;
+            BaseRobot targetteammate;           //治疗目标
+            if (Entity.CurrentLifePoint < Entity.LifePoint)
+            {
+                //治疗自身
+                targetteammate = Entity;
+            }
+            else
+            {
+                foreach (KeyValuePair<int, BaseRobot> kv in opps)
+                {
+                    if (kv.Value.CurrentLifePoint < kv.Value.LifePoint)
+                    {
+                        if (kv.Value.CurrentLifePoint < leastlifepoint)
+                        {
+                            first_id = kv.Key;
+                        }
+                    }
+                }
+                if (first_id != -1)
+                {
+                    targetteammate = opps[first_id];
+                }
+                else
+                {
+                    changeToIdleState(Entity);
+                    targetteammate = Entity;
+                }
 
-            changeToATKState(Entity);
+                Entity.transform.LookAt(targetteammate.getPosition());
+            }
+
+
+            changeToATKState(Entity, targetteammate);
         }
         else
         {

@@ -10,6 +10,11 @@ using System.Collections.Generic;
 public class AttackState : IState
 {
 
+	protected BaseRobot enemy;
+
+	public AttackState(BaseRobot t){
+		enemy = t;
+	}
 
     public virtual void Enter<T>(T Entity) where T : BaseRobot
     {
@@ -39,7 +44,7 @@ public class AttackState : IState
 
     public virtual void changeToHuntingState<T>(T Entity) where T : BaseRobot
     {
-        Entity.changeState(new WalkState());
+        Entity.changeState(new HuntingState());
     }
 
     //状态变换为idle
@@ -53,47 +58,26 @@ public class AttackState : IState
     {
     }
 
-    public virtual void baseAttackingTarget<T>(T Entity, BattleConfig.AttackType atkType) where T : BaseRobot
+    public virtual void baseAttackingTarget<T>(T Entity) where T : BaseRobot
     {
-        Dictionary<int, BaseRobot> opps = Entity.GameTargets;
-        if (opps != null && opps.Count != 0)
+        Entity.transform.LookAt(enemy.getPosition());
+        float disx = Vector3.Distance(Entity.getPosition(), enemy.getPosition());
+
+        if (disx > Entity.AttackDistance)
         {
-            float relativeDistance = 100000f, minDistance = 100000f;
-            int first_id = -1, second_id = -1;
-            foreach (KeyValuePair<int, BaseRobot> kv in opps)
-            {
-                float dis = Vector3.Distance(Entity.getPosition(), kv.Value.getPosition());
-                if (kv.Value.AttackType == atkType)
-                {//判断首选攻击类型 选取距离最近的目标
-                    if (dis < relativeDistance)
-                    {
-                        first_id = kv.Key;
-                        relativeDistance = dis;
-                    }
-                }
+            changeToHuntingState(Entity);
+        }
 
-                if (dis < minDistance)
-                {//选取距离最近的目标
-                    second_id = kv.Key;
-                    minDistance = dis;
-                }
-            }
-            BaseRobot targetEnmy = opps[first_id != -1 ? first_id : second_id];
-            float disx = Vector3.Distance(Entity.getPosition(), targetEnmy.getPosition());
-            if (disx > Entity.AttackDistance)
-            {
-                changeToHuntingState(Entity);
-            }
-            else
-            {
-                Entity.transform.LookAt(targetEnmy.getPosition());
-            }
-
+        if (enemy.CurrentLifePoint > 0)
+        {
+            //造成伤害
         }
         else
         {
-            changeToIdleState(Entity);
+            //changeToHuntingState(Entity);
         }
+
+
     }
 
 

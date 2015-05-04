@@ -7,6 +7,12 @@ using System.Collections.Generic;
  **/
 public class Mangler_AttackState : AttackState
 {
+    public Mangler_AttackState(BaseRobot t)
+        : base(t)
+    {
+		//enemy = t;
+	}
+
     public override void changeToWalkState<T>(T Entity)
     {
         Entity.changeState(new Mangler_WalkState());
@@ -20,7 +26,7 @@ public class Mangler_AttackState : AttackState
     public override void AttackingTarget<T>(T Entity)
     {
         Entity.playAnimation("punch");
-        baseAttackingTarget(Entity, BattleConfig.AttackType.SHORT);
+        baseAttackingTarget(Entity);
     }
 
     public override void changeToIdleState<T>(T Entity)

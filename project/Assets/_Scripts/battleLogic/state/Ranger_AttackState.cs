@@ -8,6 +8,12 @@ using System.Collections.Generic;
  **/
 public class Ranger_AttackState : AttackState
 {
+    public Ranger_AttackState(BaseRobot t)
+        : base(t)
+    {
+		//enemy = t;
+	}
+
     public override void changeToWalkState<T>(T Entity)
     {
         Entity.changeState(new Ranger_WalkState());
@@ -26,6 +32,6 @@ public class Ranger_AttackState : AttackState
     {
        
         Entity.playAnimation("dragon_bite");
-        baseAttackingTarget(Entity, BattleConfig.AttackType.LONG);
+        baseAttackingTarget(Entity);
     }
 }

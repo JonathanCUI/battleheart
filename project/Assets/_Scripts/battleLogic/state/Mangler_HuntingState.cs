@@ -22,9 +22,9 @@ public class Mangler_HuntingState : HuntingState {
 	}
 	
 	//状态变换为attack
-	public override void changeToATKState<T> (T Entity)
+	public override void changeToATKState<T> (T Entity,T enemy)
 	{
-		Entity.changeState(new Mangler_AttackState());
+        Entity.changeState(new Mangler_AttackState(enemy));
 	}
 
 	//寻找对手AI策略

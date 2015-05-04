@@ -4,6 +4,11 @@ using System.Collections.Generic;
 
 public class Master_AttackState : AttackState
 {
+    public Master_AttackState(BaseRobot t)
+        : base(t)
+    {
+		//enemy = t;
+	}
 
     public override void changeToWalkState<T>(T Entity)
     {
@@ -23,7 +28,7 @@ public class Master_AttackState : AttackState
     public override void AttackingTarget<T>(T Entity)
     {
         Entity.playAnimation("skeleton_attack");
-        baseAttackingTarget(Entity, BattleConfig.AttackType.SHORT);
+        baseAttackingTarget(Entity);
     }
 
 }
