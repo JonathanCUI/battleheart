@@ -200,6 +200,7 @@
      <Compile Include="Assets\_Scripts\battleLogic\state\Assassinator_IdleState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Assassinator_WalkState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\AttackState.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\state\DefenceState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Hero_GlobalState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\Hero_WalkState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\state\HuntingState.cs" />
