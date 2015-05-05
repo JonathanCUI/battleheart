@@ -49,7 +49,7 @@ public class Priest_AttackState : AttackState
         Entity.transform.LookAt(enemy.getPosition());
         //加状态
 
-        changeToHuntingState(Entity);
+        //changeToHuntingState(Entity);
 
     }
 

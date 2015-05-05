@@ -53,6 +53,7 @@ public class Medic_AttackState : AttackState
             //治疗
             enemy.CurrentLifePoint += (int)(enemy.LifePoint * 0.08f);
             enemy.CurrentLifePoint = enemy.CurrentLifePoint > enemy.LifePoint ? enemy.LifePoint : enemy.CurrentLifePoint;
+            ishit = true;
         }
         if (enemy.CurrentLifePoint == enemy.LifePoint)
         {

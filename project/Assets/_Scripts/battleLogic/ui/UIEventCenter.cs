@@ -26,6 +26,18 @@ public class UIEventCenter : MonoBehaviour {
     public static event showRewardEventHandler showRewardEvent;
 
 
+    //血条显示
+    public static void showBlood_msg(BaseRobot x)
+    {
+        if (showBloodEvent != null)
+        {
+            showBloodEvent(x);
+        }
+    }
+    public delegate void showBloodEventHandler(BaseRobot x);
+    public static event showBloodEventHandler showBloodEvent;
+
+
 
 
 }

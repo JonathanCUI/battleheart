@@ -236,6 +236,7 @@
      <Compile Include="Assets\_Scripts\battleLogic\state\WalkState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\ui\AudioManager.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\ui\BattleUIManager.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\ui\Blood.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\ui\BossBlood.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\ui\HUD_blood.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\ui\MainStageUIManager.cs" />

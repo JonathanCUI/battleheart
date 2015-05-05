@@ -123,7 +123,7 @@ public class BattleManager : MonoBehaviour,IRobot {
         Ttxt_battle_character_info.DATA.TryGetValue(5001, out character_info);
 		character_info.Allies = 0;
         robot.initIdentity(Ttxt_battle_character_info.DATA[5001]);
-
+        UIEventCenter.showBlood_msg(robot);
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
@@ -139,7 +139,7 @@ public class BattleManager : MonoBehaviour,IRobot {
         Ttxt_battle_character_info.DATA.TryGetValue(6001, out character_info);
 		character_info.Allies = 0;
         robot.initIdentity(character_info);
-
+        UIEventCenter.showBlood_msg(robot);
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
@@ -154,7 +154,7 @@ public class BattleManager : MonoBehaviour,IRobot {
         Ttxt_battle_character_info.DATA.TryGetValue(4001, out character_info);
 		character_info.Allies = 0;
         robot.initIdentity(character_info);
-
+        UIEventCenter.showBlood_msg(robot);
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
@@ -169,7 +169,7 @@ public class BattleManager : MonoBehaviour,IRobot {
         Ttxt_battle_character_info.DATA.TryGetValue(3001, out character_info);
 		character_info.Allies = 0;
         robot.initIdentity(character_info);
-
+        UIEventCenter.showBlood_msg(robot);
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
@@ -184,7 +184,7 @@ public class BattleManager : MonoBehaviour,IRobot {
         Ttxt_battle_character_info.DATA.TryGetValue(2001, out character_info);
 		character_info.Allies = 0;
         robot.initIdentity(character_info);
-
+        UIEventCenter.showBlood_msg(robot);
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
@@ -199,7 +199,7 @@ public class BattleManager : MonoBehaviour,IRobot {
         Ttxt_battle_character_info.DATA.TryGetValue(1001, out character_info);
 		character_info.Allies = 0;
         robot.initIdentity(character_info);
-
+        UIEventCenter.showBlood_msg(robot);
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
@@ -218,7 +218,7 @@ public class BattleManager : MonoBehaviour,IRobot {
         Ttxt_battle_character_info.DATA.TryGetValue(5001, out character_info);
 		character_info.Allies = 1;
         robot.initIdentity(character_info);
-
+        UIEventCenter.showBlood_msg(robot);
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
@@ -233,7 +233,7 @@ public class BattleManager : MonoBehaviour,IRobot {
         Ttxt_battle_character_info.DATA.TryGetValue(6001, out character_info);
 		character_info.Allies = 1;
         robot.initIdentity(character_info);
-
+        UIEventCenter.showBlood_msg(robot);
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
@@ -248,7 +248,7 @@ public class BattleManager : MonoBehaviour,IRobot {
         Ttxt_battle_character_info.DATA.TryGetValue(4001, out character_info);
 		character_info.Allies = 1;
         robot.initIdentity(character_info);
-
+        UIEventCenter.showBlood_msg(robot);
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
@@ -263,7 +263,7 @@ public class BattleManager : MonoBehaviour,IRobot {
         Ttxt_battle_character_info.DATA.TryGetValue(3001, out character_info);
 		character_info.Allies = 1;
         robot.initIdentity(character_info);
-
+        UIEventCenter.showBlood_msg(robot);
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
@@ -278,7 +278,7 @@ public class BattleManager : MonoBehaviour,IRobot {
         Ttxt_battle_character_info.DATA.TryGetValue(2001, out character_info);
 		character_info.Allies = 1;
         robot.initIdentity(character_info);
-
+        UIEventCenter.showBlood_msg(robot);
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
@@ -293,7 +293,7 @@ public class BattleManager : MonoBehaviour,IRobot {
         Ttxt_battle_character_info.DATA.TryGetValue(1001, out character_info);
 		character_info.Allies = 1;
         robot.initIdentity(character_info);
-
+        UIEventCenter.showBlood_msg(robot);
 		robot.SetID (increasingID++);
 		//robot.gameObject.layer = layerMask;
 		heroMap.Add (robot.getID (), robot);
@@ -330,6 +330,7 @@ public class BattleManager : MonoBehaviour,IRobot {
 		if (heroMap.ContainsKey (id)) {
 			BaseRobot r;
 			heroMap.TryGetValue(id,out r);
+            heroMap.Remove(id);
 			updateGameTargets ();
 			Destroy(r.gameObject);
 		}

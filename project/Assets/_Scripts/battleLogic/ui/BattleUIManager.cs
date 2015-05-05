@@ -17,6 +17,8 @@ public class BattleUIManager : MonoBehaviour {
 
     public GameObject BossBlood;            //boss血量条
     public GameObject SkillButtonPrefeb;          //技能按钮
+    public GameObject Blood;                //血条
+
 
     float TimeRemaining;        
     bool isstart=false;
@@ -39,6 +41,11 @@ public class BattleUIManager : MonoBehaviour {
         UIEventListener.Get(StopButton).onClick = StopButtonClick;
         TimeLimitShowStart();
         dataheroxstatic = dataherox;
+        UIEventCenter.showGoldEvent += ShowGold;
+        UIEventCenter.showRewardEvent += ShowReward;
+        UIEventCenter.showBloodEvent += addblood;
+
+
     }
 
 
@@ -98,6 +105,14 @@ public class BattleUIManager : MonoBehaviour {
         SkillPanel.Reposition();
 
     }
+
+    void addblood(BaseRobot hero)
+    {
+        GameObject go = NGUITools.AddChild(UIRoot, Blood);
+        go.GetComponent<Blood>().BloodCreate(hero);
+    }
+
+
 
 
 
