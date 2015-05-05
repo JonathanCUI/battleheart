@@ -330,6 +330,7 @@ public class BattleManager : MonoBehaviour,IRobot {
 		if (heroMap.ContainsKey (id)) {
 			BaseRobot r;
 			heroMap.TryGetValue(id,out r);
+			heroMap.Remove(id);
 			updateGameTargets ();
 			Destroy(r);
 		}
