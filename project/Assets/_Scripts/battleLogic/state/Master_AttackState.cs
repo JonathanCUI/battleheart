@@ -48,7 +48,7 @@ public class Master_AttackState : AttackState
 
     protected override int getdamage(BaseRobot Entity)
     {
-        return Entity.Attribute;
+        return Entity.AttrEffect;
     }
 
 }

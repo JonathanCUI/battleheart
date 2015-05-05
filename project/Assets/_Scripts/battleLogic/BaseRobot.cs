@@ -49,15 +49,40 @@ public class BaseRobot : MonoBehaviour {
 
 	protected IRobot iSender;
 
-    public int Attribute
+
+    public int Escape
     {
         get
         {
-            return attribute;
+            return escape;
         }
         set
         {
-            attribute = value;
+            escape = value;
+        }
+    }
+
+    public int HitOdds
+    {
+        get
+        {
+            return hitOdds;
+        }
+        set
+        {
+            hitOdds = value;
+        }
+    }
+
+    public int AttrEffect
+    {
+        get
+        {
+            return attrEffect;
+        }
+        set
+        {
+            attrEffect = value;
         }
     }
 

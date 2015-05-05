@@ -21,7 +21,6 @@ public class DeathState : IState
     public virtual void Exit<T>(T Entity) where T : BaseRobot
     {
 
-        Debug.Log(Entity);
     }
 
     

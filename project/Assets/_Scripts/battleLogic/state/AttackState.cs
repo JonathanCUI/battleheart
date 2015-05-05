@@ -93,13 +93,16 @@ public class AttackState : IState
         if (enemy.CurrentLifePoint > 0&&!ishit)
         {
             //造成伤害
-            if ((getdamage(Entity) - enemy.Defence) > 0)
+            if ((Entity.HitOdds - enemy.Escape) > Random.Range(1, 101))
             {
-                enemy.CurrentLifePoint -= (getdamage(Entity) - enemy.Defence + Random.Range(1, 11));
-            }
-            else
-            {
-                enemy.CurrentLifePoint -= Random.Range(1, 11);
+                if ((getdamage(Entity) - enemy.Defence) > 0)
+                {
+                    enemy.CurrentLifePoint -= (getdamage(Entity) - enemy.Defence + Random.Range(1, 11));
+                }
+                else
+                {
+                    enemy.CurrentLifePoint -= Random.Range(1, 11);
+                }
             }
             ishit = true;
         }
