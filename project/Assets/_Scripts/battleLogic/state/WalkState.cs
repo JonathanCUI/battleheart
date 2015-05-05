@@ -19,7 +19,7 @@ public class WalkState :IState {
         {
 			ChangeToIdleState(Entity);
 		}
-			Entity.playAnimation (walk);
+		Entity.playAnimation (walk);
 	}
 	
 	public virtual void Exit<T> (T Entity) where T:BaseRobot
