@@ -182,6 +182,7 @@
      <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\BaseRobot.cs" />
+     <Compile Include="Assets\_Scripts\battleLogic\IRobot.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\IState.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\IStateMachine.cs" />
      <Compile Include="Assets\_Scripts\battleLogic\StateMachine.cs" />
