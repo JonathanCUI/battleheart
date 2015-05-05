@@ -115,6 +115,7 @@ public class BattleManager : MonoBehaviour {
 		//生命补助
         GameObject obj = (GameObject)Instantiate(medicTemp, new Vector3(-40 * unit - leftOffset, 0, 7 * unit), Quaternion.identity);
 		BaseRobot robot = (BaseRobot)obj.GetComponent<Medic> ();
+		robot.transform.parent = this.transform;
 		//robot.initIdentity (-1, BattleConfig.AttackType.SUPPORT, 0, BattleConfig.PriorityStrategy.SELF_LIFE, BattleConfig.PriorityStrategy.LEAST_LIFE);
 
         Ttxt_battle_character_info character_info;
@@ -130,6 +131,7 @@ public class BattleManager : MonoBehaviour {
 		//效果补助
 		obj = (GameObject)Instantiate (PriestTemp, new Vector3 ((-35*unit-leftOffset), 0, -7*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
+		robot.transform.parent = this.transform;
 		//robot.initIdentity (-1, BattleConfig.AttackType.SUPPORT, 0, BattleConfig.PriorityStrategy.SELF_EFFECT, BattleConfig.PriorityStrategy.NO_EFFECT);
 
         Ttxt_battle_character_info.DATA.TryGetValue(6001, out character_info);
@@ -143,6 +145,7 @@ public class BattleManager : MonoBehaviour {
 		//远程法师
 		obj = (GameObject)Instantiate (masterTemp, new Vector3 (-30*unit-leftOffset, 0, 12*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<Master> ();
+		robot.transform.parent = this.transform;
 		//robot.initIdentity (1000, BattleConfig.AttackType.LONG, 0, BattleConfig.PriorityStrategy.SHORT, BattleConfig.PriorityStrategy.CLOSTEST);
 
         Ttxt_battle_character_info.DATA.TryGetValue(4001, out character_info);
@@ -156,6 +159,7 @@ public class BattleManager : MonoBehaviour {
 		//远程物攻
 		obj = (GameObject)Instantiate (rangerTemp, new Vector3 (-25*unit-leftOffset, 0, -5*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
+		robot.transform.parent = this.transform;
 		//robot.initIdentity (1000, BattleConfig.AttackType.LONG, 0, BattleConfig.PriorityStrategy.LONG, BattleConfig.PriorityStrategy.CLOSTEST);
 
         Ttxt_battle_character_info.DATA.TryGetValue(3001, out character_info);
@@ -169,6 +173,7 @@ public class BattleManager : MonoBehaviour {
 		//刺客
 		obj = (GameObject)Instantiate (assassinatorTemp, new Vector3 (-20*unit-leftOffset, 0, 12*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<Assassinator> ();
+		robot.transform.parent = this.transform;
 		//robot.initIdentity (100, BattleConfig.AttackType.SHORT, 0, BattleConfig.PriorityStrategy.LONG, BattleConfig.PriorityStrategy.CLOSTEST);
 
         Ttxt_battle_character_info.DATA.TryGetValue(2001, out character_info);
@@ -182,6 +187,7 @@ public class BattleManager : MonoBehaviour {
 		//肉盾
 		obj = (GameObject)Instantiate (manglerTemp, new Vector3 (-15*unit-leftOffset, 0, 5*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<Mangler> ();
+		robot.transform.parent = this.transform;
 		//robot.initIdentity (100, BattleConfig.AttackType.SHORT, 0, BattleConfig.PriorityStrategy.SHORT, BattleConfig.PriorityStrategy.CLOSTEST);
 
         Ttxt_battle_character_info.DATA.TryGetValue(1001, out character_info);
@@ -199,6 +205,7 @@ public class BattleManager : MonoBehaviour {
 		//生命补助
 		obj = (GameObject)Instantiate (medicTemp, new Vector3 (40*unit+rightOffset, 0, 7*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<Medic> ();
+		robot.transform.parent = this.transform;
 		//robot.initIdentity (-1, BattleConfig.AttackType.SUPPORT, 1, BattleConfig.PriorityStrategy.SELF_LIFE, BattleConfig.PriorityStrategy.LEAST_LIFE);
 
         Ttxt_battle_character_info.DATA.TryGetValue(5001, out character_info);
@@ -212,6 +219,7 @@ public class BattleManager : MonoBehaviour {
 		//效果补助
 		obj = (GameObject)Instantiate (PriestTemp, new Vector3 ((35*unit+rightOffset), 0, -7*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
+		robot.transform.parent = this.transform;
 		//robot.initIdentity (-1, BattleConfig.AttackType.SUPPORT, 1, BattleConfig.PriorityStrategy.SELF_EFFECT, BattleConfig.PriorityStrategy.NO_EFFECT);
 
         Ttxt_battle_character_info.DATA.TryGetValue(6001, out character_info);
@@ -225,6 +233,7 @@ public class BattleManager : MonoBehaviour {
 		//远程法师
 		obj = (GameObject)Instantiate (masterTemp, new Vector3 (30*unit+rightOffset, 0, 12*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<Master> ();
+		robot.transform.parent = this.transform;
 		//robot.initIdentity (1000, BattleConfig.AttackType.LONG, 1, BattleConfig.PriorityStrategy.SHORT, BattleConfig.PriorityStrategy.CLOSTEST);
 
         Ttxt_battle_character_info.DATA.TryGetValue(4001, out character_info);
@@ -238,6 +247,7 @@ public class BattleManager : MonoBehaviour {
 		//远程物攻
 		obj = (GameObject)Instantiate (rangerTemp, new Vector3 (25*unit+rightOffset, 0, -5*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<HeroRobot> ();
+		robot.transform.parent = this.transform;
 		//robot.initIdentity (1000, BattleConfig.AttackType.LONG, 1, BattleConfig.PriorityStrategy.LONG, BattleConfig.PriorityStrategy.CLOSTEST);
 
         Ttxt_battle_character_info.DATA.TryGetValue(3001, out character_info);
@@ -251,6 +261,7 @@ public class BattleManager : MonoBehaviour {
 		//刺客
 		obj = (GameObject)Instantiate (assassinatorTemp, new Vector3 (20*unit+rightOffset, 0, 12*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<Assassinator> ();
+		robot.transform.parent = this.transform;
 		//robot.initIdentity (100, BattleConfig.AttackType.SHORT, 1, BattleConfig.PriorityStrategy.LONG, BattleConfig.PriorityStrategy.CLOSTEST);
 
         Ttxt_battle_character_info.DATA.TryGetValue(2001, out character_info);
@@ -264,6 +275,7 @@ public class BattleManager : MonoBehaviour {
 		//肉盾
 		obj = (GameObject)Instantiate (manglerTemp, new Vector3 (15*unit+rightOffset, 0, 5*unit), Quaternion.identity);
 		robot = (BaseRobot)obj.GetComponent<Mangler> ();
+		robot.transform.parent = this.transform;
 		//robot.initIdentity (100, BattleConfig.AttackType.SHORT, 1, BattleConfig.PriorityStrategy.SHORT, BattleConfig.PriorityStrategy.CLOSTEST);
 
         Ttxt_battle_character_info.DATA.TryGetValue(1001, out character_info);
@@ -299,5 +311,16 @@ public class BattleManager : MonoBehaviour {
 		}
 	}
 
+	/**
+	 * 移除一个对象
+	 * */
+	public void removeRobot(int id){
+		if (heroMap.ContainsKey (id)) {
+			BaseRobot r;
+			heroMap.TryGetValue(id,out r);
+			updateGameTargets ();
+			Destroy(r);
+		}
+	}
 
 }

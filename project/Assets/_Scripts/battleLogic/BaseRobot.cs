@@ -16,7 +16,7 @@ public class BaseRobot : MonoBehaviour {
 	
 	protected bool isPointed = false;//玩家控制移动指向
 	protected bool aiPointed = false;//ai控制移动指向
-	protected bool isTouched = false;
+	protected bool isTouched = false;//产生碰撞
 	//protected bool isRotate = false;
 	protected Vector3 moveTargetPoint;
 	//protected Quaternion rotateTargetPoint;
@@ -262,7 +262,10 @@ public class BaseRobot : MonoBehaviour {
 		this.firstPriority = firstPri;
 		this.secondPriority = secondPri;
 	}
-	
+
+	/**
+	 * 初始化robot
+	 * */
 	public void initIdentity(Ttxt_battle_character_info info){
 		this.attackDistance = info.AttackDistance;
 		this.attackType = (BattleConfig.AttackType)info.Type;
@@ -331,6 +334,9 @@ public class BaseRobot : MonoBehaviour {
 		return isPointed;
 	}
 
+	/**
+	 * 位置是否由AI指定
+	 * */
     public bool AiPointed()
     {
         return aiPointed;
@@ -356,7 +362,10 @@ public class BaseRobot : MonoBehaviour {
 		selectedHalo = selected;
 		(gameObject.GetComponent ("Halo") as Behaviour).enabled = selectedHalo;
 	}
-	
+
+	/**
+	 * 设置控制寻位点
+	 * */
 	public void setMoveTowardsPoint(Vector3 target){
 		//      float z = target.z - this.transform.position.z;
 		//		float x = target.x - this.transform.position.x;
@@ -370,6 +379,10 @@ public class BaseRobot : MonoBehaviour {
 		
 		
 	}
+
+	/**
+	 * 设置AI寻位点
+	 * */
 	public void setAITowardsPoint(Vector3 target){
 		this.m_transform.LookAt (target);
 		moveTargetPoint = target;
@@ -380,8 +393,14 @@ public class BaseRobot : MonoBehaviour {
     //角色死亡销毁目标
     public void RobotDead(float deadtime=5)
     {
-        Destroy(this.gameObject,deadtime);
+        //Destroy(this.gameObject,deadtime);
+        Invoke("sendDestoryMessage", deadtime);
     }
 
-	
+	/**
+	 * 销毁自身
+	 * */
+	public void sendDestoryMessage(){
+		this.gameObject.SendMessageUpwards ("removeRobot",this.m_ID);
+	}
 }

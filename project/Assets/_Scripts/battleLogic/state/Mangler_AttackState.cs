@@ -25,7 +25,11 @@ public class Mangler_AttackState : AttackState
 
     public override void AttackingTarget<T>(T Entity)
     {
-        Entity.playAnimation("punch");
+        if (!Entity.animation.isPlaying||!Entity.animation.IsPlaying("punch"))
+        {
+            ishit = false;
+            Entity.playAnimation("punch");
+        }
         baseAttackingTarget(Entity);
     }
 

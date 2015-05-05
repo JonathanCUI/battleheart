@@ -28,7 +28,11 @@ public class Assassinator_AttackState : AttackState
 
     public override void AttackingTarget<T>(T Entity)
     {
-        Entity.playAnimation("ghost_attack_with_ball");
+        if (Entity.animation.isPlaying)
+        {
+            Debug.Log(Entity);
+            Entity.playAnimation("ghost_attack_with_ball");
+        }
         baseAttackingTarget(Entity);
     }
 

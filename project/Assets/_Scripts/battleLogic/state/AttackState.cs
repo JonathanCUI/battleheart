@@ -11,7 +11,7 @@ public class AttackState : IState
 {
 
 	protected BaseRobot enemy;
-
+    protected bool ishit=true;
 	public AttackState(BaseRobot t){
 		enemy = t;
 	}
@@ -79,10 +79,15 @@ public class AttackState : IState
             changeToHuntingState(Entity);
         }
         
-        if (enemy.CurrentLifePoint > 0)
+        if (enemy.CurrentLifePoint > 0&&!ishit)
         {
             //造成伤害
-            Debug.Log("杀");
+            Debug.Log(enemy.CurrentLifePoint);
+
+
+
+
+            ishit = true;
         }
         else
         {

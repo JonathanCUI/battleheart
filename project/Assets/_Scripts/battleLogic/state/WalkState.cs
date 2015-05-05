@@ -11,24 +11,26 @@ public class WalkState :IState {
 	public virtual void Enter<T> (T Entity) where T:BaseRobot
 	{
 		//Entity.playAnimation("walk");
+        
 	}
 	
 	public virtual void Execute<T> (T Entity) where T:BaseRobot
     {
+        
         if (Entity.CurrentLifePoint <= 0)
         {
             changeToDeathState(Entity);
         }
+
         if (!Entity.userPointed())
         {
 			ChangeToIdleState(Entity);
 		}
-			Entity.playAnimation (walk);
+		Entity.playAnimation (walk);
 	}
 	
 	public virtual void Exit<T> (T Entity) where T:BaseRobot
 	{
-		
 	}
 
 	public virtual void ChangeToIdleState<T>(T Entity) where T:BaseRobot
