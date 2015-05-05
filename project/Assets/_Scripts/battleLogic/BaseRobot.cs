@@ -268,6 +268,7 @@ public class BaseRobot : MonoBehaviour {
 		this.attackType = (BattleConfig.AttackType)info.Type;
 		this.nickname=info.Name;
 		this.lifePoint=info.LifePoint;
+        this.currentlifepoint = info.LifePoint;
 		this.defence=info.Defence;
 		this.attack=info.Attack; 
 		this.hitOdds=info.HitOdds;
@@ -376,5 +377,11 @@ public class BaseRobot : MonoBehaviour {
 		aiPointed = true;
 		
 	}
+    //角色死亡销毁目标
+    public void RobotDead(float deadtime=5)
+    {
+        Destroy(this.gameObject,deadtime);
+    }
+
 	
 }

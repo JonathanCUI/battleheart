@@ -47,5 +47,9 @@ public class Medic_AttackState : AttackState
             changeToHuntingState(Entity);
         }
     }
+    public override void changeToDeathState<T>(T Entity)
+    {
+        Entity.changeState(new Medic_DeathState());
+    }
     
 }

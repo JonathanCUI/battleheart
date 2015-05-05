@@ -34,4 +34,9 @@ public class Ranger_AttackState : AttackState
         Entity.playAnimation("dragon_bite");
         baseAttackingTarget(Entity);
     }
+
+    public override void changeToDeathState<T>(T Entity)
+    {
+        Entity.changeState(new Ranger_DeathState());
+    }
 }

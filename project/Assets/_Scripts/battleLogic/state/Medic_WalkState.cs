@@ -10,6 +10,11 @@ public class Medic_WalkState : WalkState {
     {
         Entity.changeState(new Medic_IdleState());
     }
+    public override void changeToDeathState<T>(T Entity)
+    {
+        Entity.changeState(new Medic_DeathState());
+    }
+
 //    public override void Execute<T>(T Entity)
 //    {
 //        if (!Entity.userPointed())

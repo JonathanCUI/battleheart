@@ -25,6 +25,7 @@ public class Priest_AttackState : AttackState
 
     public override void AttackingTarget<T>(T Entity)
     {
+        Entity.animation["mummy_bite"].speed =Entity.animation["mummy_bite"].length;
         Entity.playAnimation("mummy_bite");
         baseAttackingTarget(Entity);
     }
@@ -41,5 +42,10 @@ public class Priest_AttackState : AttackState
 
         changeToHuntingState(Entity);
 
+    }
+
+    public override void changeToDeathState<T>(T Entity)
+    {
+        Entity.changeState(new Priest_DeathState());
     }
 }

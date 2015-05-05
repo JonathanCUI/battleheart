@@ -70,7 +70,7 @@ public class Readtxt {
 		}
 		catch (Exception e)
 		{
-			Debug.Log(111);
+			Debug.Log(e);
 			//路径与名称未找到文件则直接返回空
 			return null;
 		}

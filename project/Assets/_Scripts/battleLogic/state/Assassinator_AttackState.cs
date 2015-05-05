@@ -30,6 +30,10 @@ public class Assassinator_AttackState : AttackState
     {
         Entity.playAnimation("ghost_attack_with_ball");
         baseAttackingTarget(Entity);
+    }
 
+    public override void changeToDeathState<T>(T Entity)
+    {
+        Entity.changeState(new Assassinator_DeathState());
     }
 }

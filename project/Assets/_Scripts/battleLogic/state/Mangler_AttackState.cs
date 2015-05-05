@@ -32,6 +32,10 @@ public class Mangler_AttackState : AttackState
     public override void changeToIdleState<T>(T Entity)
     {
         Entity.changeState(new Mangler_IdleState());
-    } 
+    }
 
+    public override void changeToDeathState<T>(T Entity)
+    {
+        Entity.changeState(new Mangler_DeathState());
+    }
 }

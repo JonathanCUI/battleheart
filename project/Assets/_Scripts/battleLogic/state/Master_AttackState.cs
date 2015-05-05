@@ -31,4 +31,9 @@ public class Master_AttackState : AttackState
         baseAttackingTarget(Entity);
     }
 
+    public override void changeToDeathState<T>(T Entity)
+    {
+        Entity.changeState(new Master_DeathState());
+    }
+
 }

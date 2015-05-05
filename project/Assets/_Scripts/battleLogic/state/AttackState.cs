@@ -28,6 +28,10 @@ public class AttackState : IState
             changeToWalkState(Entity);
             return;
         }
+        if (Entity.CurrentLifePoint <= 0)
+        {
+            changeToDeathState(Entity);
+        }
         AttackingTarget(Entity);
     }
 
@@ -35,6 +39,13 @@ public class AttackState : IState
     {
 
     }
+
+
+    public virtual void changeToDeathState<T>(T Entity)where T : BaseRobot
+    {
+        Debug.Log(Entity);
+    }
+
 
     //状态变换为walk
     public virtual void changeToWalkState<T>(T Entity) where T : BaseRobot
@@ -67,10 +78,11 @@ public class AttackState : IState
         {
             changeToHuntingState(Entity);
         }
-
+        
         if (enemy.CurrentLifePoint > 0)
         {
             //造成伤害
+            Debug.Log("杀");
         }
         else
         {

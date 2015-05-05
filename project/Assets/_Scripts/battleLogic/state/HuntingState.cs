@@ -59,6 +59,7 @@ public class HuntingState :IState {
 	{
 		Dictionary<int,BaseRobot> opps = Entity.GameTargets;
 		if (opps != null && opps.Count!=0) {
+            
 			float relativeDistance=100000f,minDistance = 100000f;
 			int first_id=-1,second_id=-1;
 			foreach (KeyValuePair<int,BaseRobot> kv in opps) {
@@ -76,17 +77,18 @@ public class HuntingState :IState {
 				}
 			}
 			BaseRobot targetEnmy = opps[first_id != -1 ? first_id : second_id];
-			float disx = Vector3.Distance(Entity.getPosition(), targetEnmy.getPosition());
-			if (disx > Entity.AttackDistance)
-			{//步行
-				Entity.setAITowardsPoint(targetEnmy.getPosition());
-				changeToWalkState(Entity);
-			}
-			else
-			{//进入战斗
-				Entity.setAITowardsPoint(Entity.getPosition());
-				changeToATKState(Entity,targetEnmy);
-			}
+            
+                float disx = Vector3.Distance(Entity.getPosition(), targetEnmy.getPosition());
+                if (disx > Entity.AttackDistance)
+                {//步行
+                    Entity.setAITowardsPoint(targetEnmy.getPosition());
+                    changeToWalkState(Entity);
+                }
+                else
+                {//进入战斗
+                    Entity.setAITowardsPoint(Entity.getPosition());
+                    changeToATKState(Entity, targetEnmy);
+                }
 		} else {
 			//闲置
 			changeToIdleState(Entity);

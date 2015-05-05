@@ -15,6 +15,10 @@ public class WalkState :IState {
 	
 	public virtual void Execute<T> (T Entity) where T:BaseRobot
     {
+        if (Entity.CurrentLifePoint <= 0)
+        {
+            changeToDeathState(Entity);
+        }
         if (!Entity.userPointed())
         {
 			ChangeToIdleState(Entity);
@@ -31,4 +35,9 @@ public class WalkState :IState {
 	{
 		Entity.changeState (new IdleState ());
 	}
+
+    public virtual void changeToDeathState<T>(T Entity) where T : BaseRobot
+    {
+        Debug.Log(Entity);
+    }
 }
