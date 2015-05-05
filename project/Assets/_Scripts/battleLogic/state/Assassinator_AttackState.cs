@@ -28,8 +28,22 @@ public class Assassinator_AttackState : AttackState
 
     public override void AttackingTarget<T>(T Entity)
     {
-        Entity.playAnimation("ghost_attack_with_ball");
-        baseAttackingTarget(Entity);
+        Entity.animation["ghost_attack_with_ball"].speed = Entity.animation["ghost_attack_with_ball"].length*5;
+        if (Entity.animation.isPlaying && !Entity.animation.IsPlaying("ghost_attack_with_ball"))
+        {
+            Entity.playAnimation("ghost_attack_with_ball");
+        }
 
+        if (!Entity.animation.isPlaying)
+        {
+            Entity.playAnimation("ghost_attack_with_ball");
+            ishit = false;
+        }
+        baseAttackingTarget(Entity);
+    }
+
+    public override void changeToDeathState<T>(T Entity)
+    {
+        Entity.changeState(new Assassinator_DeathState());
     }
 }

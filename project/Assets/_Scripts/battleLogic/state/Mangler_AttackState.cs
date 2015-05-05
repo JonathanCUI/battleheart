@@ -25,13 +25,27 @@ public class Mangler_AttackState : AttackState
 
     public override void AttackingTarget<T>(T Entity)
     {
-        Entity.playAnimation("punch");
+        Entity.animation["punch"].speed = Entity.animation["punch"].length;
+        if (Entity.animation.isPlaying&&!Entity.animation.IsPlaying("punch"))
+        {
+            Entity.playAnimation("punch");
+        }
+
+        if (!Entity.animation.isPlaying)
+        {
+            Entity.playAnimation("punch");
+            ishit = false;
+        }
         baseAttackingTarget(Entity);
     }
 
     public override void changeToIdleState<T>(T Entity)
     {
         Entity.changeState(new Mangler_IdleState());
-    } 
+    }
 
+    public override void changeToDeathState<T>(T Entity)
+    {
+        Entity.changeState(new Mangler_DeathState());
+    }
 }

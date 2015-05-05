@@ -12,6 +12,9 @@ public class Mangler_WalkState : WalkState {
 		Entity.changeState (new Mangler_IdleState ());
 
 	}
-
+    public override void changeToDeathState<T>(T Entity)
+    {
+        Entity.changeState(new Mangler_DeathState());
+    }
 
 }

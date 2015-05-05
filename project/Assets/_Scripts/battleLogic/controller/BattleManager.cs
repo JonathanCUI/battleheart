@@ -332,7 +332,7 @@ public class BattleManager : MonoBehaviour,IRobot {
 			heroMap.TryGetValue(id,out r);
 			heroMap.Remove(id);
 			updateGameTargets ();
-			Destroy(r);
+			Destroy(r.gameObject);
 		}
 	}
 

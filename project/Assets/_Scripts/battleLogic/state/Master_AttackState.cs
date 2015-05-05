@@ -27,8 +27,23 @@ public class Master_AttackState : AttackState
 
     public override void AttackingTarget<T>(T Entity)
     {
-        Entity.playAnimation("skeleton_attack");
+        Entity.animation["skeleton_attack"].speed = Entity.animation["skeleton_attack"].length;
+        if (Entity.animation.isPlaying && !Entity.animation.IsPlaying("skeleton_attack"))
+        {
+            Entity.playAnimation("skeleton_attack");
+        }
+
+        if (!Entity.animation.isPlaying)
+        {
+            Entity.playAnimation("skeleton_attack");
+            ishit = false;
+        }
         baseAttackingTarget(Entity);
+    }
+
+    public override void changeToDeathState<T>(T Entity)
+    {
+        Entity.changeState(new Master_DeathState());
     }
 
 }

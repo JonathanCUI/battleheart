@@ -13,6 +13,11 @@ public class Ranger_WalkState : WalkState
         Entity.changeState(new Ranger_IdleState());
     }
 
+    public override void changeToDeathState<T>(T Entity)
+    {
+        Entity.changeState(new Ranger_DeathState());
+    }
+
 //    public override void Execute<T>(T Entity)
 //    {
 //        if (!Entity.userPointed())
