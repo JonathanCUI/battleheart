@@ -12,6 +12,8 @@ public class AttackState : IState
 
 	protected BaseRobot enemy;
     protected bool ishit=true;
+
+
 	public AttackState(BaseRobot t){
 		enemy = t;
 	}
@@ -71,6 +73,7 @@ public class AttackState : IState
 
     public virtual void baseAttackingTarget<T>(T Entity) where T : BaseRobot
     {
+        
         Entity.transform.LookAt(enemy.getPosition());
         float disx = Vector3.Distance(Entity.getPosition(), enemy.getPosition());
 
@@ -82,20 +85,28 @@ public class AttackState : IState
         if (enemy.CurrentLifePoint > 0&&!ishit)
         {
             //造成伤害
-            Debug.Log(enemy.CurrentLifePoint);
-
-
-
-
+            if ((getdamage() - enemy.Defence) > 0)
+            {
+                enemy.CurrentLifePoint -= (getdamage() - enemy.Defence + Random.Range(1, 11));
+            }
+            else
+            {
+                enemy.CurrentLifePoint -= Random.Range(1, 11);
+            }
             ishit = true;
         }
-        else
+        if (enemy.CurrentLifePoint < 0)
         {
-            //changeToHuntingState(Entity);
+            changeToHuntingState(Entity);
         }
 
-
     }
+
+    protected virtual int getdamage()
+    {
+        return 0;
+    }
+
 
 
 }

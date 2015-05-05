@@ -30,8 +30,17 @@ public class Ranger_AttackState : AttackState
     }
     public override void AttackingTarget<T>(T Entity)
     {
-       
-        Entity.playAnimation("dragon_bite");
+        Entity.animation["dragon_bite"].speed = Entity.animation["dragon_bite"].length;
+        if (Entity.animation.isPlaying && !Entity.animation.IsPlaying("dragon_bite"))
+        {
+            Entity.playAnimation("dragon_bite");
+        }
+
+        if (!Entity.animation.isPlaying)
+        {
+            Entity.playAnimation("dragon_bite");
+            ishit = false;
+        }
         baseAttackingTarget(Entity);
     }
 

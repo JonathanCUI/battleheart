@@ -21,7 +21,17 @@ public class Medic_AttackState : AttackState
 
     public override void AttackingTarget<T>(T Entity)
     {
-        Entity.playAnimation("zombie_bite");
+        Entity.animation["zombie_bite"].speed = Entity.animation["zombie_bite"].length;
+        if (Entity.animation.isPlaying && !Entity.animation.IsPlaying("zombie_bite"))
+        {
+            Entity.playAnimation("zombie_bite");
+        }
+
+        if (!Entity.animation.isPlaying)
+        {
+            Entity.playAnimation("zombie_bite");
+            ishit = false;
+        }
         baseAttackingTarget(Entity);
     }
 
@@ -37,12 +47,14 @@ public class Medic_AttackState : AttackState
 
     public override void baseAttackingTarget<T>(T Entity)
     {
-        if (enemy.CurrentLifePoint < enemy.LifePoint)
+        if (enemy.CurrentLifePoint < enemy.LifePoint&&!ishit)
         {
             Entity.transform.LookAt(enemy.getPosition());
             //治疗
+            enemy.CurrentLifePoint += (int)(enemy.LifePoint * 0.08f);
+            enemy.CurrentLifePoint = enemy.CurrentLifePoint > enemy.LifePoint ? enemy.LifePoint : enemy.CurrentLifePoint;
         }
-        else
+        if (enemy.CurrentLifePoint == enemy.LifePoint)
         {
             changeToHuntingState(Entity);
         }

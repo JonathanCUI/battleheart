@@ -47,6 +47,46 @@ public class BaseRobot : MonoBehaviour {
 	
 	protected Dictionary<int,BaseRobot> gameTargets;//技能释放的对象
 
+	protected IRobot iSender;
+
+    public int Attribute
+    {
+        get
+        {
+            return attribute;
+        }
+        set
+        {
+            attribute = value;
+        }
+    }
+
+
+
+    public int Attack
+    {
+        get
+        {
+            return attack;
+        }
+        set
+        {
+            attack = value;
+        }
+    }
+
+    public int Defence
+    {
+        get
+        {
+            return defence;
+        }
+        set
+        {
+            defence = value;
+        }
+    }
+
 
     public int LifePoint
     {
@@ -72,6 +112,9 @@ public class BaseRobot : MonoBehaviour {
             currentlifepoint = value;
         }
     }
+
+    
+
 
 
 	
@@ -143,7 +186,17 @@ public class BaseRobot : MonoBehaviour {
 		}
 	}
 	
-	
+	public IRobot ISender
+	{
+		get
+		{
+			return iSender;
+		}
+		set
+		{
+			iSender = value;
+		}
+	}
 	
 	private int m_ID;//unique serial number for each object
 	
@@ -401,6 +454,8 @@ public class BaseRobot : MonoBehaviour {
 	 * 销毁自身
 	 * */
 	public void sendDestoryMessage(){
-		this.gameObject.SendMessageUpwards ("removeRobot",this.m_ID);
+		if (iSender != null)
+			iSender.removeObject (this.m_ID);
+		//this.gameObject.SendMessageUpwards ("removeRobot",this.m_ID);
 	}
 }
