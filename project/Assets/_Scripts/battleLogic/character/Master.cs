@@ -28,8 +28,14 @@ public class Master : HeroRobot {
 		m_pStateMachine = new StateMachine<Master>(this);
 		m_pStateMachine.SetCurrentState(new Master_WalkState());
 	}
-    public virtual int getDamage()
-    {
-        return attrEffect;
-    }
+
+
+	public override void changeToDeathState(){
+		this.changeState (new Master_DeathState());
+	}
+
+	public override int getAtkForce()
+	{
+		return this.attrEffect;
+	}
 }

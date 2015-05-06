@@ -48,6 +48,12 @@ public class BaseRobot : MonoBehaviour {
 	protected Dictionary<int,BaseRobot> gameTargets;//技能释放的对象
 
 	protected IRobot iSender;
+    protected Blood bloodbar;
+
+    public void setbloodbar(Blood blood)
+    {
+        bloodbar = blood;
+    }
 
 
     public virtual int getDamage()
@@ -230,7 +236,7 @@ public class BaseRobot : MonoBehaviour {
 	
 	private int m_ID;//unique serial number for each object
 	
-	private static ArrayList m_idArray = new ArrayList();
+	public static ArrayList m_idArray = new ArrayList();
 	
 	public void SetID (int val)
 	{
@@ -473,16 +479,31 @@ public class BaseRobot : MonoBehaviour {
 		aiPointed = true;
 		
 	}
+    //销毁bloodbar
+    public void destroybloodbar()
+    {
+        Destroy(bloodbar.gameObject);
+    }
+
+
     //角色死亡销毁目标
-    
 
 	/**
 	 * 销毁自身
 	 * */
     public void sendDestoryMessage(float deathtime=5)
     {
+        Destroy(bloodbar.gameObject);
 		if (iSender != null)
 			iSender.removeObject (this.m_ID,deathtime);
 		//this.gameObject.SendMessageUpwards ("removeRobot",this.m_ID);
+	}
+
+	public virtual void changeToDeathState(){
+		this.changeState (new DeathState());
+	}
+
+	public virtual int getAtkForce(){
+		return 0;
 	}
 }

@@ -42,7 +42,7 @@ public class MainStageUIManager : MonoBehaviour {
         UIEventListener.Get(BattleButton).onClick = BattleButtonOnClick;
 
 
-
+		Application.LoadLevel ("battle");
     }
 
     void TeamOnClick(GameObject x)

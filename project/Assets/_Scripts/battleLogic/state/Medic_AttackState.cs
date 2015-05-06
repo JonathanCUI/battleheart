@@ -72,5 +72,6 @@ public class Medic_AttackState : AttackState
     {
         Entity.changeState(new Medic_DeathState());
     }
+
     
 }

@@ -49,8 +49,4 @@ public class Ranger_AttackState : AttackState
         Entity.changeState(new Ranger_DeathState());
     }
 
-    //protected override int getDamage(BaseRobot Entity)
-    //{
-    //    return Entity.Attack;
-    //}
 }

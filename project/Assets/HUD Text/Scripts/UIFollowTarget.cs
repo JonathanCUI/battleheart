@@ -38,6 +38,7 @@ public class UIFollowTarget : MonoBehaviour
 
 	Transform mTrans;
 	bool mIsVisible = false;
+    public bool iscreate = false;
 
 	/// <summary>
 	/// Cache the transform;
@@ -51,17 +52,17 @@ public class UIFollowTarget : MonoBehaviour
 
 	void Start()
 	{
-		if (target != null)
-		{
-			if (gameCamera == null) gameCamera = NGUITools.FindCameraForLayer(target.gameObject.layer);
-			if (uiCamera == null) uiCamera = NGUITools.FindCameraForLayer(gameObject.layer);
-			SetVisible(false);
-		}
-		else
-		{
-			Debug.LogError("Expected to have 'target' set to a valid transform", this);
-			enabled = false;
-		}
+        if (target != null)
+        {
+            if (gameCamera == null) gameCamera = NGUITools.FindCameraForLayer(target.gameObject.layer);
+            if (uiCamera == null) uiCamera = NGUITools.FindCameraForLayer(gameObject.layer);
+            SetVisible(false);
+        }
+        else
+        {
+            Debug.LogError("Expected to have 'target' set to a valid transform", this);
+            enabled = false;
+        }
 	}
 
 	/// <summary>
@@ -84,8 +85,7 @@ public class UIFollowTarget : MonoBehaviour
 
 	void Update ()
 	{
-        if (target)
-        {
+        
             Vector3 pos = gameCamera.WorldToViewportPoint(target.position);
 
             // Determine the visibility and the target alpha
@@ -110,11 +110,7 @@ public class UIFollowTarget : MonoBehaviour
                 this.GetComponent<UISprite>().alpha = 0;
             }
             OnUpdate(isVisible);
-        }
-        else
-        {
-            Destroy(this);
-        }
+        
 		
 	}
 

@@ -29,4 +29,8 @@ public class Priest : HeroRobot
 		m_pStateMachine = new StateMachine<Priest>(this);
 		m_pStateMachine.SetCurrentState(new Priest_WalkState());
 	}
+
+	public override void changeToDeathState(){
+		this.changeState (new Priest_DeathState());
+	}
 }

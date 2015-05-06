@@ -34,4 +34,8 @@ public class HeroRobot : BaseRobot {
 	public override void changeState(IState state){
 		m_pStateMachine.ChangeState (state);
 	}
+
+	public override void changeToDeathState(){
+		this.changeState (new DeathState());
+	}
 }

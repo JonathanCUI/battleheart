@@ -86,7 +86,7 @@ public class BattleUIManager : MonoBehaviour {
         {
             TimeLimitShow();
         }
-
+        
     }
 
 
@@ -180,13 +180,19 @@ public class BattleUIManager : MonoBehaviour {
     //暂停按钮的点击处理方法
     public void StopButtonClick(GameObject StopButton)
     {
-        //if(BattleManager.)
+        if (isgameover)
+        {
+            BaseRobot.m_idArray = new ArrayList();
+            //Application.LoadLevel("battle");
+            GameObject.Find("Quad").SendMessage("reset");
+			isgameover=false;
+        }
 
         isstart = !isstart;
         if (isstart)
         {
             StopButton.GetComponent<UISprite>().spriteName = "ButtonOn";
-            Time.timeScale = 1;
+            Time.timeScale = 1;                                             /////调整游戏速率
         }
         else
         {

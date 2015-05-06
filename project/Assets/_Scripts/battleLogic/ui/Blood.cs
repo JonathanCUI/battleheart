@@ -31,6 +31,7 @@ public class Blood : MonoBehaviour {
             this.gameObject.transform.FindChild("nowBlood").GetComponent<UISprite>().spriteName = "Blood_red";
         }
         this.gameObject.GetComponent<UIFollowTarget>().target = herox.gameObject.transform.FindChild("bloodposition");
+        hero.setbloodbar(this);
         iscreate = true;
     }
 

@@ -58,4 +58,5 @@ public class Priest_AttackState : AttackState
     {
         Entity.changeState(new Priest_DeathState());
     }
+	
 }

@@ -34,7 +34,28 @@ public class BattleManager : MonoBehaviour,IRobot {
 		createCharaters ();
 		updateGameTargets ();
 	}
-	
+
+
+    void reset()
+    {
+        foreach (KeyValuePair<int, BaseRobot> r in heroMap)
+        {
+            r.Value.destroybloodbar();
+            Destroy(r.Value.gameObject);
+        }
+
+        createCharaters();
+        updateGameTargets();
+		Invoke ("x", 1);
+    }
+
+	void x()
+	{
+		isInit = false;
+	}
+
+
+
 	// Update is called once per frame
 	void Update () {
 		if(!isInit){
@@ -108,7 +129,7 @@ public class BattleManager : MonoBehaviour,IRobot {
 		int unit = 7;
 		int leftOffset = 500;
 		int rightOffset = 500;
-
+        heroMap.Clear();
 		/*
 		 * 己方阵营
 		 * */
@@ -330,7 +351,7 @@ public class BattleManager : MonoBehaviour,IRobot {
 		if (heroMap.ContainsKey (id)) {
 			BaseRobot r;
 			heroMap.TryGetValue(id,out r);
-            heroMap.Remove(id);
+			heroMap.Remove(id);
 			updateGameTargets ();
             Destroy(r.gameObject, deathtime);
 		}

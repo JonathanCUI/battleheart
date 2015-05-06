@@ -28,8 +28,15 @@ public class Ranger : HeroRobot {
 		m_pStateMachine = new StateMachine<Ranger>(this);
 		m_pStateMachine.SetCurrentState(new Ranger_WalkState());
 	}
-    public virtual int getDamage()
-    {
-        return attack;
-    }
+
+
+	public override void changeToDeathState(){
+		this.changeState (new Ranger_DeathState());
+	}
+
+
+	public override int getAtkForce()
+	{
+		return this.Attack;
+	}
 }

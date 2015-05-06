@@ -49,9 +49,5 @@ public class Mangler_AttackState : AttackState
         Entity.changeState(new Mangler_DeathState());
     }
 
-    //protected override int getDamage(BaseRobot Entity)
-    //{
-    //    return Entity.Attack;
-    //}
 
 }
