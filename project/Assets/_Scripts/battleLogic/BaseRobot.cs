@@ -469,18 +469,15 @@ public class BaseRobot : MonoBehaviour {
 		
 	}
     //角色死亡销毁目标
-    public void RobotDead(float deadtime=5)
-    {
-        //Destroy(this.gameObject,deadtime);
-        Invoke("sendDestoryMessage", deadtime);
-    }
+    
 
 	/**
 	 * 销毁自身
 	 * */
-	public void sendDestoryMessage(){
+    public void sendDestoryMessage(float deathtime=5)
+    {
 		if (iSender != null)
-			iSender.removeObject (this.m_ID);
+			iSender.removeObject (this.m_ID,deathtime);
 		//this.gameObject.SendMessageUpwards ("removeRobot",this.m_ID);
 	}
 }

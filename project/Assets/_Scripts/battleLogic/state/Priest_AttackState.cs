@@ -36,6 +36,7 @@ public class Priest_AttackState : AttackState
             Entity.playAnimation("mummy_bite");
             ishit = false;
         }
+        
         baseAttackingTarget(Entity);
     }
 

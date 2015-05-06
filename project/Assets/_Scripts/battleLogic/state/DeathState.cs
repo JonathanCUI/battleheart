@@ -29,7 +29,7 @@ public class DeathState : IState
     {
         if (!Entity.animation.isPlaying)
         {
-            Entity.RobotDead();
+            Entity.sendDestoryMessage();
         }
     }
 

@@ -32,7 +32,9 @@ public class Medic_AttackState : AttackState
             Entity.playAnimation("zombie_bite");
             ishit = false;
         }
-        baseAttackingTarget(Entity);
+        if (Entity.CurrentLifePoint > 0)
+        { baseAttackingTarget(Entity); }
+        
     }
 
     public override void changeToIdleState<T>(T Entity)
@@ -47,6 +49,10 @@ public class Medic_AttackState : AttackState
 
     public override void baseAttackingTarget<T>(T Entity)
     {
+        if (enemy.CurrentLifePoint <=0)
+        {
+            changeToHuntingState(Entity);
+        }
         if (enemy.CurrentLifePoint < enemy.LifePoint&&!ishit)
         {
             Entity.transform.LookAt(enemy.getPosition());
