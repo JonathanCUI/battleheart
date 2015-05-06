@@ -95,9 +95,9 @@ public class AttackState : IState
             //造成伤害
             if ((Entity.HitOdds - enemy.Escape) > Random.Range(1, 101))
             {
-                if ((getdamage(Entity) - enemy.Defence) > 0)
+                if ((Entity.getDamage() - enemy.Defence) > 0)
                 {
-                    enemy.CurrentLifePoint -= (getdamage(Entity) - enemy.Defence + Random.Range(1, 11));
+                    enemy.CurrentLifePoint -= (Entity.getDamage() - enemy.Defence + Random.Range(1, 11));
                 }
                 else
                 {
@@ -112,11 +112,11 @@ public class AttackState : IState
         }
 
     }
-
-    protected virtual int getdamage(BaseRobot Entity)
-    {
-        return 0;
-    }
+    //获得职业对应的攻击力（物理是atk 法师是AttrEffect）
+    //protected virtual int getDamage(BaseRobot Entity)
+    //{
+    //    return 0;
+    //}
 
 
 

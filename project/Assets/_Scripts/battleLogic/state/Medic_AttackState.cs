@@ -8,6 +8,8 @@ using System.Collections.Generic;
 
 public class Medic_AttackState : AttackState
 {
+    protected float mediceffect = 0.08f;
+
     public Medic_AttackState(BaseRobot t)
         : base(t)
     {
@@ -57,7 +59,7 @@ public class Medic_AttackState : AttackState
         {
             Entity.transform.LookAt(enemy.getPosition());
             //治疗
-            enemy.CurrentLifePoint += (int)(enemy.LifePoint * 0.08f);
+            enemy.CurrentLifePoint += (int)(enemy.LifePoint * mediceffect);
             enemy.CurrentLifePoint = enemy.CurrentLifePoint > enemy.LifePoint ? enemy.LifePoint : enemy.CurrentLifePoint;
             ishit = true;
         }

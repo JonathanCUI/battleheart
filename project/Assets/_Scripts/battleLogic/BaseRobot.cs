@@ -50,6 +50,11 @@ public class BaseRobot : MonoBehaviour {
 	protected IRobot iSender;
 
 
+    public virtual int getDamage()
+    {
+        return 0;
+    }
+
     public int Escape
     {
         get

@@ -28,4 +28,8 @@ public class Master : HeroRobot {
 		m_pStateMachine = new StateMachine<Master>(this);
 		m_pStateMachine.SetCurrentState(new Master_WalkState());
 	}
+    public virtual int getDamage()
+    {
+        return attrEffect;
+    }
 }

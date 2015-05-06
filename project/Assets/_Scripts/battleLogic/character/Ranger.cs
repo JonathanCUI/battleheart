@@ -28,4 +28,8 @@ public class Ranger : HeroRobot {
 		m_pStateMachine = new StateMachine<Ranger>(this);
 		m_pStateMachine.SetCurrentState(new Ranger_WalkState());
 	}
+    public virtual int getDamage()
+    {
+        return attack;
+    }
 }

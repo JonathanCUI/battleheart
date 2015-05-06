@@ -28,4 +28,8 @@ public class Mangler : HeroRobot {
 		m_pStateMachine = new StateMachine<Mangler>(this);
 		m_pStateMachine.SetCurrentState(new Mangler_WalkState());
 	}
+    public virtual int getDamage()
+    {
+        return attack;
+    }
 }

@@ -19,8 +19,8 @@ public class BattleUIManager : MonoBehaviour {
     public GameObject SkillButtonPrefeb;          //技能按钮
     public GameObject Blood;                //血条
 
-
-    float TimeRemaining;        
+    public static bool isgameover=false;
+    float TimeRemaining;        //剩余时间
     bool isstart=false;
 
     public TextAsset dataherox;
@@ -67,8 +67,6 @@ public class BattleUIManager : MonoBehaviour {
 
 
 
-        UIEventCenter.showGoldEvent += ShowGold;
-        UIEventCenter.showRewardEvent += ShowReward;
 
         UIEventCenter.showGold_msg(666);
         UIEventCenter.showReward_msg(333);
@@ -106,6 +104,9 @@ public class BattleUIManager : MonoBehaviour {
 
     }
 
+
+
+    //增加血条
     void addblood(BaseRobot hero)
     {
         GameObject go = NGUITools.AddChild(UIRoot, Blood);
@@ -115,19 +116,18 @@ public class BattleUIManager : MonoBehaviour {
 
 
 
-
+    //游戏进程改变
     void processchange(float x=0.1f)
     {
         Process.value = x;
     }
 
-
-
+    //大场景显示
     void BigStageShow(string x = "S1-1")
     {
         BstageNum.text = x;
     }
-
+    //小场景显示
     void SmallStageShow(string x = "2/3")
     {
         SstageNum.text = x;
@@ -180,15 +180,21 @@ public class BattleUIManager : MonoBehaviour {
     //暂停按钮的点击处理方法
     public void StopButtonClick(GameObject StopButton)
     {
+        //if(BattleManager.)
+
         isstart = !isstart;
         if (isstart)
         {
             StopButton.GetComponent<UISprite>().spriteName = "ButtonOn";
+            Time.timeScale = 1;
         }
         else
         {
             StopButton.GetComponent<UISprite>().spriteName = "ButtonDown";
+            Time.timeScale = 0;
         }
+
+        
     }
 
 

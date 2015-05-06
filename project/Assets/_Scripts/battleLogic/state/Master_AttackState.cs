@@ -45,10 +45,10 @@ public class Master_AttackState : AttackState
     {
         Entity.changeState(new Master_DeathState());
     }
-
-    protected override int getdamage(BaseRobot Entity)
-    {
-        return Entity.AttrEffect;
-    }
+    //获得法师的属性攻击
+    //protected override int getDamage(BaseRobot Entity)
+    //{
+    //    return Entity.AttrEffect;
+    //}
 
 }

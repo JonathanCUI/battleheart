@@ -47,8 +47,8 @@ public class Assassinator_AttackState : AttackState
         Entity.changeState(new Assassinator_DeathState());
     }
 
-    protected override int getdamage(BaseRobot Entity)
-    {
-        return Entity.Attack;
-    }
+    //protected override int getDamage(BaseRobot Entity)
+    //{
+    //    return Entity.Attack;
+    //}
 }
