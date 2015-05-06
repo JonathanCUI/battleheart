@@ -25,16 +25,24 @@ public class AttackState : IState
 
     public virtual void Execute<T>(T Entity) where T : BaseRobot
     {
+        if (Entity.CurrentLifePoint <= 0)
+        {
+            changeToDeathState(Entity);
+        }
         if (Entity.userPointed())
         {//玩家指定位置
             changeToWalkState(Entity);
             return;
         }
-        if (Entity.CurrentLifePoint <= 0)
+        if (enemy)
         {
-            changeToDeathState(Entity);
+            AttackingTarget(Entity);
         }
-        AttackingTarget(Entity);
+        else
+        {
+            changeToIdleState(Entity);
+        }
+        
     }
 
     public virtual void Exit<T>(T Entity) where T : BaseRobot
@@ -85,9 +93,9 @@ public class AttackState : IState
         if (enemy.CurrentLifePoint > 0&&!ishit)
         {
             //造成伤害
-            if ((getdamage() - enemy.Defence) > 0)
+            if ((getdamage(Entity) - enemy.Defence) > 0)
             {
-                enemy.CurrentLifePoint -= (getdamage() - enemy.Defence + Random.Range(1, 11));
+                enemy.CurrentLifePoint -= (getdamage(Entity) - enemy.Defence + Random.Range(1, 11));
             }
             else
             {
@@ -96,13 +104,19 @@ public class AttackState : IState
             ishit = true;
         }
         if (enemy.CurrentLifePoint < 0)
-        {
+		{
+			killEnemy();
             changeToHuntingState(Entity);
         }
 
     }
 
-    protected virtual int getdamage()
+	//
+	public virtual void killEnemy (){
+		enemy.changeState (new DeathState ());
+	}
+
+    protected virtual int getdamage(BaseRobot Entity)
     {
         return 0;
     }

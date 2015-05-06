@@ -48,4 +48,13 @@ public class Ranger_AttackState : AttackState
     {
         Entity.changeState(new Ranger_DeathState());
     }
+
+    protected override int getdamage(BaseRobot Entity)
+    {
+        return Entity.Attack;
+    }
+
+	public override void killEnemy (){
+		enemy.changeState (new Ranger_DeathState ());
+	}
 }

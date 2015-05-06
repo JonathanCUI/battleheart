@@ -28,7 +28,7 @@ public class Assassinator_AttackState : AttackState
 
     public override void AttackingTarget<T>(T Entity)
     {
-        Entity.animation["ghost_attack_with_ball"].speed = Entity.animation["ghost_attack_with_ball"].length*5;
+        Entity.animation["ghost_attack_with_ball"].speed = Entity.animation["ghost_attack_with_ball"].length;
         if (Entity.animation.isPlaying && !Entity.animation.IsPlaying("ghost_attack_with_ball"))
         {
             Entity.playAnimation("ghost_attack_with_ball");
@@ -45,5 +45,14 @@ public class Assassinator_AttackState : AttackState
     public override void changeToDeathState<T>(T Entity)
     {
         Entity.changeState(new Assassinator_DeathState());
+    }
+
+	public override void killEnemy (){
+		enemy.changeState (new Assassinator_DeathState ());
+	}
+
+    protected override int getdamage(BaseRobot Entity)
+    {
+        return Entity.Attack;
     }
 }

@@ -49,7 +49,7 @@ public class Priest_AttackState : AttackState
         Entity.transform.LookAt(enemy.getPosition());
         //加状态
 
-        changeToHuntingState(Entity);
+        //changeToHuntingState(Entity);
 
     }
 
@@ -57,4 +57,8 @@ public class Priest_AttackState : AttackState
     {
         Entity.changeState(new Priest_DeathState());
     }
+
+	public override void killEnemy (){
+		enemy.changeState (new Priest_DeathState ());
+	}
 }

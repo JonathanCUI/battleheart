@@ -48,4 +48,15 @@ public class Mangler_AttackState : AttackState
     {
         Entity.changeState(new Mangler_DeathState());
     }
+
+
+	public override void killEnemy (){
+		enemy.changeState (new Mangler_DeathState ());
+	}
+
+    protected override int getdamage(BaseRobot Entity)
+    {
+        return Entity.Attack;
+    }
+
 }
