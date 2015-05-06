@@ -21,7 +21,6 @@ public class DeathState : IState
     public virtual void Exit<T>(T Entity) where T : BaseRobot
     {
 
-        Debug.Log(Entity);
     }
 
     
@@ -30,7 +29,7 @@ public class DeathState : IState
     {
         if (!Entity.animation.isPlaying)
         {
-            Entity.RobotDead();
+            Entity.sendDestoryMessage();
         }
     }
 

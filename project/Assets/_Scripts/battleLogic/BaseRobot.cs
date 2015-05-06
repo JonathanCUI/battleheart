@@ -49,15 +49,40 @@ public class BaseRobot : MonoBehaviour {
 
 	protected IRobot iSender;
 
-    public int Attribute
+
+    public int Escape
     {
         get
         {
-            return attribute;
+            return escape;
         }
         set
         {
-            attribute = value;
+            escape = value;
+        }
+    }
+
+    public int HitOdds
+    {
+        get
+        {
+            return hitOdds;
+        }
+        set
+        {
+            hitOdds = value;
+        }
+    }
+
+    public int AttrEffect
+    {
+        get
+        {
+            return attrEffect;
+        }
+        set
+        {
+            attrEffect = value;
         }
     }
 
@@ -444,18 +469,23 @@ public class BaseRobot : MonoBehaviour {
 		
 	}
     //角色死亡销毁目标
-    public void RobotDead(float deadtime=5)
-    {
-        //Destroy(this.gameObject,deadtime);
-        Invoke("sendDestoryMessage", deadtime);
-    }
+    
 
 	/**
 	 * 销毁自身
 	 * */
-	public void sendDestoryMessage(){
+    public void sendDestoryMessage(float deathtime=5)
+    {
 		if (iSender != null)
-			iSender.removeObject (this.m_ID);
+			iSender.removeObject (this.m_ID,deathtime);
 		//this.gameObject.SendMessageUpwards ("removeRobot",this.m_ID);
+	}
+
+	public virtual void changeToDeathState(){
+		this.changeState (new DeathState());
+	}
+
+	public virtual int getAtkForce(){
+		return 0;
 	}
 }

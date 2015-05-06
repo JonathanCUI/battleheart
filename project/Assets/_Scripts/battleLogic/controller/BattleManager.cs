@@ -326,13 +326,13 @@ public class BattleManager : MonoBehaviour,IRobot {
 	/**
 	 * 移除一个对象
 	 * */
-	public void removeObject(int id){
+	public void removeObject(int id,float deathtime){
 		if (heroMap.ContainsKey (id)) {
 			BaseRobot r;
 			heroMap.TryGetValue(id,out r);
 			heroMap.Remove(id);
 			updateGameTargets ();
-			Destroy(r.gameObject);
+            Destroy(r.gameObject, deathtime);
 		}
 	}
 

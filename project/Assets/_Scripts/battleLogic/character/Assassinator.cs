@@ -28,4 +28,13 @@ public class Assassinator : HeroRobot {
 		m_pStateMachine = new StateMachine<Assassinator>(this);
 		m_pStateMachine.SetCurrentState(new Assassinator_WalkState());
 	}
+
+	public override void changeToDeathState(){
+		this.changeState (new Assassinator_DeathState());
+	}
+
+	public override int getAtkForce()
+	{
+		return this.Attack;
+	}
 }

@@ -46,13 +46,5 @@ public class Master_AttackState : AttackState
         Entity.changeState(new Master_DeathState());
     }
 
-	public override void killEnemy (){
-		enemy.changeState (new Master_DeathState ());
-	}
-
-    protected override int getdamage(BaseRobot Entity)
-    {
-        return Entity.Attribute;
-    }
 
 }

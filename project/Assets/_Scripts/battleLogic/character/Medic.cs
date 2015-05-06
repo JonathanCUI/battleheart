@@ -28,4 +28,9 @@ public class Medic : HeroRobot {
 		m_pStateMachine = new StateMachine<Medic>(this);
 		m_pStateMachine.SetCurrentState (new Medic_WalkState ());
 	}
+
+	public override void changeToDeathState(){
+		this.changeState (new Medic_DeathState());
+	}
+
 }

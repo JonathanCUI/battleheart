@@ -28,4 +28,13 @@ public class Mangler : HeroRobot {
 		m_pStateMachine = new StateMachine<Mangler>(this);
 		m_pStateMachine.SetCurrentState(new Mangler_WalkState());
 	}
+
+	public override void changeToDeathState(){
+		this.changeState (new Mangler_DeathState());
+	}
+
+	public override int getAtkForce()
+	{
+		return this.Attack;
+	}
 }
